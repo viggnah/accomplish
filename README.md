@@ -4,7 +4,7 @@
 
 # Accomplish
 
-**A calm, offline to-do app for the few things that really matter.**
+**A calm, offline to-do app that helps you get things done, big and small.**
 
 [![Release](https://img.shields.io/github/v/release/viggnah/accomplish?style=flat-square&color=6C47FF&label=release)](https://github.com/viggnah/accomplish/releases/latest)
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-6C47FF?style=flat-square)](LICENSE)
@@ -16,7 +16,7 @@
 <a href="https://github.com/viggnah/accomplish/releases/latest"><img src="https://raw.githubusercontent.com/Kunzisoft/Github-badge/main/get-it-on-github.png" height="80" alt="Get it on GitHub"></a>
 <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/viggnah/accomplish"><img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png" height="80" alt="Get it on Obtainium"></a>
 
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" alt="Home with three IMP tasks">
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" alt="Home with three big tasks">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" alt="Home in dark mode">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="30%" alt="Small stuff, grouped by when">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="30%" alt="Editing a task">
@@ -25,23 +25,25 @@
 
 </div>
 
-## Why
+## How it works
 
-Most to-do apps show everything at once, so the important things get buried under errands. Accomplish splits your tasks in two:
+Accomplish keeps two kinds of task apart:
 
-- **IMP**: the few big things that matter. Only these are on Home, in a fixed number of spots (three by default).
-- **Small stuff**: everyday errands. They live one tap away, out of sight until you want them.
+- **Big tasks**, called *IMP* by default: the important things you're working towards. Only these appear on Home, in a fixed number of spots (three by default).
+- **Small tasks**, called *Small stuff* by default: everyday errands, one tap away and out of sight until you want them.
+
+Both names are yours to change, along with *Waiting room* and *History*.
 
 ## Features
 
-- **One next step at a time.** Each IMP card shows the next step. Tick it off and the following one appears, while a meter shows roughly how much is left.
-- **Frost.** An IMP task you leave untouched slowly frosts over. One tap thaws it.
+- **One next step at a time.** Each big task's card shows its next step. Tick it off and the following one appears, while a meter shows roughly how much is left.
+- **Frost.** A big task you leave untouched slowly frosts over. One tap thaws it.
 - **Deadlines or a rough when.** Give a task a date, or just "This month" or "Later". Anything due tomorrow or sooner turns red, and Coming up shows the next six weeks on a calendar.
 - **Reminders that respect you.** Set your own reminders, with "In 1 hour" and "Tomorrow" snooze buttons. Optional nudges come two days and one day before a deadline, with quiet hours and a daily limit.
-- **A Waiting room.** New IMP tasks wait there until you place them on Home. On Home, long-press a card to drag it to another spot.
-- **Capsules.** Moving an IMP forward sometimes earns a capsule. It might hold a note from your past self about why the task mattered, a side quest to do in real life (sometimes with someone you care about), or one of 250 one-minute lessons on cooking, music, history, science and more.
+- **A Waiting room.** Big tasks that aren't on Home yet wait there until you place them. Tap an empty spot to add one straight to Home, and long-press a card to drag it to another spot.
+- **Capsules.** Moving a big task forward sometimes earns a capsule, and finishing one always does. It might hold a note from your past self about why the task mattered, a side quest to do in real life (sometimes with someone you care about), or one of 250 one-minute lessons on cooking, music, history, science and more.
 - **Undo** for anything that can't simply be put back, and a full history for every task.
-- **Make it yours.** Rename IMP, Small stuff, Waiting room and History. Choose the number of spots, the timings, the notifications and the theme.
+- **Make it yours.** Choose the names, the number of spots, the timings, the notifications and the theme.
 - **Light and dark**, in a soft pastel palette.
 
 ## Privacy
@@ -53,7 +55,7 @@ Most to-do apps show everything at once, so the important things get buried unde
 
 ## Install
 
-Download the APK from [Releases](https://github.com/viggnah/accomplish/releases/latest) and open it, or add this repo to [Obtainium](https://github.com/ImranR98/Obtainium) to get updates automatically. Accomplish needs Android 11 or newer.
+Download the APK from [Releases](https://github.com/viggnah/accomplish/releases/latest) and open it, or add this repo to [Obtainium](https://github.com/ImranR98/Obtainium) to get updates automatically. Accomplish needs Android 11 or newer on a 64-bit ARM phone (arm64-v8a).
 
 On first launch it asks for "All files access" and where to keep your data. Updates install over the top, and your data stays where it is.
 
