@@ -50,8 +50,8 @@ Both names are yours to change, along with *Waiting room* and *History*.
 
 - **No internet permission.** The app can't send anything anywhere.
 - No accounts, analytics, ads or tracking.
-- Your tasks are a single readable JSON file in an `Accomplish` folder on your SD card (or phone storage), with daily backups next to it. Your settings are kept there too, so they come back after a reinstall.
-- The app asks for "All files access" only so that folder can live on the SD card, where it survives uninstalling.
+- Your tasks are a single readable JSON file in an `Accomplish` folder on your phone (or SD card, if you prefer), with daily backups next to it. Your settings are kept there too, so they come back after a reinstall.
+- The app asks for "All files access" only so that folder can sit in your regular storage, where you can see it, copy it and back it up, and where it stays if the app is uninstalled.
 
 ## Install
 
@@ -89,7 +89,7 @@ Over Wi-Fi (Android 11+): Developer options › Wireless debugging › Pair devi
 
 | Path | What's there |
 | --- | --- |
-| `app/src/main/java/.../data` | Model, JSON format, settings, SD-card storage with atomic writes and backups |
+| `app/src/main/java/.../data` | Model, JSON format, settings, and folder storage with atomic writes and backups |
 | `app/src/main/java/.../logic` | Pure rules (horizons, frost, spots, drain meter, reminders) and capsules |
 | `app/src/main/java/.../notify` | Notifications, alarms and snooze |
 | `app/src/main/java/.../ui` | Compose screens, sheets, theme and the undo toast |

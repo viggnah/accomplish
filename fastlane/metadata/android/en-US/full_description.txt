@@ -9,4 +9,4 @@
 <li><b>Undo</b> for anything that can't simply be put back, and a full history for every task.</li>
 <li><b>Make it yours:</b> choose the names, the number of spots, the timings, the notifications and the theme.</li>
 </ul>
-<p><b>Private by design.</b> No internet permission, no accounts, no analytics. Your tasks are a readable JSON file on your SD card or phone storage, with daily backups.</p>
+<p><b>Private by design.</b> No internet permission, no accounts, no analytics. Your tasks are a readable JSON file in a folder on your phone (or SD card), with daily backups.</p>

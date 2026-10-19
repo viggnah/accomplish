@@ -2,6 +2,11 @@
 
 All notable changes to Accomplish (called Matter until 0.5). Newest first. Versions match `versionName` in `app/build.gradle.kts`.
 
+## Unreleased
+
+### Changed
+- First-run screens no longer assume an SD card: no "Recommended" badge or "No SD card found" line, and the error screen reads "Your tasks can't be reached".
+
 ## 0.10.0 · 20 Oct 2026
 
 The first public release, now open source under the GPL-3.0.

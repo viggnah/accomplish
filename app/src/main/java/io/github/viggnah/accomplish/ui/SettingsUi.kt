@@ -247,7 +247,7 @@ fun SetupScreen(state: AppState, phase: Phase) {
             Phase.Loading -> {}
             Phase.NeedsAccess -> {
                 Txt("Hello there", Type.display(36.sp), p.ink)
-                Txt("This app keeps your tasks in a folder on your SD card, so they don't use phone storage and they survive if the app is ever reinstalled.",
+                Txt("Accomplish keeps your tasks in a folder on your phone that you can see, copy and back up. It stays put even if the app is reinstalled.",
                     Type.body(16.sp), p.ink)
                 Txt("Android asks you to allow “All files access” for that. Nothing ever leaves your phone.", Type.body(16.sp), p.inkSoft)
                 ClayButton("Allow file access", Modifier.fillMaxWidth(), kind = BtnKind.PRIMARY, big = true) {
@@ -259,7 +259,6 @@ fun SetupScreen(state: AppState, phase: Phase) {
             Phase.NeedsLocation -> {
                 Txt("Where should it live?", Type.display(36.sp), p.ink)
                 val vols = remember(refresh) { state.volumes() }
-                if (vols.none { it.removable }) Txt("No SD card found right now. Insert one and tap Check again, or use phone storage.", Type.body(16.sp), p.inkSoft)
                 vols.forEach { v ->
                     Row(
                         Modifier.fillMaxWidth().tile(p, PanelShape, p.pebble, 6.dp).squish(scaleDown = 0.97f) { state.useVolume(v) }.padding(16.dp),
@@ -269,16 +268,13 @@ fun SetupScreen(state: AppState, phase: Phase) {
                             Txt(if (v.removable) "SD card (${v.label})" else "Phone storage", Type.display(18.sp), p.ink)
                             Txt(File(v.root, Storage.FOLDER).path, Type.body(12.sp), p.inkSoft)
                         }
-                        if (v.removable) Box(Modifier.background(p.accent, PillShape).padding(horizontal = 10.dp, vertical = 4.dp)) {
-                            Txt("Recommended", Type.body(12.sp, FontWeight.ExtraBold), p.onAccent)
-                        }
                     }
                 }
                 ClayButton("Check again", kind = BtnKind.GHOST) { refresh++ }
             }
             is Phase.Missing -> {
-                Txt("Your SD card isn't available", Type.display(36.sp), p.ink)
-                Txt("Your tasks are in ${phase.dir}, which can't be reached right now. Check that the card is in and mounted. Nothing has been changed.",
+                Txt("Your tasks can't be reached", Type.display(36.sp), p.ink)
+                Txt("They're in ${phase.dir}. If that's on an SD card, check that the card is in. Nothing has been changed.",
                     Type.body(16.sp), p.ink)
                 ClayButton("Try again", Modifier.fillMaxWidth(), kind = BtnKind.PRIMARY, big = true) { state.start() }
                 ClayButton("Use a different location", Modifier.fillMaxWidth(), kind = BtnKind.GHOST) { state.chooseLocationAgain() }
