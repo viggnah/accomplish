@@ -1,0 +1,18 @@
+.gradle/
+build/
+/app/build/
+local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+.kotlin/
+# release signing material never goes in git
+keystore/
+keystore.properties
+
+# editor settings
+.vscode/
+# signing keys, wherever they end up
+*.jks
+*.keystore

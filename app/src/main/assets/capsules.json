@@ -1,0 +1,2546 @@
+{
+  "version": 1,
+  "quests": [
+    {
+      "id": "q001",
+      "text": "Walk down a street near home you have never used and find one thing worth coming back for.",
+      "social": false
+    },
+    {
+      "id": "q002",
+      "text": "Ask someone in your family about the first job they ever had.",
+      "personText": "Ask {person} about the first job they ever had.",
+      "social": true
+    },
+    {
+      "id": "q003",
+      "text": "Write down three things from today that you'd miss if they were gone.",
+      "social": false
+    },
+    {
+      "id": "q004",
+      "text": "Buy one fruit you have never tasted and eat it slowly, noticing its smell and texture.",
+      "social": false
+    },
+    {
+      "id": "q005",
+      "text": "Call someone in your family you haven't spoken to lately and ask what made them laugh this week.",
+      "personText": "Call {person} and ask what made them laugh this week.",
+      "social": true
+    },
+    {
+      "id": "q006",
+      "text": "Sit outside for ten minutes without your phone and count how many different birdsongs you can hear.",
+      "social": false
+    },
+    {
+      "id": "q007",
+      "text": "Draw your breakfast from memory in under five minutes using a single pen.",
+      "social": false
+    },
+    {
+      "id": "q008",
+      "text": "Cook a dish with someone else and let them choose the recipe.",
+      "personText": "Cook a dish with {person} and let them choose the recipe.",
+      "social": true
+    },
+    {
+      "id": "q009",
+      "text": "Find the oldest building within walking distance and look for a date carved or painted on it.",
+      "social": false
+    },
+    {
+      "id": "q010",
+      "text": "Make a full meal using only what is already in your kitchen, with no shopping.",
+      "social": false
+    },
+    {
+      "id": "q011",
+      "text": "Ask someone older than you what your area looked like when they were young.",
+      "personText": "Ask {person} what your area looked like when they were young.",
+      "social": true
+    },
+    {
+      "id": "q012",
+      "text": "Write a four-line poem about the weather outside right now.",
+      "social": false
+    },
+    {
+      "id": "q013",
+      "text": "Send a friend a voice note telling them one specific thing you appreciate about them.",
+      "personText": "Send {person} a voice note telling them one specific thing you appreciate about them.",
+      "social": true
+    },
+    {
+      "id": "q014",
+      "text": "Learn the name of one tree you pass often by studying its leaves, bark and shape.",
+      "social": false
+    },
+    {
+      "id": "q015",
+      "text": "At dinner, ask everyone to share the best and the strangest moment of their day.",
+      "social": true
+    },
+    {
+      "id": "q016",
+      "text": "Empty one drawer, keep only what you use, and set the rest aside to donate.",
+      "social": false
+    },
+    {
+      "id": "q017",
+      "text": "Listen to a whole album from a genre you never play, start to finish, with no skipping.",
+      "social": false
+    },
+    {
+      "id": "q018",
+      "text": "Teach someone a small skill you know in ten minutes, like a card trick or a knot.",
+      "personText": "Teach {person} a small skill you know in ten minutes, like a card trick or a knot.",
+      "social": true
+    },
+    {
+      "id": "q019",
+      "text": "Write a letter to yourself to open one year from today, then seal it and date the envelope.",
+      "social": false
+    },
+    {
+      "id": "q020",
+      "text": "Find five clearly different shades of green on a single walk.",
+      "social": false
+    },
+    {
+      "id": "q021",
+      "text": "Write a handwritten note to a colleague thanking them for something specific they did.",
+      "personText": "Write a handwritten note to {person} thanking them for something specific they did.",
+      "social": true
+    },
+    {
+      "id": "q022",
+      "text": "Drink a cup of tea or coffee with no screens, just looking out of a window.",
+      "social": false
+    },
+    {
+      "id": "q023",
+      "text": "Step outside after dark and try to spot a planet, a satellite or the brightest star.",
+      "social": false
+    },
+    {
+      "id": "q024",
+      "text": "Ask someone in your family for a favourite recipe from their childhood and write it down.",
+      "personText": "Ask {person} for a favourite recipe from their childhood and write it down.",
+      "social": true
+    },
+    {
+      "id": "q025",
+      "text": "Write your name with your non-dominant hand ten times and watch how it improves.",
+      "social": false
+    },
+    {
+      "id": "q026",
+      "text": "Visit a library and borrow a book from a section you have never browsed.",
+      "social": false
+    },
+    {
+      "id": "q027",
+      "text": "Learn the name of a neighbour you often see and greet them by it next time.",
+      "social": true
+    },
+    {
+      "id": "q028",
+      "text": "Rearrange one corner of a room so it feels new to you.",
+      "social": false
+    },
+    {
+      "id": "q029",
+      "text": "Leave a warm, specific review for a small local business you like.",
+      "social": false
+    },
+    {
+      "id": "q030",
+      "text": "Play a word chain at dinner where each word starts with the last letter of the one before.",
+      "social": true
+    },
+    {
+      "id": "q031",
+      "text": "Write down a skill you'd love to have in five years and one tiny step you can take this week.",
+      "social": false
+    },
+    {
+      "id": "q032",
+      "text": "Hum a song you loved as a child and try to remember every word.",
+      "social": false
+    },
+    {
+      "id": "q033",
+      "text": "Invite a friend for a walk instead of a coffee.",
+      "personText": "Invite {person} for a walk instead of a coffee.",
+      "social": true
+    },
+    {
+      "id": "q034",
+      "text": "Find a public bench you have never sat on and stay there for ten unhurried minutes.",
+      "social": false
+    },
+    {
+      "id": "q035",
+      "text": "Cook one dish from a country you have never visited.",
+      "social": false
+    },
+    {
+      "id": "q036",
+      "text": "Ask a colleague what they are reading or watching, then try a little of it yourself.",
+      "personText": "Ask {person} what they are reading or watching, then try a little of it yourself.",
+      "social": true
+    },
+    {
+      "id": "q037",
+      "text": "Draw a map of your neighbourhood from memory, then compare it with a real map.",
+      "social": false
+    },
+    {
+      "id": "q038",
+      "text": "Compliment a stranger sincerely on something they chose, like a jacket or a book.",
+      "social": true
+    },
+    {
+      "id": "q039",
+      "text": "Pick up five pieces of litter on your next walk and put them in a bin.",
+      "social": false
+    },
+    {
+      "id": "q040",
+      "text": "Ask someone in your family to teach you a phrase or saying from their childhood.",
+      "personText": "Ask {person} to teach you a phrase or saying from their childhood.",
+      "social": true
+    },
+    {
+      "id": "q041",
+      "text": "Make a playlist of ten songs that sum up this month of your life.",
+      "social": false
+    },
+    {
+      "id": "q042",
+      "text": "Spend ten minutes watching clouds and name the shapes you see in them.",
+      "social": false
+    },
+    {
+      "id": "q043",
+      "text": "Call an old friend and relive one specific funny memory together.",
+      "personText": "Call {person} and relive one specific funny memory together.",
+      "social": true
+    },
+    {
+      "id": "q044",
+      "text": "Memorise a short poem and recite it aloud before bed.",
+      "social": false
+    },
+    {
+      "id": "q045",
+      "text": "Ask someone older than you what the best decision of their life was.",
+      "personText": "Ask {person} what the best decision of their life was.",
+      "social": true
+    },
+    {
+      "id": "q046",
+      "text": "Try box breathing: in for four, hold for four, out for four, hold for four, five rounds.",
+      "social": false
+    },
+    {
+      "id": "q047",
+      "text": "Write down your earliest memory in as much detail as you can recall.",
+      "social": false
+    },
+    {
+      "id": "q048",
+      "text": "Bring a small treat to share with colleagues or neighbours.",
+      "social": true
+    },
+    {
+      "id": "q049",
+      "text": "Walk into a shop you have passed many times but never entered.",
+      "social": false
+    },
+    {
+      "id": "q050",
+      "text": "Fold three paper aeroplane designs and test which one flies furthest.",
+      "social": false
+    },
+    {
+      "id": "q051",
+      "text": "Write a postcard to someone in your family and post it today.",
+      "personText": "Write a postcard to {person} and post it today.",
+      "social": true
+    },
+    {
+      "id": "q052",
+      "text": "Write the opening line of a novel you will never write.",
+      "social": false
+    },
+    {
+      "id": "q053",
+      "text": "Walk for twenty minutes with no destination, flipping a coin at each junction.",
+      "social": false
+    },
+    {
+      "id": "q054",
+      "text": "Ask a friend what they are looking forward to this month, and set a reminder to ask about it.",
+      "personText": "Ask {person} what they are looking forward to this month, and set a reminder to ask about it.",
+      "social": true
+    },
+    {
+      "id": "q055",
+      "text": "Water a plant you own, or buy a small one for your desk.",
+      "social": false
+    },
+    {
+      "id": "q056",
+      "text": "Delete twenty old files or screenshots you will never need again.",
+      "social": false
+    },
+    {
+      "id": "q057",
+      "text": "Play twenty questions with someone during a meal or a walk.",
+      "personText": "Play twenty questions with {person} during a meal or a walk.",
+      "social": true
+    },
+    {
+      "id": "q058",
+      "text": "Unfollow five accounts that tend to leave you feeling worse.",
+      "social": false
+    },
+    {
+      "id": "q059",
+      "text": "Write a list of ten small things that reliably cheer you up.",
+      "social": false
+    },
+    {
+      "id": "q060",
+      "text": "Ask someone in your family how they met their closest friend.",
+      "personText": "Ask {person} how they met their closest friend.",
+      "social": true
+    },
+    {
+      "id": "q061",
+      "text": "Learn to say thank you in a language spoken by someone in your area.",
+      "social": false
+    },
+    {
+      "id": "q062",
+      "text": "Find a spot nearby with a clear western view and watch the sun set.",
+      "social": false
+    },
+    {
+      "id": "q063",
+      "text": "Offer a neighbour help with a small task, like carrying shopping or watering plants.",
+      "social": true
+    },
+    {
+      "id": "q064",
+      "text": "Sketch your own hand in three different poses.",
+      "social": false
+    },
+    {
+      "id": "q065",
+      "text": "Eat your lunch outside, wherever you can find a decent spot.",
+      "social": false
+    },
+    {
+      "id": "q066",
+      "text": "Share a meal with someone with both phones left in another room.",
+      "personText": "Share a meal with {person} with both phones left in another room.",
+      "social": true
+    },
+    {
+      "id": "q067",
+      "text": "Read one poem aloud to yourself, slowly, twice.",
+      "social": false
+    },
+    {
+      "id": "q068",
+      "text": "Set a timer for ten minutes and do absolutely nothing until it rings.",
+      "social": false
+    },
+    {
+      "id": "q069",
+      "text": "Ask a friend to swap one book with you for a month.",
+      "personText": "Ask {person} to swap one book with you for a month.",
+      "social": true
+    },
+    {
+      "id": "q070",
+      "text": "Find out who or what your street is named after.",
+      "social": false
+    },
+    {
+      "id": "q071",
+      "text": "Fold a paper crane or boat, and keep trying until one comes out neat.",
+      "social": false
+    },
+    {
+      "id": "q072",
+      "text": "Thank someone who serves you today by name, and mention one thing they did well.",
+      "social": true
+    },
+    {
+      "id": "q073",
+      "text": "Make a smoothie or drink from a combination you have never tried.",
+      "social": false
+    },
+    {
+      "id": "q074",
+      "text": "Mend one small thing you own: sew a button, glue a handle or tighten a loose screw.",
+      "social": false
+    },
+    {
+      "id": "q075",
+      "text": "Ask someone in your family which song takes them back to being a teenager, then listen together.",
+      "personText": "Ask {person} which song takes them back to being a teenager, then listen together.",
+      "social": true
+    },
+    {
+      "id": "q076",
+      "text": "Write a thank-you note to a teacher who shaped you, even if you never send it.",
+      "social": false
+    },
+    {
+      "id": "q077",
+      "text": "Add one new spice to a dish you already know how to cook.",
+      "social": false
+    },
+    {
+      "id": "q078",
+      "text": "Visit a local market and buy one thing from a stall you have never tried.",
+      "social": false
+    },
+    {
+      "id": "q079",
+      "text": "Write down one worry, then write the most likely real outcome next to it.",
+      "social": false
+    },
+    {
+      "id": "q080",
+      "text": "Ask someone to show you their favourite place in your town.",
+      "personText": "Ask {person} to show you their favourite place in your town.",
+      "social": true
+    },
+    {
+      "id": "q081",
+      "text": "Learn to tie a bowline knot and tie it five times without looking at instructions.",
+      "social": false
+    },
+    {
+      "id": "q082",
+      "text": "Spend fifteen minutes in a local museum, gallery or historic building, just looking.",
+      "social": false
+    },
+    {
+      "id": "q083",
+      "text": "Tell someone in your family a story from your childhood they might not know.",
+      "personText": "Tell {person} a story from your childhood they might not know.",
+      "social": true
+    },
+    {
+      "id": "q084",
+      "text": "Listen to ten minutes of radio in a language you don't speak and guess what is being discussed.",
+      "social": false
+    },
+    {
+      "id": "q085",
+      "text": "Build a tiny sculpture from things on your desk and leave it there for the day.",
+      "social": false
+    },
+    {
+      "id": "q086",
+      "text": "Make a cup of tea for someone without being asked.",
+      "personText": "Make a cup of tea for {person} without being asked.",
+      "social": true
+    },
+    {
+      "id": "q087",
+      "text": "Clear your desk completely, wipe it down, and put back only what you use every day.",
+      "social": false
+    },
+    {
+      "id": "q088",
+      "text": "Read the first chapter of a classic you have always meant to read.",
+      "social": false
+    },
+    {
+      "id": "q089",
+      "text": "Ask a colleague for a tip on something they are particularly good at.",
+      "personText": "Ask {person} for a tip on something they are particularly good at.",
+      "social": true
+    },
+    {
+      "id": "q090",
+      "text": "Write a six-word story about your week.",
+      "social": false
+    },
+    {
+      "id": "q091",
+      "text": "Cook something with an ingredient you have always avoided.",
+      "social": false
+    },
+    {
+      "id": "q092",
+      "text": "Get whoever is around together tonight for one quick game of cards or a board game.",
+      "social": true
+    },
+    {
+      "id": "q093",
+      "text": "Write down five sounds you can hear right now, from nearest to furthest.",
+      "social": false
+    },
+    {
+      "id": "q094",
+      "text": "Draw yourself in a mirror in ten minutes without lifting your pen from the paper.",
+      "social": false
+    },
+    {
+      "id": "q095",
+      "text": "Ask someone older than you how the price of everyday things has changed in their lifetime.",
+      "personText": "Ask {person} how the price of everyday things has changed in their lifetime.",
+      "social": true
+    },
+    {
+      "id": "q096",
+      "text": "Find the highest point you can walk to nearby and take in the view.",
+      "social": false
+    },
+    {
+      "id": "q097",
+      "text": "Go to bed thirty minutes early tonight with a paper book.",
+      "social": false
+    },
+    {
+      "id": "q098",
+      "text": "Ask someone in your family what they believed as a child that turned out to be untrue.",
+      "personText": "Ask {person} what they believed as a child that turned out to be untrue.",
+      "social": true
+    },
+    {
+      "id": "q099",
+      "text": "Write a done list of everything you managed today, however small.",
+      "social": false
+    },
+    {
+      "id": "q100",
+      "text": "Write three questions you have always wondered about and find the answer to one.",
+      "social": false
+    },
+    {
+      "id": "q101",
+      "text": "Cook a double portion and share half with a neighbour or friend.",
+      "social": true
+    },
+    {
+      "id": "q102",
+      "text": "On your usual walk, look up at the tops of buildings and notice details you never saw.",
+      "social": false
+    },
+    {
+      "id": "q103",
+      "text": "Bake something simple from scratch, such as flatbread or scones.",
+      "social": false
+    },
+    {
+      "id": "q104",
+      "text": "Ask a friend to teach you their go-to dance move.",
+      "personText": "Ask {person} to teach you their go-to dance move.",
+      "social": true
+    },
+    {
+      "id": "q105",
+      "text": "Practise a small trick you have never managed, like whistling with fingers or a coin roll.",
+      "social": false
+    },
+    {
+      "id": "q106",
+      "text": "Cook tonight's dinner around the oldest item in your cupboard.",
+      "social": false
+    },
+    {
+      "id": "q107",
+      "text": "Video call someone who lives far away and show them the view from your window.",
+      "personText": "Video call {person} and show them the view from your window.",
+      "social": true
+    },
+    {
+      "id": "q108",
+      "text": "Write a fan letter to an author or musician you love, and send it if you can.",
+      "social": false
+    },
+    {
+      "id": "q109",
+      "text": "Sit alone in a café and describe the room in a notebook as if for a novel.",
+      "social": false
+    },
+    {
+      "id": "q110",
+      "text": "Ask someone in your family what they wanted to be when they grew up.",
+      "personText": "Ask {person} what they wanted to be when they grew up.",
+      "social": true
+    },
+    {
+      "id": "q111",
+      "text": "Stretch your neck and shoulders slowly for five minutes at your desk.",
+      "social": false
+    },
+    {
+      "id": "q112",
+      "text": "Find a piece of public art nearby and find out who made it.",
+      "social": false
+    },
+    {
+      "id": "q113",
+      "text": "Leave a kind message for someone who made something you enjoyed.",
+      "social": true
+    },
+    {
+      "id": "q114",
+      "text": "Write an encouraging note on a slip of paper and leave it in a library book.",
+      "social": false
+    },
+    {
+      "id": "q115",
+      "text": "Try to find three constellations in tonight's sky.",
+      "social": false
+    },
+    {
+      "id": "q116",
+      "text": "Ask a local for a recommendation, such as the best bakery or walk nearby.",
+      "social": true
+    },
+    {
+      "id": "q117",
+      "text": "Choose one object in your home and write its life story in five sentences.",
+      "social": false
+    },
+    {
+      "id": "q118",
+      "text": "Donate something useful to a charity shop or food bank today.",
+      "social": false
+    },
+    {
+      "id": "q119",
+      "text": "Introduce two friends who you think would get on, with a short message to both.",
+      "social": true
+    },
+    {
+      "id": "q120",
+      "text": "Cook breakfast for dinner.",
+      "social": false
+    },
+    {
+      "id": "q121",
+      "text": "Take one photo of something ordinary from an angle you would never normally use.",
+      "social": false
+    },
+    {
+      "id": "q122",
+      "text": "Ask someone in your family to describe the home they grew up in, room by room.",
+      "personText": "Ask {person} to describe the home they grew up in, room by room.",
+      "social": true
+    },
+    {
+      "id": "q123",
+      "text": "Walk to a place you would normally drive or ride to.",
+      "social": false
+    },
+    {
+      "id": "q124",
+      "text": "Learn the chorus of a song in a language you don't speak.",
+      "social": false
+    },
+    {
+      "id": "q125",
+      "text": "Go for a walk with someone and take turns choosing which way to turn at each corner.",
+      "personText": "Go for a walk with {person} and take turns choosing which way to turn at each corner.",
+      "social": true
+    },
+    {
+      "id": "q126",
+      "text": "Dance alone to one full song in your kitchen.",
+      "social": false
+    },
+    {
+      "id": "q127",
+      "text": "Write down the best advice anyone ever gave you and where you were when you heard it.",
+      "social": false
+    },
+    {
+      "id": "q128",
+      "text": "Ask someone what they are proud of this year and listen without adding your own story.",
+      "personText": "Ask {person} what they are proud of this year and listen without adding your own story.",
+      "social": true
+    },
+    {
+      "id": "q129",
+      "text": "Flick through a dictionary for ten minutes and pick one new word to use today.",
+      "social": false
+    },
+    {
+      "id": "q130",
+      "text": "Spend one evening hour with only a single lamp on and notice how the room changes.",
+      "social": false
+    },
+    {
+      "id": "q131",
+      "text": "Tell someone in your family one thing you admire about them.",
+      "personText": "Tell {person} one thing you admire about them.",
+      "social": true
+    },
+    {
+      "id": "q132",
+      "text": "Plan a micro-adventure for next weekend, with a place, a time and a snack.",
+      "social": false
+    },
+    {
+      "id": "q133",
+      "text": "Splash cold water on your face and notice how alert you feel afterwards.",
+      "social": false
+    },
+    {
+      "id": "q134",
+      "text": "Ask someone in your family what their own grandparents were like.",
+      "personText": "Ask {person} what their own grandparents were like.",
+      "social": true
+    },
+    {
+      "id": "q135",
+      "text": "List five places within an hour of home that you have never visited.",
+      "social": false
+    },
+    {
+      "id": "q136",
+      "text": "Find the biggest tree you can nearby and hug it to feel how wide it is.",
+      "social": false
+    },
+    {
+      "id": "q137",
+      "text": "Share an old photo with someone in your family and ask what they remember from that day.",
+      "personText": "Share an old photo with {person} and ask what they remember from that day.",
+      "social": true
+    },
+    {
+      "id": "q138",
+      "text": "Make a bookmark from scrap card and decorate it with a pattern.",
+      "social": false
+    },
+    {
+      "id": "q139",
+      "text": "Look at a photo of yourself from ten years ago and write a note to that person.",
+      "social": false
+    },
+    {
+      "id": "q140",
+      "text": "Play two truths and a lie with friends or family tonight.",
+      "social": true
+    },
+    {
+      "id": "q141",
+      "text": "Eat one meal today slowly, putting your fork down between each bite.",
+      "social": false
+    },
+    {
+      "id": "q142",
+      "text": "Call someone and ask them to describe a place they have loved visiting.",
+      "personText": "Call {person} and ask them to describe a place they have loved visiting.",
+      "social": true
+    },
+    {
+      "id": "q143",
+      "text": "Walk barefoot on grass or sand for five minutes and notice how the ground feels.",
+      "social": false
+    },
+    {
+      "id": "q144",
+      "text": "Leave a favourite snack on someone's desk or doorstep as a small surprise.",
+      "personText": "Leave a favourite snack for {person} as a small surprise.",
+      "social": true
+    },
+    {
+      "id": "q145",
+      "text": "Write a short review of the last film you watched in exactly fifty words.",
+      "social": false
+    },
+    {
+      "id": "q146",
+      "text": "Ask a friend which film they could watch again and again, and watch the opening ten minutes.",
+      "personText": "Ask {person} which film they could watch again and again, and watch the opening ten minutes.",
+      "social": true
+    },
+    {
+      "id": "q147",
+      "text": "Polish your shoes properly, laces and all.",
+      "social": false
+    },
+    {
+      "id": "q148",
+      "text": "Climb a flight of stairs twice at a steady pace instead of taking the lift.",
+      "social": false
+    },
+    {
+      "id": "q149",
+      "text": "Write down what an ideal ordinary Tuesday would look like for you, hour by hour.",
+      "social": false
+    },
+    {
+      "id": "q150",
+      "text": "Ask someone in your family to tell you about a time they were really brave.",
+      "personText": "Ask {person} to tell you about a time they were really brave.",
+      "social": true
+    }
+  ],
+  "lessons": [
+    {
+      "id": "l001",
+      "topic": "Drawing",
+      "title": "Blind contour drawing",
+      "body": "Blind contour drawing means tracing an object's edges with your eyes while your pen follows on the paper, without ever looking down. The results look wobbly, but the exercise trains your hand to respond to what your eyes actually see. The art teacher Kimon Nicolaides made it a core exercise in his book The Natural Way to Draw.",
+      "tryIt": "Draw a mug in two minutes without once looking at the paper."
+    },
+    {
+      "id": "l002",
+      "topic": "Photography",
+      "title": "The rule of thirds",
+      "body": "Imagine your frame split by two horizontal and two vertical lines into nine equal parts. Placing your subject on a line or where two lines cross usually feels more dynamic than centring it. Most phone cameras can show this grid in their settings.",
+      "tryIt": "Turn on your camera's grid and place a subject on one intersection."
+    },
+    {
+      "id": "l003",
+      "topic": "Music",
+      "title": "Why minor chords sound sad",
+      "body": "A major chord stacks a root, a major third and a fifth. A minor chord lowers the middle note by just one semitone, to a minor third. That single small change makes the chord sound darker to most listeners raised on Western music, though the emotional meaning is partly learned.",
+      "tryIt": "Hum a low note, then a note four semitones up, then three, and compare the mood."
+    },
+    {
+      "id": "l004",
+      "topic": "Writing",
+      "title": "Show, don't tell",
+      "body": "Telling names a feeling: 'She was nervous.' Showing gives evidence the reader can interpret: 'She folded the receipt into smaller and smaller squares.' Readers trust what they work out for themselves. Telling is still useful for skipping quickly over unimportant moments.",
+      "tryIt": "Rewrite 'He was tired' as one sentence that shows it instead."
+    },
+    {
+      "id": "l005",
+      "topic": "Cooking",
+      "title": "The Maillard reaction",
+      "body": "Browning on toast, seared meat and roasted coffee comes from the Maillard reaction between amino acids and sugars. It speeds up at high temperatures, typically above about 140°C, creating hundreds of flavour compounds. Wet surfaces stay near 100°C, so pat food dry before searing.",
+      "tryIt": "Pat a vegetable or piece of tofu dry before frying it and compare the browning."
+    },
+    {
+      "id": "l006",
+      "topic": "Crafts & DIY",
+      "title": "Measure twice, cut once",
+      "body": "This old carpenter's saying is about the cost of mistakes: re-measuring takes seconds, while a wrong cut wastes material. Mark with a sharp pencil and cut on the waste side of the line, since the blade itself removes a thin strip of material.",
+      "tryIt": "Before your next cut or fold, measure a second time."
+    },
+    {
+      "id": "l007",
+      "topic": "Nature",
+      "title": "Count the rings",
+      "body": "In climates with distinct seasons, a tree adds a light layer of fast spring growth and a darker band of slower late-season growth each year. Counting the dark rings on a stump gives its age. Wide rings often mean good growing years, narrow ones drought or crowding.",
+      "tryIt": "Find a tree stump or cut log and count as many rings as you can."
+    },
+    {
+      "id": "l008",
+      "topic": "Science",
+      "title": "Why ice floats",
+      "body": "Most substances are denser as solids than as liquids, but water is unusual. As it freezes, its molecules lock into an open hexagonal lattice held by hydrogen bonds, so water expands by about nine per cent as it freezes and ice is less dense than the liquid. Lakes freeze from the top down, which lets life survive beneath.",
+      "tryIt": "Drop an ice cube in a glass of water and notice how much sits below the surface."
+    },
+    {
+      "id": "l009",
+      "topic": "History",
+      "title": "Gutenberg's press",
+      "body": "Johannes Gutenberg developed printing with movable metal type in Mainz around the 1440s. His Bible was completed around 1455. Books became far cheaper to produce, helping spread literacy, science and new ideas across Europe. Movable type had been invented earlier in China and Korea.",
+      "tryIt": "Look at a printed page and imagine each letter as a small metal block."
+    },
+    {
+      "id": "l010",
+      "topic": "Language & Words",
+      "title": "A muscle is a little mouse",
+      "body": "The word 'muscle' comes from the Latin musculus, meaning 'little mouse'. The idea seems to be that a flexing muscle, such as a bicep, looks like a mouse moving under the skin. Several other languages show the same mouse-muscle link.",
+      "tryIt": "Flex your arm and see if you can spot the mouse."
+    },
+    {
+      "id": "l011",
+      "topic": "Money",
+      "title": "The rule of 72",
+      "body": "To estimate how long money takes to double at a steady annual return, divide 72 by the percentage rate. At 6 per cent, it doubles in roughly 12 years; at 9 per cent, roughly 8. It is an approximation that works well for typical rates.",
+      "tryIt": "Work out how long your savings rate would take to double using the rule of 72."
+    },
+    {
+      "id": "l012",
+      "topic": "People & Communication",
+      "title": "Say it back",
+      "body": "Active listening means showing that you have understood before you respond. A simple way is to paraphrase: 'So you're saying the deadline moved and nobody told you?' It confirms you heard correctly and helps the other person feel understood.",
+      "tryIt": "In one conversation today, paraphrase what someone said before replying."
+    },
+    {
+      "id": "l013",
+      "topic": "Mind & Habits",
+      "title": "The two-minute rule",
+      "body": "David Allen's Getting Things Done suggests that if a task takes less than two minutes, do it straight away rather than adding it to a list. Tracking it would take longer than doing it. It keeps small jobs from piling up into a heavy mental load.",
+      "tryIt": "Do three two-minute tasks right now: a reply, a tidy-up and a quick call."
+    },
+    {
+      "id": "l014",
+      "topic": "Body & Health",
+      "title": "The 20-20-20 rule",
+      "body": "When working at a screen, every 20 minutes look at something about 20 feet, or six metres, away for 20 seconds. Focusing up close for long periods tires the eye muscles. Blinking also slows when we stare at screens, which can leave eyes dry.",
+      "tryIt": "Set a reminder and try the 20-20-20 rule for the next hour."
+    },
+    {
+      "id": "l015",
+      "topic": "Design & Art",
+      "title": "Complementary colours",
+      "body": "Colours opposite each other on the colour wheel, such as blue and orange, red and green, or purple and yellow, are called complementary. Placed side by side, they make each other look more intense. Mixed together as paint, they tend to neutralise into browns and greys.",
+      "tryIt": "Find a complementary pair in your surroundings, on packaging or clothing."
+    },
+    {
+      "id": "l016",
+      "topic": "Games & Puzzles",
+      "title": "The Sudoku single",
+      "body": "In Sudoku, each digit from 1 to 9 appears once in every row, column and 3x3 box. The simplest technique is to find a cell where only one digit is possible after ruling out those already in its row, column and box. Scanning digit by digit across the grid finds these quickly.",
+      "tryIt": "Pick a digit and scan a Sudoku grid for every place it must go."
+    },
+    {
+      "id": "l017",
+      "topic": "Engineering",
+      "title": "How QR codes survive damage",
+      "body": "QR codes contain extra data generated with Reed-Solomon error correction. Depending on the level chosen, L, M, Q or H, a code can still be read with roughly 7, 15, 25 or 30 per cent of it damaged or covered. That is why some codes can have a logo in the middle.",
+      "tryIt": "Cover a corner of a QR code with your finger and see if it still scans."
+    },
+    {
+      "id": "l018",
+      "topic": "Drawing",
+      "title": "Draw the gaps, not the thing",
+      "body": "Negative space is the shape of the empty areas around and between objects. Drawing the gaps between a chair's legs is easier than drawing the legs, because your brain has no stored symbol for a gap and so you copy what is really there. Get the gaps right and the object appears by itself.",
+      "tryIt": "Sketch only the empty shapes between the legs of a chair or table."
+    },
+    {
+      "id": "l019",
+      "topic": "Photography",
+      "title": "Golden hour",
+      "body": "Shortly after sunrise and before sunset, sunlight passes through more atmosphere and arrives low and warm. Shadows grow long and soft, and textures stand out. Photographers call this the golden hour, though its length depends on your latitude and the season.",
+      "tryIt": "Step outside within an hour of sunset and notice how faces and walls glow."
+    },
+    {
+      "id": "l020",
+      "topic": "Music",
+      "title": "An octave doubles the frequency",
+      "body": "Two notes an octave apart sound like the same note at different heights because the higher one vibrates exactly twice as fast. The A above middle C is commonly tuned to 440 Hz, so the next A up is 880 Hz. That simple ratio makes them blend almost perfectly.",
+      "tryIt": "Sing a note, then the same note an octave higher, and feel how alike they are."
+    },
+    {
+      "id": "l021",
+      "topic": "Writing",
+      "title": "Strong verbs beat adverbs",
+      "body": "'He walked slowly' uses an adverb to prop up a weak verb. 'He trudged', 'he ambled' or 'he shuffled' each carry the meaning and a mood in a single word. Hunting down adverbs is one of the quickest ways to tighten a piece of writing.",
+      "tryIt": "Find three adverbs in something you wrote and replace each verb instead."
+    },
+    {
+      "id": "l022",
+      "topic": "Cooking",
+      "title": "Don't crowd the pan",
+      "body": "If you pack too much food into a pan, it releases moisture faster than it can evaporate and the food steams instead of browning. The pan temperature also drops. Cook in batches with space between pieces for a better crust.",
+      "tryIt": "Next time you fry something, cook it in two batches instead of one."
+    },
+    {
+      "id": "l023",
+      "topic": "Crafts & DIY",
+      "title": "Leave a shank on buttons",
+      "body": "When sewing a button onto a coat, place a matchstick or pin on top of the button while stitching, then remove it. Wind the thread a few times around the stitches under the button to form a shank. The space lets the button sit over the thick fabric of the buttonhole.",
+      "tryIt": "Check your clothes for a loose button and resew it with a shank."
+    },
+    {
+      "id": "l024",
+      "topic": "Nature",
+      "title": "Why leaves turn in autumn",
+      "body": "Green chlorophyll dominates leaves in summer. In autumn, trees stop making it and it breaks down, revealing yellow and orange carotenoids that were there all along. Reds and purples come from anthocyanins, pigments that some trees actively produce in autumn.",
+      "tryIt": "Collect three leaves of different colours and arrange them in order."
+    },
+    {
+      "id": "l025",
+      "topic": "Science",
+      "title": "Sunlight is eight minutes old",
+      "body": "Light travels at about 300,000 kilometres per second, yet sunlight still takes roughly eight minutes and twenty seconds to reach Earth. If the Sun vanished, we would not know for over eight minutes. Looking at the night sky is always looking into the past.",
+      "tryIt": "Next time you feel the sun on your skin, remember it left the Sun eight minutes ago."
+    },
+    {
+      "id": "l026",
+      "topic": "History",
+      "title": "The Rosetta Stone",
+      "body": "The Rosetta Stone carries the same decree from 196 BC in three scripts: hieroglyphs, Demotic and ancient Greek. Because scholars could read the Greek, it became a key to decoding Egyptian hieroglyphs. Jean-François Champollion announced his breakthrough in 1822.",
+      "tryIt": "Write one sentence in English and in a made-up code alongside it."
+    },
+    {
+      "id": "l027",
+      "topic": "Language & Words",
+      "title": "Where the ampersand comes from",
+      "body": "The symbol & began as a ligature of the Latin word 'et', meaning 'and'. Schoolchildren once recited it at the end of the alphabet as 'and per se and', meaning '& by itself is and'. Over time that phrase slurred into 'ampersand'.",
+      "tryIt": "Write an ampersand slowly and look for the e and t inside it."
+    },
+    {
+      "id": "l028",
+      "topic": "Money",
+      "title": "Interest on interest",
+      "body": "With compound interest, each year's growth is added to the pot and then earns interest itself. One thousand pounds at 5 per cent a year becomes about 4,322 pounds after 30 years, while simple interest would give only 2,500. Time matters more than people expect.",
+      "tryIt": "Multiply 1.05 by itself ten times on a calculator and see what happens."
+    },
+    {
+      "id": "l029",
+      "topic": "People & Communication",
+      "title": "Follow-up questions make you likeable",
+      "body": "A 2017 Harvard study by Karen Huang and colleagues found that people who asked more questions in conversation were liked more, and follow-up questions were especially effective. They show you were actually listening to the last answer.",
+      "tryIt": "Ask at least two follow-up questions in your next conversation."
+    },
+    {
+      "id": "l030",
+      "topic": "Mind & Habits",
+      "title": "Habit stacking",
+      "body": "Attaching a new habit to an existing one makes it easier to remember. The formula is: 'After I do this, I will do that.' For example, after I pour my morning coffee, I will write one line in a journal. The old habit becomes the reminder.",
+      "tryIt": "Choose one daily habit and stack a tiny new action onto it."
+    },
+    {
+      "id": "l031",
+      "topic": "Body & Health",
+      "title": "Check your resting heart rate",
+      "body": "Find your pulse on your wrist or neck when you have been sitting calmly, count the beats for 15 seconds and multiply by four. For most adults a resting rate between 60 and 100 beats per minute is considered normal, and regular exercise often lowers it.",
+      "tryIt": "Measure your resting heart rate now and note it down."
+    },
+    {
+      "id": "l032",
+      "topic": "Design & Art",
+      "title": "The 60-30-10 rule",
+      "body": "A common interior design guideline splits a colour scheme into 60 per cent dominant colour, 30 per cent secondary colour and 10 per cent accent. The dominant colour sets the mood, while the small accent adds energy. It works for outfits and slides too.",
+      "tryIt": "Look at a room or outfit and estimate its rough colour proportions."
+    },
+    {
+      "id": "l033",
+      "topic": "Games & Puzzles",
+      "title": "Win the 21 game every time",
+      "body": "Start with 21 matches; two players take turns removing one, two or three, and whoever takes the last match wins. The trick is to always leave your opponent a multiple of four. If you go first, take one to leave 20, then mirror their moves so each round removes four.",
+      "tryIt": "Play the 21 game with someone using coins or matches."
+    },
+    {
+      "id": "l034",
+      "topic": "Engineering",
+      "title": "Why bridges have gaps",
+      "body": "Materials expand when warm and contract when cold, and a long steel or concrete bridge can change length by many centimetres between seasons. Expansion joints, often visible as metal teeth across the road, let it move without cracking. Railways and pavements need similar gaps.",
+      "tryIt": "Look for the toothed metal joints next time you cross a bridge."
+    },
+    {
+      "id": "l035",
+      "topic": "Drawing",
+      "title": "Your eyes are halfway down your head",
+      "body": "Beginners usually draw eyes too high on the face. On an adult head, the eyes sit roughly halfway between the top of the skull and the chin. The forehead and hair take up far more room than we expect, because we focus on features rather than overall shape.",
+      "tryIt": "Draw an oval head, mark the halfway line and place the eyes on it."
+    },
+    {
+      "id": "l036",
+      "topic": "Photography",
+      "title": "Blue hour",
+      "body": "Just after sunset and before sunrise, the sun is below the horizon and the sky takes on a deep, even blue. Artificial lights are on but the sky still has colour, so city scenes look balanced. It lasts only a short while, so be in position early.",
+      "tryIt": "Look at a street just after sunset and compare it with twenty minutes later."
+    },
+    {
+      "id": "l037",
+      "topic": "Music",
+      "title": "The recipe for a major scale",
+      "body": "Every major scale follows the same pattern of steps: whole, whole, half, whole, whole, whole, half. On a piano, starting on C and playing only white keys gives exactly this pattern. Starting anywhere else needs some black keys to keep the pattern intact.",
+      "tryIt": "Sing do-re-mi up to the top do and notice where the steps feel smaller."
+    },
+    {
+      "id": "l038",
+      "topic": "Writing",
+      "title": "Save the punch for the end",
+      "body": "The end of a sentence is its natural point of emphasis, where the reader's attention lands. Putting your key word or new idea there makes it hit harder. 'Only one thing scared her: silence' is stronger than 'Silence was the only thing that scared her.'",
+      "tryIt": "Rewrite one sentence today so the most important word comes last."
+    },
+    {
+      "id": "l039",
+      "topic": "Cooking",
+      "title": "A squeeze of acid",
+      "body": "When a dish tastes flat but adding salt doesn't fix it, it often needs acid. A little lemon juice, lime or vinegar brightens flavours and balances richness. Chefs often add a splash at the very end of cooking.",
+      "tryIt": "Add a few drops of lemon or vinegar to a soup or sauce and taste the difference."
+    },
+    {
+      "id": "l040",
+      "topic": "Crafts & DIY",
+      "title": "Sand with the grain",
+      "body": "Sanding across the grain of wood leaves scratches that stand out, especially once stained. Always move along the direction of the grain. Sandpaper grits are numbered so that a lower number is coarser; work up through the grades, such as 80, then 120, then 180.",
+      "tryIt": "Look at a wooden surface at home and trace the direction of its grain."
+    },
+    {
+      "id": "l041",
+      "topic": "Nature",
+      "title": "How far away was that lightning",
+      "body": "Light reaches you almost instantly, but sound travels about one kilometre in three seconds. Count the seconds between a flash and its thunder and divide by three to estimate the distance in kilometres, or by five for miles. If the gap is short, go indoors.",
+      "tryIt": "Next time it storms, count the seconds and estimate the distance."
+    },
+    {
+      "id": "l042",
+      "topic": "Science",
+      "title": "The speed of sound",
+      "body": "In air at about 20°C, sound travels at roughly 343 metres per second, around a million times slower than light. It moves faster through water and faster still through solids like steel. That is why you can hear a distant train through the rails before the air.",
+      "tryIt": "Watch someone clap or hammer far away and notice the delay before the sound."
+    },
+    {
+      "id": "l043",
+      "topic": "History",
+      "title": "The Great Fire of London",
+      "body": "In September 1666, a fire started in Thomas Farriner's bakery on Pudding Lane and burned for several days. It destroyed much of the medieval City of London, including the old St Paul's Cathedral. Christopher Wren designed the new St Paul's that stands today.",
+      "tryIt": "Look at an old building near you and wonder what stood there before it."
+    },
+    {
+      "id": "l044",
+      "topic": "Language & Words",
+      "title": "Words that mean their opposites",
+      "body": "Contronyms are words with two opposite meanings. 'Sanction' can mean to approve or to punish. 'Dust' can mean to remove dust or to sprinkle it on, and 'cleave' can mean to split apart or to cling together. Context does the work.",
+      "tryIt": "Use the word 'sanction' or 'dust' in both senses in two sentences."
+    },
+    {
+      "id": "l045",
+      "topic": "Money",
+      "title": "Inflation quietly halves your cash",
+      "body": "Inflation means prices rise over time, so the same money buys less. The rule of 72 works in reverse here: at 3 per cent inflation, prices roughly double in 24 years. Cash kept under the mattress steadily loses purchasing power.",
+      "tryIt": "Ask someone older what a loaf of bread cost when they were young."
+    },
+    {
+      "id": "l046",
+      "topic": "People & Communication",
+      "title": "Nobody is watching as closely as you think",
+      "body": "In a 2000 study, Thomas Gilovich and colleagues had students wear an embarrassing Barry Manilow T-shirt into a room. The wearers guessed about half the room noticed; the real figure was nearer a quarter. This is the spotlight effect: we overestimate how much others notice us.",
+      "tryIt": "Next time you feel self-conscious, remind yourself of the Manilow shirt."
+    },
+    {
+      "id": "l047",
+      "topic": "Mind & Habits",
+      "title": "When-then plans",
+      "body": "Psychologist Peter Gollwitzer studied implementation intentions: plans in the form 'When situation X happens, I will do Y.' Many studies show people who make such specific plans are more likely to follow through than those who only set a goal.",
+      "tryIt": "Write one 'When..., I will...' plan for something you keep putting off."
+    },
+    {
+      "id": "l048",
+      "topic": "Body & Health",
+      "title": "Anchor your wake-up time",
+      "body": "Your body clock, or circadian rhythm, likes consistency. Getting up at roughly the same time every day, including weekends, helps regulate when you feel sleepy at night. A consistent wake time is often easier to control than when you fall asleep.",
+      "tryIt": "Set the same alarm time for tomorrow and the day after."
+    },
+    {
+      "id": "l049",
+      "topic": "Design & Art",
+      "title": "Visual hierarchy",
+      "body": "Good design tells the eye where to look first, second and third. Size, contrast, colour and position create that order: a large, bold headline is read before small grey text. When everything shouts, nothing stands out.",
+      "tryIt": "Look at a poster or package and note what you read first, second and third."
+    },
+    {
+      "id": "l050",
+      "topic": "Games & Puzzles",
+      "title": "Tic-tac-toe is always a draw",
+      "body": "If both players make no mistakes, noughts and crosses always ends in a draw. The game is small enough that every position has been worked out. The best chances to win come from opponents who fail to block a fork, where you threaten two lines at once.",
+      "tryIt": "Play three games and try to set up a fork."
+    },
+    {
+      "id": "l051",
+      "topic": "Engineering",
+      "title": "GPS is really a clock",
+      "body": "Each GPS satellite carries extremely precise atomic clocks and broadcasts the time and its position. Your receiver works out how far away each satellite is from how long the signal took to arrive, needing at least four satellites. Engineers even correct for relativity, which makes satellite clocks run fast by about 38 microseconds a day.",
+      "tryIt": "Open a map app outdoors and notice how quickly it locks on."
+    },
+    {
+      "id": "l052",
+      "topic": "Drawing",
+      "title": "One-point perspective",
+      "body": "In one-point perspective, every line running straight away from you meets at a single vanishing point on the horizon. The horizon line always sits at your own eye level. A road, a corridor or railway tracks seen head-on are classic examples.",
+      "tryIt": "Draw a horizon, one dot on it, and a road whose edges run into the dot."
+    },
+    {
+      "id": "l053",
+      "topic": "Photography",
+      "title": "Leading lines",
+      "body": "Roads, fences, rivers and railings can act as lines that lead the viewer's eye into a picture. Lines that start near a corner and run towards the subject are especially strong. Diagonal lines tend to feel more energetic than horizontal ones.",
+      "tryIt": "Find one path or railing that points towards something interesting."
+    },
+    {
+      "id": "l054",
+      "topic": "Music",
+      "title": "The four chords behind many hits",
+      "body": "A huge number of pop songs use the chord progression I-V-vi-IV, such as C, G, A minor, F in the key of C. It moves from home, to tension, to a gentle minor turn, then back towards home. Reordering the same chords changes the feel without changing the ingredients.",
+      "tryIt": "Listen to a favourite pop song and try to hear four chords repeating."
+    },
+    {
+      "id": "l055",
+      "topic": "Writing",
+      "title": "Vary your sentence length",
+      "body": "A string of sentences of the same length becomes monotonous, like a drumbeat that never changes. Mix short sentences with longer, flowing ones. Short ones add punch. Longer ones let an idea unfold with rhythm and detail, carrying the reader along.",
+      "tryIt": "Write a paragraph using a one-word, a five-word and a twenty-word sentence."
+    },
+    {
+      "id": "l056",
+      "topic": "Cooking",
+      "title": "Blooming spices in oil",
+      "body": "Many flavour compounds in spices dissolve in fat rather than water. Briefly frying whole or ground spices in hot oil, known as tadka or tarka in South Asian cooking, releases their aroma into the oil, which then flavours the whole dish. Go carefully, as ground spices burn quickly.",
+      "tryIt": "Fry cumin seeds in oil for thirty seconds and pour them over rice or lentils."
+    },
+    {
+      "id": "l057",
+      "topic": "Crafts & DIY",
+      "title": "Drill a pilot hole",
+      "body": "Driving a screw directly into hardwood or near the edge of a board can split it. A pilot hole, drilled slightly narrower than the screw's thread, gives the screw a path and reduces the risk. It also makes screws go in straighter.",
+      "tryIt": "Find a screw in your home and compare its thread width with the shaft."
+    },
+    {
+      "id": "l058",
+      "topic": "Nature",
+      "title": "Is the Moon growing or shrinking",
+      "body": "In the Northern Hemisphere, a waxing Moon is lit on the right and a waning Moon is lit on the left. One old mnemonic is DOC: a Moon shaped like a D is growing, O is full, and C is shrinking. In the Southern Hemisphere it is the other way round.",
+      "tryIt": "Look at the Moon tonight and decide whether it is waxing or waning."
+    },
+    {
+      "id": "l059",
+      "topic": "Science",
+      "title": "Why stars twinkle",
+      "body": "Starlight passes through layers of moving air at different temperatures, which bend it slightly in shifting directions. Because stars are so distant they appear as single points, and these tiny shifts make them flicker. Planets appear as tiny discs, so they usually twinkle less.",
+      "tryIt": "Look for a bright point that is not twinkling tonight; it may be a planet."
+    },
+    {
+      "id": "l060",
+      "topic": "History",
+      "title": "Railways invented standard time",
+      "body": "Before railways, towns kept their own local time based on the sun, so Bristol was about ten minutes behind London. Train timetables made this chaotic, so British railways adopted London time from the 1840s. Greenwich Mean Time became Britain's legal standard in 1880.",
+      "tryIt": "Check the time on two different clocks and see how closely they match."
+    },
+    {
+      "id": "l061",
+      "topic": "Language & Words",
+      "title": "The hidden order of adjectives",
+      "body": "English speakers instinctively order adjectives as opinion, size, age, shape, colour, origin, material, purpose. That is why 'a lovely little old green French silver whittling knife' sounds right and other orders sound odd. Mark Forsyth highlighted this in The Elements of Eloquence.",
+      "tryIt": "Describe an object near you with four adjectives and check their order."
+    },
+    {
+      "id": "l062",
+      "topic": "Money",
+      "title": "Opportunity cost",
+      "body": "The real cost of any choice is the best alternative you gave up. Spending an evening on one thing means not spending it on another; spending money on a gadget means not saving or spending it elsewhere. Naming the alternative makes decisions clearer.",
+      "tryIt": "Before your next purchase, say aloud what else that money could do."
+    },
+    {
+      "id": "l063",
+      "topic": "People & Communication",
+      "title": "Thank-you letters matter more than you think",
+      "body": "Research by Amit Kumar and Nicholas Epley found that people who wrote gratitude letters underestimated how surprised and happy the recipients would feel, and overestimated how awkward it would be. The fear of awkwardness often stops us from doing something that lands well.",
+      "tryIt": "Send a short message thanking someone for something specific."
+    },
+    {
+      "id": "l064",
+      "topic": "Mind & Habits",
+      "title": "The Pomodoro technique",
+      "body": "Francesco Cirillo developed this method as a student, using a tomato-shaped kitchen timer. Work for 25 minutes on one task, then take a five-minute break, and take a longer break after four rounds. The timer makes starting easier and protects your focus.",
+      "tryIt": "Set a 25-minute timer and work on one task with no switching."
+    },
+    {
+      "id": "l065",
+      "topic": "Body & Health",
+      "title": "Morning light sets your clock",
+      "body": "Bright light, especially daylight, is the strongest signal that sets the body clock. Getting outside light in the morning helps you feel alert during the day and sleepy at night. Even on cloudy days, outdoor light is usually far brighter than indoor lighting.",
+      "tryIt": "Spend ten minutes outside within an hour of waking tomorrow."
+    },
+    {
+      "id": "l066",
+      "topic": "Design & Art",
+      "title": "White space is not wasted",
+      "body": "Empty space around elements gives them room to breathe and makes a layout easier to read. Cramming in more content often makes a design feel cheap and hard to scan. Many premium brands use generous white space to signal calm and quality.",
+      "tryIt": "Tidy one shelf or surface so that a single object has space around it."
+    },
+    {
+      "id": "l067",
+      "topic": "Games & Puzzles",
+      "title": "The Monty Hall problem",
+      "body": "A prize is behind one of three doors. You pick one; the host, who knows where the prize is, opens another door to show nothing, then offers a switch. Switching wins two-thirds of the time, because your first pick was right only one time in three.",
+      "tryIt": "Test it with three cups and a coin, playing twenty rounds."
+    },
+    {
+      "id": "l068",
+      "topic": "Engineering",
+      "title": "Why arches stand",
+      "body": "An arch turns the downward weight on it into sideways compression that runs around the curve to the ground. Stone is very strong under compression, so arches can last for centuries without mortar. The central keystone is often placed last, locking the others in place.",
+      "tryIt": "Lean two books against each other to form an arch and press on top."
+    },
+    {
+      "id": "l069",
+      "topic": "Drawing",
+      "title": "Two vanishing points",
+      "body": "When you look at the corner of a box or building, its sides recede in two directions, so you need two vanishing points, both on the horizon line. Vertical edges stay vertical. Placing the points far apart avoids the warped, fish-eye look.",
+      "tryIt": "Draw a simple box with two vanishing points at the edges of your page."
+    },
+    {
+      "id": "l070",
+      "topic": "Photography",
+      "title": "The exposure triangle",
+      "body": "Exposure depends on three settings: aperture, how wide the lens opens; shutter speed, how long it stays open; and ISO, how sensitive the sensor is. Changing one usually means adjusting another. Higher ISO brightens an image but adds grainy noise.",
+      "tryIt": "In a dim room, notice how your phone's photos get grainier."
+    },
+    {
+      "id": "l071",
+      "topic": "Music",
+      "title": "Beats per minute",
+      "body": "Tempo is measured in beats per minute, so 60 bpm is one beat per second. Classical scores use Italian words: largo is very slow, andante is a walking pace and allegro is fast and lively. Many dance tracks sit around 120 to 130 bpm.",
+      "tryIt": "Tap along to a song for fifteen seconds, count the taps and multiply by four."
+    },
+    {
+      "id": "l072",
+      "topic": "Writing",
+      "title": "Start in the middle",
+      "body": "In medias res is Latin for 'into the middle of things'. Many stories open mid-action and fill in the background later, as Homer's Odyssey does. Starting where something is already happening hooks the reader faster than a slow introduction.",
+      "tryIt": "Write the first line of a story that begins in the middle of an argument."
+    },
+    {
+      "id": "l073",
+      "topic": "Cooking",
+      "title": "The three-to-one vinaigrette",
+      "body": "A classic vinaigrette uses about three parts oil to one part vinegar, with salt. Oil and vinegar separate, but a little mustard acts as an emulsifier, helping tiny droplets stay suspended. Shake it in a jar for the easiest results.",
+      "tryIt": "Shake three spoons of oil, one of vinegar, a pinch of salt and a dab of mustard."
+    },
+    {
+      "id": "l074",
+      "topic": "Crafts & DIY",
+      "title": "Square knot or granny knot",
+      "body": "A square, or reef, knot is right over left, then left over right. Repeat the same direction twice and you get a granny knot, which slips much more easily. A correct square knot lies flat and symmetrical. Neither is safe for climbing or heavy loads.",
+      "tryIt": "Tie a square knot and a granny knot in a shoelace and compare them."
+    },
+    {
+      "id": "l075",
+      "topic": "Nature",
+      "title": "The bee waggle dance",
+      "body": "Honeybees tell nestmates where food is with a waggle dance. The angle of the waggle run relative to vertical shows the direction relative to the sun, and its duration indicates distance. Karl von Frisch shared a Nobel Prize in 1973 partly for decoding it.",
+      "tryIt": "Watch bees on flowers for five minutes and see how they move between blooms."
+    },
+    {
+      "id": "l076",
+      "topic": "Science",
+      "title": "Every push pushes back",
+      "body": "Newton's third law says that for every action there is an equal and opposite reaction. A rocket pushes exhaust gas backwards and the gas pushes the rocket forwards; it does not need air to push against. Swimming and walking work the same way.",
+      "tryIt": "Blow up a balloon, let it go and watch it fly away from the escaping air."
+    },
+    {
+      "id": "l077",
+      "topic": "History",
+      "title": "Cleopatra and the Moon landing",
+      "body": "The Great Pyramid of Giza was built around 2560 BC. Cleopatra died in 30 BC, roughly 2,500 years later. The first Moon landing was in 1969, about 2,000 years after Cleopatra. So she lived closer in time to the Moon landing than to the pyramid's construction.",
+      "tryIt": "Draw a timeline on a strip of paper and mark these three events to scale."
+    },
+    {
+      "id": "l078",
+      "topic": "Language & Words",
+      "title": "Why it's tick-tock, not tock-tick",
+      "body": "In paired words that change only a vowel, English almost always uses the order i, then a, then o: tick-tock, zig-zag, ping-pong, flip-flop, chit-chat. Linguists call this ablaut reduplication. Swapping the order sounds instantly wrong.",
+      "tryIt": "List as many of these paired words as you can in two minutes."
+    },
+    {
+      "id": "l079",
+      "topic": "Money",
+      "title": "The emergency fund",
+      "body": "A common guideline is to keep three to six months of essential expenses in easy-access savings. It turns surprises like a broken boiler or job loss into an inconvenience rather than a debt. Even a small buffer helps more than none.",
+      "tryIt": "Add up one month of your essential costs to see what one month's buffer is."
+    },
+    {
+      "id": "l080",
+      "topic": "People & Communication",
+      "title": "People want to help more than you expect",
+      "body": "Studies by Francis Flynn and Vanessa Lake found that people asking for help substantially underestimated how many strangers would say yes. We focus on the cost to the other person and forget how awkward it feels to refuse.",
+      "tryIt": "Ask someone for a small piece of help you have been putting off requesting."
+    },
+    {
+      "id": "l081",
+      "topic": "Mind & Habits",
+      "title": "The forgetting curve",
+      "body": "In the 1880s, Hermann Ebbinghaus tested his own memory and found that we forget newly learned material quickly, then more slowly. Reviewing at increasing intervals, a method called spaced repetition, slows forgetting dramatically. Flashcard apps are built on this idea.",
+      "tryIt": "Review something you learned yesterday, then plan to review it again in three days."
+    },
+    {
+      "id": "l082",
+      "topic": "Body & Health",
+      "title": "Caffeine lingers",
+      "body": "In many adults, caffeine has a half-life of around five hours, though it varies a lot between people. That means half of an afternoon coffee may still be in your system in the evening. Moving your last coffee earlier can help if you sleep poorly.",
+      "tryIt": "Note the time of your last caffeine today and how you sleep tonight."
+    },
+    {
+      "id": "l083",
+      "topic": "Design & Art",
+      "title": "Serif and sans serif",
+      "body": "Serifs are the small strokes at the ends of letters in typefaces like Times New Roman. Sans serif typefaces, like Helvetica, leave them off, from the French 'sans', meaning without. Serif fonts often feel traditional, while sans serifs tend to feel modern and clean.",
+      "tryIt": "Spot one serif and one sans serif typeface on signs or packaging today."
+    },
+    {
+      "id": "l084",
+      "topic": "Games & Puzzles",
+      "title": "The Tower of Hanoi",
+      "body": "Move a stack of discs between three pegs, one at a time, never putting a larger disc on a smaller one. The fewest moves for n discs is 2 to the power n, minus 1. Three discs take 7 moves, and 64 discs would take more than 18 quintillion.",
+      "tryIt": "Solve it with three coins of different sizes in seven moves."
+    },
+    {
+      "id": "l085",
+      "topic": "Engineering",
+      "title": "The power of triangles",
+      "body": "A square frame of four bars joined at the corners can be pushed into a diamond. A triangle cannot change shape without one of its sides changing length, which makes it rigid. That is why cranes, roof trusses and bridges are full of triangles.",
+      "tryIt": "Make a square and a triangle from straws or paper strips and press their corners."
+    },
+    {
+      "id": "l086",
+      "topic": "Drawing",
+      "title": "Squint to see values",
+      "body": "Value means how light or dark something is, regardless of its colour. Squinting blurs detail and colour so the big light and dark shapes stand out. Artists often plan a drawing with just three to five values before worrying about any detail.",
+      "tryIt": "Squint at a corner of your room and sketch it using only three tones."
+    },
+    {
+      "id": "l087",
+      "topic": "Photography",
+      "title": "Small f-number, big opening",
+      "body": "Aperture is measured in f-numbers, and they work backwards: f/1.8 is a wide opening and f/16 a small one. A wide aperture gives a shallow depth of field, with a sharp subject and blurry background. A small aperture keeps much more of the scene in focus.",
+      "tryIt": "Try your phone's portrait mode on an object close to you and far from a wall."
+    },
+    {
+      "id": "l088",
+      "topic": "Music",
+      "title": "Counting in three",
+      "body": "A time signature tells you how beats are grouped. In 4/4 you count one-two-three-four, the pulse of most pop music. A waltz is in 3/4, giving a swaying one-two-three with a strong first beat. Feeling the strong beat is the key to dancing or clapping along.",
+      "tryIt": "Clap a 3/4 pattern, loud on one and soft on two and three, for a minute."
+    },
+    {
+      "id": "l089",
+      "topic": "Writing",
+      "title": "Chekhov's gun",
+      "body": "Anton Chekhov advised that if a gun is hanging on the wall in the first act, it should be fired by the end of the play. The principle is that every prominent detail should earn its place. Readers notice what you emphasise and expect it to matter.",
+      "tryIt": "Write two sentences that introduce an object, then a third that pays it off."
+    },
+    {
+      "id": "l090",
+      "topic": "Cooking",
+      "title": "The claw grip",
+      "body": "When chopping, curl the fingertips of the hand holding the food under, so your knuckles face the blade. The flat of the knife can then rest against your knuckles as a guide. Your fingertips stay safely out of the way.",
+      "tryIt": "Slice an onion or carrot slowly using the claw grip."
+    },
+    {
+      "id": "l091",
+      "topic": "Crafts & DIY",
+      "title": "Mountain and valley folds",
+      "body": "Origami instructions rely on two basic folds. A valley fold bends the paper towards you, creating a V-shaped dip. A mountain fold bends it away, creating a ridge. Most complex models are combinations of these with some careful collapsing.",
+      "tryIt": "Fold a strip of paper alternately in mountain and valley folds to make a fan."
+    },
+    {
+      "id": "l092",
+      "topic": "Nature",
+      "title": "Reading the clouds",
+      "body": "Cumulus clouds are puffy heaps, often seen on fair days. Stratus clouds are flat grey sheets. Cirrus are thin, wispy streaks high up, made of ice crystals. Tall cumulonimbus clouds with anvil-shaped tops bring thunderstorms.",
+      "tryIt": "Look up and identify which of these cloud types you can see."
+    },
+    {
+      "id": "l093",
+      "topic": "Science",
+      "title": "Surface tension",
+      "body": "Water molecules pull strongly on each other, so the surface behaves like a thin elastic skin. Pond skaters walk on it, and a paperclip laid gently on top can float even though steel is denser than water. A drop of washing-up liquid weakens the skin and the clip sinks.",
+      "tryIt": "Float a paperclip on water using a piece of tissue, then add a drop of soap."
+    },
+    {
+      "id": "l094",
+      "topic": "History",
+      "title": "Oxford is older than the Aztec capital",
+      "body": "Teaching at Oxford was taking place by 1096 and grew rapidly from 1167. Tenochtitlan, the Aztec capital, was founded around 1325. History overlaps in surprising ways when you line up dates from different parts of the world.",
+      "tryIt": "Pick a building in your town and find what was happening elsewhere when it was built."
+    },
+    {
+      "id": "l095",
+      "topic": "Language & Words",
+      "title": "Nice used to be an insult",
+      "body": "'Nice' comes from the Latin nescius, meaning ignorant. In Middle English it meant foolish or silly, and over centuries it shifted through meanings like fussy and precise before reaching 'pleasant'. Words can drift a long way from their roots.",
+      "tryIt": "Look up the origin of one word you use every day."
+    },
+    {
+      "id": "l096",
+      "topic": "Money",
+      "title": "Pay yourself first",
+      "body": "Instead of saving whatever is left at the end of the month, move a set amount to savings as soon as you are paid. Automating it removes the need for willpower. You then adjust spending to what remains, rather than the other way round.",
+      "tryIt": "Check whether you could set up an automatic transfer on payday."
+    },
+    {
+      "id": "l097",
+      "topic": "People & Communication",
+      "title": "Yes, and",
+      "body": "In improvised theatre, performers accept what a partner offers and build on it, a rule summed up as 'yes, and'. Blocking an idea stops the scene; building on it keeps it moving. The same habit makes brainstorming and everyday conversation more generous.",
+      "tryIt": "In your next conversation, build on one idea before raising any objection."
+    },
+    {
+      "id": "l098",
+      "topic": "Mind & Habits",
+      "title": "Test yourself instead of rereading",
+      "body": "Rereading notes feels productive but is a weak way to learn. Actively recalling information, by testing yourself or explaining it without notes, strengthens memory much more. Researchers call this the testing effect or retrieval practice.",
+      "tryIt": "Close this capsule and try to explain the idea from memory in one sentence."
+    },
+    {
+      "id": "l099",
+      "topic": "Body & Health",
+      "title": "Check your colour",
+      "body": "A simple way to judge hydration is the colour of your urine. Pale straw-coloured usually means you are drinking enough, while dark yellow suggests you need more fluid. Thirst, heat and exercise all change how much you need.",
+      "tryIt": "Keep a glass of water within reach for the rest of the day."
+    },
+    {
+      "id": "l100",
+      "topic": "Design & Art",
+      "title": "Kerning versus tracking",
+      "body": "Kerning adjusts the space between a specific pair of letters, such as tightening the gap in 'AV'. Tracking adjusts the spacing evenly across a whole word or line. Poor kerning can make letters seem to separate into the wrong words.",
+      "tryIt": "Look at a shop sign and notice any letter pairs that look too far apart."
+    },
+    {
+      "id": "l101",
+      "topic": "Games & Puzzles",
+      "title": "How cryptic clues work",
+      "body": "A cryptic crossword clue usually has two parts: a straight definition at the start or end, and wordplay that leads to the same answer. Wordplay can be an anagram, hidden word or a combination of pieces. Find the definition first and the rest gets easier.",
+      "tryIt": "Solve this hidden-word clue, where 'from' signals the hiding: 'Flee from pancakes cape (6)'."
+    },
+    {
+      "id": "l102",
+      "topic": "Engineering",
+      "title": "Why aeroplane windows are round",
+      "body": "Sharp corners concentrate stress in a material, and repeated pressurising of a cabin can grow cracks from those points. Investigations into the de Havilland Comet accidents of 1954 highlighted metal fatigue around openings in the fuselage. Rounded windows spread stress more evenly.",
+      "tryIt": "Look at doors, windows and hatches around you and notice their rounded corners."
+    },
+    {
+      "id": "l103",
+      "topic": "Drawing",
+      "title": "Gesture drawing in thirty seconds",
+      "body": "Gesture drawing captures the movement and pose of a figure in a few quick lines rather than its details. Artists start with a single curved line of action that runs through the body, then hang the limbs off it. Short time limits force you to look for the overall rhythm.",
+      "tryIt": "Do five thirty-second sketches of people or pets moving around you."
+    },
+    {
+      "id": "l104",
+      "topic": "Photography",
+      "title": "Freeze it or blur it",
+      "body": "A fast shutter speed such as 1/1000 of a second freezes motion like splashing water. A slow one such as 1/15 turns moving things into blurs and needs a very steady hand. Choosing which you want is a creative decision, not just a technical one.",
+      "tryIt": "Photograph running tap water and compare a sharp shot with a blurred one."
+    },
+    {
+      "id": "l105",
+      "topic": "Music",
+      "title": "Syncopation",
+      "body": "Syncopation puts accents where you don't expect them, often between the main beats. It creates a pleasing tension against the steady pulse, which is why it makes people want to move. Funk, reggae and jazz rely heavily on it.",
+      "tryIt": "Tap a steady beat with one hand and clap only in between with the other."
+    },
+    {
+      "id": "l106",
+      "topic": "Writing",
+      "title": "The rule of three",
+      "body": "Lists of three feel complete and memorable: 'Veni, vidi, vici', 'blood, sweat and tears', three little pigs. Two items feel like a comparison, and four can feel like a catalogue. Speechwriters and comedians use threes constantly, often with a twist on the third.",
+      "tryIt": "Describe your morning in three short phrases with a twist in the last one."
+    },
+    {
+      "id": "l107",
+      "topic": "Cooking",
+      "title": "Caramelised onions take time",
+      "body": "Truly caramelised onions take a long time over low to medium heat, often well over half an hour. The sugars slowly break down and brown into a sweet, deep flavour. Recipes that promise it in ten minutes usually mean lightly browned onions.",
+      "tryIt": "Next time you cook onions, give them an extra fifteen minutes on low heat."
+    },
+    {
+      "id": "l108",
+      "topic": "Crafts & DIY",
+      "title": "Keep a wet edge when painting",
+      "body": "When painting a wall, cut in the edges with a brush first, then roll the main area. Work in sections and always roll back into paint that is still wet. Overlapping onto paint that has started to dry leaves visible lap marks.",
+      "tryIt": "Next time you paint, notice where the wet edge is as you work."
+    },
+    {
+      "id": "l109",
+      "topic": "Nature",
+      "title": "Why the sky is blue",
+      "body": "Sunlight contains all colours, but molecules in the air scatter shorter blue wavelengths much more than longer red ones. This is called Rayleigh scattering. At sunset, light passes through more air, so more blue is scattered away and reds and oranges remain.",
+      "tryIt": "Compare the colour of the sky overhead with the sky near the horizon."
+    },
+    {
+      "id": "l110",
+      "topic": "Science",
+      "title": "Water boils cooler up a mountain",
+      "body": "Water boils when its vapour pressure equals the air pressure above it. At high altitude the air pressure is lower, so water boils below 100°C. On high mountains it boils at a noticeably lower temperature, so pasta and eggs take longer to cook.",
+      "tryIt": "Next time you boil water, remember it would boil cooler on a mountaintop."
+    },
+    {
+      "id": "l111",
+      "topic": "History",
+      "title": "The Silk Roads",
+      "body": "The Silk Roads were not one road but a vast network of land and sea routes linking China, Central Asia, the Middle East and Europe. Silk, spices, paper, religions and ideas all travelled along them. The name was coined in 1877 by the German geographer Ferdinand von Richthofen.",
+      "tryIt": "Look at an object in your home and think about how many places it passed through."
+    },
+    {
+      "id": "l112",
+      "topic": "Language & Words",
+      "title": "A clue was once a ball of thread",
+      "body": "'Clue' comes from 'clew', a ball of thread or yarn. In Greek myth, Theseus used a ball of thread to find his way out of the Minotaur's labyrinth. So a clue came to mean anything that guides you towards solving a problem.",
+      "tryIt": "Think of one everyday puzzle you are stuck on and write down your first clue."
+    },
+    {
+      "id": "l113",
+      "topic": "Money",
+      "title": "Small fees, big difference",
+      "body": "Fees compound just like returns. Over 30 years, an investment growing at 7 per cent a year ends up worth about 7.6 times the start, but at 6 per cent, after a 1 per cent annual fee, it reaches only about 5.7 times. That single percentage point takes roughly a quarter of the final pot.",
+      "tryIt": "Look up the annual fee on any savings or pension product you hold."
+    },
+    {
+      "id": "l114",
+      "topic": "People & Communication",
+      "title": "Ask open questions",
+      "body": "Closed questions invite a yes or no: 'Was your weekend good?' Open questions invite a story: 'What was the best part of your weekend?' Starting with what, how or tell me about usually opens a conversation up.",
+      "tryIt": "Turn one yes-or-no question you would normally ask into an open one."
+    },
+    {
+      "id": "l115",
+      "topic": "Mind & Habits",
+      "title": "Name it to tame it",
+      "body": "Putting feelings into words, known as affect labelling, can reduce their intensity. Brain-imaging research by Matthew Lieberman and colleagues found that labelling emotions was linked to lower activity in the amygdala. Precise words, like 'disappointed' rather than 'bad', help most.",
+      "tryIt": "Pause now and name exactly what you are feeling in one or two words."
+    },
+    {
+      "id": "l116",
+      "topic": "Body & Health",
+      "title": "Break up long sitting",
+      "body": "Sitting still for hours is linked with poorer health, even in people who exercise. Short breaks to stand, stretch or walk for a minute or two help. Many people find setting a reminder every half hour or so makes it a habit.",
+      "tryIt": "Stand up and walk around for two minutes every half hour this afternoon."
+    },
+    {
+      "id": "l117",
+      "topic": "Design & Art",
+      "title": "Things close together belong together",
+      "body": "The Gestalt principle of proximity says we see items that are close to each other as a group. Designers use spacing to show relationships without lines or boxes. A label slightly closer to one picture than another will be read as belonging to it.",
+      "tryIt": "Rearrange items on your desk into groups using spacing alone."
+    },
+    {
+      "id": "l118",
+      "topic": "Games & Puzzles",
+      "title": "God's number is 20",
+      "body": "A standard Rubik's Cube has about 43 quintillion possible positions. In 2010 a team using huge amounts of computer time proved that every one of them can be solved in 20 moves or fewer. That maximum is nicknamed God's number.",
+      "tryIt": "Scramble a cube or imagine one, and appreciate that 20 moves is always enough."
+    },
+    {
+      "id": "l119",
+      "topic": "Engineering",
+      "title": "Galloping Gertie",
+      "body": "In 1940, the Tacoma Narrows Bridge in Washington State twisted itself apart in a moderate wind, only months after opening. The cause was aeroelastic flutter, where wind and the twisting deck fed energy into each other. Engineers have tested bridge designs in wind tunnels ever since.",
+      "tryIt": "Hold a strip of paper in front of a fan and watch how it flutters."
+    },
+    {
+      "id": "l120",
+      "topic": "Drawing",
+      "title": "Hatching and cross-hatching",
+      "body": "Hatching builds tone with closely spaced parallel lines; the closer the lines, the darker the area appears. Cross-hatching layers a second set of lines at an angle for deeper shadows. Curving the lines to follow a form also helps describe its shape.",
+      "tryIt": "Shade a small square from light to dark using only hatched lines."
+    },
+    {
+      "id": "l121",
+      "topic": "Photography",
+      "title": "Tap to focus, slide to expose",
+      "body": "On most phones, tapping the screen sets the focus and exposure on that spot. You can then usually slide a control up or down to brighten or darken the image. Darkening slightly is a quick way to keep a bright sky from turning pure white.",
+      "tryIt": "Tap on a bright window, then slide the exposure down to recover detail."
+    },
+    {
+      "id": "l122",
+      "topic": "Music",
+      "title": "The black keys are a pentatonic scale",
+      "body": "A pentatonic scale has five notes per octave instead of seven, and leaves out the most clashing intervals. The black keys of a piano form one. Because almost any combination sounds pleasant, pentatonic scales appear in folk music across many cultures.",
+      "tryIt": "Hum a made-up tune using only five notes and notice how hard it is to sound wrong."
+    },
+    {
+      "id": "l123",
+      "topic": "Writing",
+      "title": "Concrete beats abstract",
+      "body": "'She loved nature' is abstract and forgettable. 'She kept a jar of beach pebbles on every windowsill' is concrete and paints a picture. Specific nouns, names and numbers make writing vivid and believable.",
+      "tryIt": "Replace one vague word in a message today with a specific detail."
+    },
+    {
+      "id": "l124",
+      "topic": "Cooking",
+      "title": "Rinse your rice",
+      "body": "Rinsing rice washes away loose surface starch that makes grains clump and turn gluey. For fluffy, separate grains, rinse until the water runs mostly clear. For risotto or sushi, where stickiness is wanted, cooks rinse less or not at all.",
+      "tryIt": "Rinse your next portion of rice in a bowl three times and watch the water clear."
+    },
+    {
+      "id": "l125",
+      "topic": "Crafts & DIY",
+      "title": "Choosing the right glue",
+      "body": "PVA glue works well on porous materials like wood, paper and card, and needs clamping or pressure while it dries. Superglue, or cyanoacrylate, bonds non-porous materials quickly but works best in a very thin layer. Too much superglue cures slowly and weakly.",
+      "tryIt": "Check which glues you own and what each one is meant for."
+    },
+    {
+      "id": "l126",
+      "topic": "Nature",
+      "title": "How to find a rainbow",
+      "body": "A rainbow appears when the sun is behind you and rain or spray is in front. Light bends and reflects inside droplets, forming a circle about 42 degrees from the point directly opposite the sun. Red is on the outside and violet on the inside.",
+      "tryIt": "On a sunny day, spray a fine mist with the sun at your back and look for colour."
+    },
+    {
+      "id": "l127",
+      "topic": "Science",
+      "title": "Why we always see the same side of the Moon",
+      "body": "The Moon spins once on its axis in the same time it takes to orbit Earth, about 27 days. This is called tidal locking, caused by Earth's gravity over billions of years. So the same face always points towards us.",
+      "tryIt": "Walk in a circle around a chair while always facing it, and notice you also turned once."
+    },
+    {
+      "id": "l128",
+      "topic": "History",
+      "title": "Brahmagupta's rules for zero",
+      "body": "Zero as a number with its own rules was described by the Indian mathematician Brahmagupta in 628 CE. He set out how it behaves in addition, subtraction and multiplication. Our place-value system, with its use of zero, travelled from India to the Arab world and then to Europe.",
+      "tryIt": "Write a large number and notice how much work the zeros are doing."
+    },
+    {
+      "id": "l129",
+      "topic": "Language & Words",
+      "title": "Eggcorns",
+      "body": "An eggcorn is a mistaken phrase that still makes some sense, like 'for all intensive purposes' instead of 'for all intents and purposes'. The name comes from someone who heard 'acorn' as 'eggcorn', a reasonable guess for an egg-shaped seed. They show how we make sense of what we hear.",
+      "tryIt": "Think of a phrase you misheard as a child and write it down."
+    },
+    {
+      "id": "l130",
+      "topic": "Money",
+      "title": "The sunk cost fallacy",
+      "body": "Money or time already spent cannot be recovered, so it should not decide what you do next. Yet people often sit through a bad film or finish a plate they dislike because they paid for it. Ask only whether the future is better with or without continuing.",
+      "tryIt": "Think of one thing you continue only because you've already invested in it."
+    },
+    {
+      "id": "l131",
+      "topic": "People & Communication",
+      "title": "Observation, feeling, need, request",
+      "body": "Marshall Rosenberg's Nonviolent Communication suggests expressing difficult things in four parts: what you observed, how you feel, what you need, and a clear request. 'When the dishes are left overnight, I feel tense, because I need a calm kitchen in the morning. Could we wash them before bed?'",
+      "tryIt": "Draft one small request using the four parts."
+    },
+    {
+      "id": "l132",
+      "topic": "Mind & Habits",
+      "title": "Walk to think",
+      "body": "A 2014 Stanford study by Marily Oppezzo and Daniel Schwartz found that people came up with more creative ideas while walking, and for a short time afterwards, than while sitting. Even walking on a treadmill facing a blank wall helped.",
+      "tryIt": "Take a problem for a ten-minute walk and see what ideas come."
+    },
+    {
+      "id": "l133",
+      "topic": "Body & Health",
+      "title": "A walk after eating",
+      "body": "Light activity after a meal helps muscles take up glucose from the blood. Studies have found that even a short, gentle walk after eating can reduce the spike in blood sugar compared with sitting. It also makes a pleasant routine.",
+      "tryIt": "Take a ten-minute stroll after your next meal."
+    },
+    {
+      "id": "l134",
+      "topic": "Design & Art",
+      "title": "Warm colours come forward",
+      "body": "Warm colours like red, orange and yellow tend to appear to advance towards the viewer, while cool blues and greens seem to recede. Painters use this to add depth, and decorators use cool colours to make small rooms feel larger.",
+      "tryIt": "Notice which colours seem nearest in a picture or room around you."
+    },
+    {
+      "id": "l135",
+      "topic": "Games & Puzzles",
+      "title": "The birthday paradox",
+      "body": "In a group of just 23 people, there is a better than 50 per cent chance that two share a birthday. With 70 people it is over 99.9 per cent. It feels too high because we think about our own birthday rather than all the possible pairs.",
+      "tryIt": "Check birthdays in a group chat or team and see if two match."
+    },
+    {
+      "id": "l136",
+      "topic": "Engineering",
+      "title": "The barcode's last digit",
+      "body": "The final digit of a standard 13-digit EAN barcode is a check digit. The other digits are multiplied alternately by 1 and 3 and added up, and the check digit makes the total a multiple of 10. If a scan misreads one digit, the maths no longer works and the scanner rejects it.",
+      "tryIt": "Find a barcode at home and check its last digit using the rule."
+    },
+    {
+      "id": "l137",
+      "topic": "Drawing",
+      "title": "Measure with your pencil",
+      "body": "Sighting is a way to compare proportions: hold your pencil at arm's length with your elbow locked, line its tip up with one end of an object, and mark the other end with your thumb. Then compare that length with others in the scene. Keeping your arm straight keeps the measurements consistent.",
+      "tryIt": "Use your pencil to check how many heads tall a person or doorway is."
+    },
+    {
+      "id": "l138",
+      "topic": "Photography",
+      "title": "Get down to their level",
+      "body": "Photos of children, pets and small things usually look better taken from their eye level rather than from standing height. Looking down makes subjects seem small and distant. Crouching changes the background too, often replacing floor with something more interesting.",
+      "tryIt": "Photograph a pet, plant or object from its own height."
+    },
+    {
+      "id": "l139",
+      "topic": "Music",
+      "title": "Call and response",
+      "body": "In call and response, one voice or instrument plays a phrase and another answers it. It is central to West African musical traditions, gospel, blues and work songs. It turns music into a conversation and invites everyone to join in.",
+      "tryIt": "Clap a short rhythm and answer it with a slightly different one."
+    },
+    {
+      "id": "l140",
+      "topic": "Writing",
+      "title": "Read it aloud",
+      "body": "Your ear catches problems your eye skims over: clumsy rhythms, repeated words, sentences that run out of breath. If you stumble while reading aloud, a reader will stumble too. Many professional writers read every draft aloud before they finish.",
+      "tryIt": "Read aloud the last email or message you wrote and fix one stumble."
+    },
+    {
+      "id": "l141",
+      "topic": "Cooking",
+      "title": "Older eggs peel more easily",
+      "body": "As eggs age, the white becomes more alkaline and less inclined to stick to the inner membrane of the shell. That is why very fresh eggs are notoriously hard to peel once hard-boiled. Plunging cooked eggs into cold water also helps.",
+      "tryIt": "Use your oldest eggs next time you hard-boil some."
+    },
+    {
+      "id": "l142",
+      "topic": "Crafts & DIY",
+      "title": "Finding a stud",
+      "body": "In stud walls, plasterboard is fixed to vertical timber or metal studs. Knocking along the wall gives a hollow sound between studs and a duller, more solid sound over one. Studs are often 400 or 600 mm apart in the UK and 16 inches in the US. Check for pipes and cables before drilling.",
+      "tryIt": "Knock along a hollow wall slowly and listen for the change in sound."
+    },
+    {
+      "id": "l143",
+      "topic": "Nature",
+      "title": "The mushroom is just the fruit",
+      "body": "The main body of a fungus is the mycelium, a web of fine threads that spreads through soil or wood. The mushroom we see is only its fruiting body, which releases spores. Many plants exchange nutrients with fungi through their roots.",
+      "tryIt": "Look for mushrooms or white threads under leaf litter or rotting wood."
+    },
+    {
+      "id": "l144",
+      "topic": "Science",
+      "title": "The Doppler effect",
+      "body": "When an ambulance approaches, its siren sounds higher; as it passes, the pitch drops. Sound waves bunch up in front of a moving source and stretch out behind it. Astronomers use the same effect with light to measure how fast stars and galaxies are moving.",
+      "tryIt": "Listen for the change in pitch the next time a vehicle passes you."
+    },
+    {
+      "id": "l145",
+      "topic": "History",
+      "title": "The Penny Black",
+      "body": "In 1840 Britain issued the Penny Black, the world's first adhesive postage stamp. Rowland Hill's reform meant a sender paid one penny in advance for a letter, regardless of distance. Before this, the recipient often paid, and prices depended on distance.",
+      "tryIt": "Look at the next stamp or postmark you see and think of it as a small piece of history."
+    },
+    {
+      "id": "l146",
+      "topic": "Language & Words",
+      "title": "Shampoo, pyjamas and bungalow",
+      "body": "English borrowed many everyday words from South Asian languages. 'Shampoo' comes from a Hindi word meaning to press or massage, 'pyjamas' from Persian and Urdu words for leg garment, and 'bungalow' from a word meaning 'in the Bengal style'. Language carries history with it.",
+      "tryIt": "Find one word in your kitchen that came from another language."
+    },
+    {
+      "id": "l147",
+      "topic": "Money",
+      "title": "The 50/30/20 budget",
+      "body": "A simple budgeting rule popularised by Elizabeth Warren and Amelia Warren Tyagi splits after-tax income into 50 per cent for needs, 30 per cent for wants and 20 per cent for savings or paying down debt. It is a starting point, not a law, but it gives quick perspective.",
+      "tryIt": "Roughly sort last month's spending into needs, wants and savings."
+    },
+    {
+      "id": "l148",
+      "topic": "People & Communication",
+      "title": "Situation, behaviour, impact",
+      "body": "A clear way to give feedback is to describe the situation, the specific behaviour and its impact. 'In this morning's meeting, when you summarised the options, it helped us decide quickly.' It avoids vague praise or judgements about personality.",
+      "tryIt": "Give one person specific positive feedback using this pattern."
+    },
+    {
+      "id": "l149",
+      "topic": "Mind & Habits",
+      "title": "The fresh start effect",
+      "body": "Researchers Hengchen Dai, Katherine Milkman and Jason Riis found that people are more likely to start new goals after temporal landmarks, such as a new week, month, birthday or holiday. These moments feel like a clean slate. You can create your own fresh start.",
+      "tryIt": "Pick the next Monday or the first of next month as a fresh start for one habit."
+    },
+    {
+      "id": "l150",
+      "topic": "Body & Health",
+      "title": "Wash for twenty seconds",
+      "body": "Washing hands properly with soap and water takes about 20 seconds, roughly the time it takes to hum Happy Birthday twice. Soap breaks up the oily layer that helps germs cling to skin. Remember the backs of hands, thumbs, between fingers and under nails.",
+      "tryIt": "Hum Happy Birthday twice the next time you wash your hands."
+    },
+    {
+      "id": "l151",
+      "topic": "Design & Art",
+      "title": "Seurat's dots",
+      "body": "In the 1880s, Georges Seurat painted with small dots of pure colour placed side by side, a technique later called pointillism. From a distance the dots blend in the viewer's eye. His A Sunday on La Grande Jatte took around two years to complete.",
+      "tryIt": "Colour a small square using only dots of two colours and step back."
+    },
+    {
+      "id": "l152",
+      "topic": "Engineering",
+      "title": "How noise cancelling works",
+      "body": "Noise-cancelling headphones use microphones to pick up outside sound, then play a matching wave flipped upside down. Where a peak meets a trough, they cancel out. It works best on steady, low sounds like engine hum, and less well on sudden or high-pitched noises.",
+      "tryIt": "Notice which sounds noise-cancelling headphones or earbuds remove best."
+    },
+    {
+      "id": "l153",
+      "topic": "Drawing",
+      "title": "The five parts of light on a form",
+      "body": "A lit rounded object shows a highlight, a mid-tone, a core shadow where the surface turns away from the light, a slightly lighter reflected light near the shadow's edge, and a cast shadow on the ground. Getting the core shadow right does most of the work of making it look solid.",
+      "tryIt": "Shade an egg or ball under a single lamp and find all five areas."
+    },
+    {
+      "id": "l154",
+      "topic": "Photography",
+      "title": "Fill the frame",
+      "body": "Many weak photos have the subject small in the middle and lots of distracting space around it. Moving closer, or cropping tight, makes the subject unmistakable. With phones, walking closer is often better than zooming beyond the built-in lenses, which just crops the image.",
+      "tryIt": "Take a photo, then take another twice as close and compare."
+    },
+    {
+      "id": "l155",
+      "topic": "Music",
+      "title": "Soft-loud",
+      "body": "Musical dynamics are marked with Italian words: piano means soft and forte means loud. The piano's full name, pianoforte, came from its ability to play both depending on how hard the keys are pressed. Earlier keyboard instruments like the harpsichord could not do this.",
+      "tryIt": "Sing one line of a song very softly, then again fully, and notice the change."
+    },
+    {
+      "id": "l156",
+      "topic": "Writing",
+      "title": "Murder your darlings",
+      "body": "The advice to cut your favourite flourishes comes from Arthur Quiller-Couch, who told Cambridge students in 1914 to 'murder your darlings'. A line you love for its own sake may not serve the reader. Keep a separate file of cut lines so letting go is easier.",
+      "tryIt": "Cut one sentence you like from something you have written and reread it."
+    },
+    {
+      "id": "l157",
+      "topic": "Cooking",
+      "title": "Mise en place",
+      "body": "Mise en place is French for 'everything in its place'. Professional cooks chop, measure and arrange every ingredient before turning on the heat. When cooking moves fast, nothing burns while you hunt for the garlic.",
+      "tryIt": "Before cooking tonight, prepare and line up every ingredient first."
+    },
+    {
+      "id": "l158",
+      "topic": "Crafts & DIY",
+      "title": "Righty-tighty, lefty-loosey",
+      "body": "Most screws, bolts and lids tighten clockwise and loosen anticlockwise when viewed from the end you are turning. A few exceptions use reverse threads, such as the left pedal on a bicycle, so it does not unscrew while you ride.",
+      "tryIt": "Look at a bicycle or jar and work out which way would loosen it."
+    },
+    {
+      "id": "l159",
+      "topic": "Nature",
+      "title": "The smell of rain",
+      "body": "The earthy smell after rain on dry ground is called petrichor. A big part of it is geosmin, a compound made by soil bacteria. Human noses are extraordinarily sensitive to geosmin, detecting it at tiny concentrations.",
+      "tryIt": "After the next rain, step outside and take a slow breath."
+    },
+    {
+      "id": "l160",
+      "topic": "Science",
+      "title": "Seasons come from the tilt",
+      "body": "Earth's axis is tilted by about 23.4 degrees. For part of the year one hemisphere leans towards the Sun, getting longer days and more direct sunlight, which brings summer. Earth is actually closest to the Sun in early January, during the northern winter.",
+      "tryIt": "Shine a torch straight down and then at an angle, and compare the brightness."
+    },
+    {
+      "id": "l161",
+      "topic": "History",
+      "title": "The Antikythera mechanism",
+      "body": "Divers found a corroded lump of bronze in a shipwreck off the Greek island of Antikythera in 1901. It turned out to be an intricate geared device from around the second or first century BC that modelled astronomical cycles. Nothing of similar complexity is known for over a thousand years afterwards.",
+      "tryIt": "Look at an analogue clock and count how many hands are moving at different rates."
+    },
+    {
+      "id": "l162",
+      "topic": "Language & Words",
+      "title": "Lewis Carroll's portmanteau",
+      "body": "A portmanteau word blends two words, as 'brunch' blends breakfast and lunch and 'smog' blends smoke and fog. Lewis Carroll gave the idea its name in Through the Looking-Glass, where Humpty Dumpty explains that 'slithy' means lithe and slimy, two meanings packed into one word like a suitcase.",
+      "tryIt": "Invent a portmanteau for something in your day that needs a name."
+    },
+    {
+      "id": "l163",
+      "topic": "Money",
+      "title": "Compare the unit price",
+      "body": "Bigger packs are not always cheaper. Shop labels often show the price per kilogram, litre or item, which lets you compare fairly across sizes and brands. Promotions sometimes make the larger pack worse value.",
+      "tryIt": "Next time you shop, compare the unit price on two sizes of the same product."
+    },
+    {
+      "id": "l164",
+      "topic": "People & Communication",
+      "title": "An apology without a but",
+      "body": "An apology followed by 'but' tends to cancel itself, because the listener hears the excuse rather than the regret. A strong apology names what you did, acknowledges its effect and says what you will do differently. Explanations can come later if they are wanted.",
+      "tryIt": "Think of a recent apology you gave and rewrite it without a but."
+    },
+    {
+      "id": "l165",
+      "topic": "Mind & Habits",
+      "title": "The pre-mortem",
+      "body": "Psychologist Gary Klein suggested imagining that your project has already failed and asking why. Thinking from the future makes it easier to spot risks that optimism hides. Teams often find more problems this way than by simply asking what could go wrong.",
+      "tryIt": "Imagine a plan of yours has failed and list three reasons it might have."
+    },
+    {
+      "id": "l166",
+      "topic": "Body & Health",
+      "title": "Breathe with your belly",
+      "body": "In diaphragmatic breathing, the diaphragm moves down and your belly rises as you inhale, while your chest stays relatively still. Slow breathing like this is widely used to help people feel calmer. Placing one hand on your chest and one on your belly makes it easy to check.",
+      "tryIt": "Take five slow breaths with a hand on your belly, feeling it rise."
+    },
+    {
+      "id": "l167",
+      "topic": "Design & Art",
+      "title": "How Impressionism got its name",
+      "body": "In 1874, a group of artists held an independent exhibition in Paris. The critic Louis Leroy mocked Claude Monet's painting Impression, Sunrise, and the label 'Impressionists' stuck. The artists aimed to capture fleeting effects of light rather than polished detail.",
+      "tryIt": "Spend two minutes sketching the light on something, not its outline."
+    },
+    {
+      "id": "l168",
+      "topic": "Engineering",
+      "title": "How a microwave heats food",
+      "body": "A microwave oven fills its box with radio waves at around 2.45 gigahertz. Water molecules are slightly charged at each end, so they twist back and forth as the field flips billions of times a second, producing heat. A turntable helps because the waves form hot and cold spots.",
+      "tryIt": "Heat a plate of food without the turntable moving and notice uneven spots."
+    },
+    {
+      "id": "l169",
+      "topic": "Drawing",
+      "title": "Circles become ellipses",
+      "body": "A circle seen at an angle becomes an ellipse. The further a circle is below or above your eye level, the rounder its ellipse appears. That is why the rim of a cup looks narrow and the base looks fuller when the cup sits on a table below you.",
+      "tryIt": "Stack three cups or bowls and draw how their ellipses change."
+    },
+    {
+      "id": "l170",
+      "topic": "Photography",
+      "title": "Side light for portraits",
+      "body": "Light from a window to one side of a face creates gentle shadows that show its shape. Light from straight in front flattens features, while harsh overhead light puts shadows under the eyes. Painters have used north-facing windows for steady, soft light for centuries.",
+      "tryIt": "Sit someone or yourself beside a window and turn slowly until it looks best."
+    },
+    {
+      "id": "l171",
+      "topic": "Music",
+      "title": "Why a violin and flute sound different",
+      "body": "When an instrument plays a note, it also produces quieter higher frequencies called overtones. The balance of these overtones, called timbre, is why a violin and a flute playing the same pitch sound so different. It is also how you recognise a friend's voice on the phone.",
+      "tryIt": "Hum a note with an 'ee' and then an 'oo' vowel and notice how the tone changes."
+    },
+    {
+      "id": "l172",
+      "topic": "Writing",
+      "title": "Prefer the active voice",
+      "body": "In the active voice the subject does the action: 'The dog chased the ball.' In the passive, it receives it: 'The ball was chased by the dog.' Active sentences are usually shorter and clearer. Passive voice is useful when the doer is unknown or unimportant.",
+      "tryIt": "Find one passive sentence in your writing and flip it to active."
+    },
+    {
+      "id": "l173",
+      "topic": "Cooking",
+      "title": "Umami, the fifth taste",
+      "body": "Umami is a savoury taste triggered largely by glutamate. It was named in 1908 by the Japanese chemist Kikunae Ikeda, who identified it in kombu seaweed broth. Tomatoes, aged cheeses like parmesan, mushrooms and soy sauce are all rich in it.",
+      "tryIt": "Add a little soy sauce or grated hard cheese to a dish to deepen its flavour."
+    },
+    {
+      "id": "l174",
+      "topic": "Crafts & DIY",
+      "title": "Running stitch and backstitch",
+      "body": "A running stitch weaves in and out in a simple line and is quick, but not very strong. Backstitch goes forward, then back into the end of the previous stitch, forming a solid, continuous line. Backstitch is the go-to for hand-sewing seams that need strength.",
+      "tryIt": "Practise ten backstitches on a scrap of fabric."
+    },
+    {
+      "id": "l175",
+      "topic": "Nature",
+      "title": "Spiders are not insects",
+      "body": "Insects have six legs and three body sections: head, thorax and abdomen. Spiders have eight legs and two main body sections, and belong to the arachnids along with scorpions, ticks and mites. Most spiders have eight eyes, though some have fewer.",
+      "tryIt": "Find a spider or insect and count its legs from a respectful distance."
+    },
+    {
+      "id": "l176",
+      "topic": "Science",
+      "title": "Adding light versus mixing paint",
+      "body": "Screens make colours by adding red, green and blue light; all three together make white. Paints and inks work by absorbing light, so mixing them subtracts colours. Printers use cyan, magenta, yellow and black, and mixing them heads towards dark.",
+      "tryIt": "Look at a white area on a screen through a magnifying glass or phone zoom."
+    },
+    {
+      "id": "l177",
+      "topic": "History",
+      "title": "Ibn al-Haytham and the eye",
+      "body": "In the early eleventh century, Ibn al-Haytham wrote his Book of Optics in Cairo. He argued that vision happens when light enters the eye, rather than rays leaving it, and he tested ideas through careful experiments, including with the camera obscura. His work influenced later European science.",
+      "tryIt": "Make a pinhole in card and project a bright window onto paper behind it."
+    },
+    {
+      "id": "l178",
+      "topic": "Language & Words",
+      "title": "The quick brown fox",
+      "body": "A pangram is a sentence that uses every letter of the alphabet at least once. 'The quick brown fox jumps over the lazy dog' is the most famous, long used to test typewriters and fonts. Shorter pangrams exist but often sound strange.",
+      "tryIt": "Try to write your own pangram, however silly it sounds."
+    },
+    {
+      "id": "l179",
+      "topic": "Money",
+      "title": "Anchoring",
+      "body": "The first number we see strongly influences our later judgements, even when it is irrelevant. In a classic study, Tversky and Kahneman found that a random number from a spun wheel shifted people's estimates. Shops show a high 'was' price to make the sale price feel like a bargain.",
+      "tryIt": "Spot one price today that is shown next to a higher crossed-out price."
+    },
+    {
+      "id": "l180",
+      "topic": "People & Communication",
+      "title": "Make a name stick",
+      "body": "Most names are forgotten because we are thinking about what to say next when we hear them. Repeat the name back straight away, use it once in conversation, and link it to an image or someone you know with the same name.",
+      "tryIt": "When you next meet someone, say their name back as soon as you hear it."
+    },
+    {
+      "id": "l181",
+      "topic": "Mind & Habits",
+      "title": "The planning fallacy",
+      "body": "Daniel Kahneman and Amos Tversky described how people underestimate how long tasks will take, even when they know similar tasks overran before. We imagine the ideal path and forget interruptions. Basing estimates on how long similar tasks really took is more accurate.",
+      "tryIt": "Estimate how long your next task will take, then time it and compare."
+    },
+    {
+      "id": "l182",
+      "topic": "Body & Health",
+      "title": "Progressive overload",
+      "body": "Muscles and bones adapt to the demands placed on them. To keep getting stronger, you gradually increase the challenge: more repetitions, more weight or slower movements. Going too far too fast raises injury risk, so small steps work best.",
+      "tryIt": "Do one more squat or press-up than you comfortably did last time."
+    },
+    {
+      "id": "l183",
+      "topic": "Design & Art",
+      "title": "Kintsugi",
+      "body": "Kintsugi is a Japanese technique of repairing broken pottery with lacquer mixed with powdered gold or another metal. Instead of hiding the cracks, it highlights them as part of the object's history. It is often linked with appreciating imperfection.",
+      "tryIt": "Find something you own that is worn or repaired and appreciate its story."
+    },
+    {
+      "id": "l184",
+      "topic": "Engineering",
+      "title": "Your fridge is a heat pump",
+      "body": "A fridge does not create cold; it moves heat out. A refrigerant evaporates in pipes inside, absorbing heat, then a compressor squeezes it so it releases that heat through coils on the back or underneath. That is why the back of a fridge feels warm.",
+      "tryIt": "Feel the back or side of your fridge and notice the warmth."
+    },
+    {
+      "id": "l185",
+      "topic": "Drawing",
+      "title": "Atmospheric perspective",
+      "body": "Air contains moisture and particles that scatter light, so distant things look paler, bluer and lower in contrast than nearby ones. Landscape painters use this to suggest great distance. Keeping your darkest darks and sharpest edges in the foreground pushes the rest back.",
+      "tryIt": "Draw three hills, making each one further away lighter and softer."
+    },
+    {
+      "id": "l186",
+      "topic": "Photography",
+      "title": "Silhouettes",
+      "body": "Put a strong light behind your subject and expose for the bright background, and the subject becomes a dark shape. Silhouettes work best with clear, recognisable outlines, like a profile or a tree. Separate limbs from the body so the shape reads clearly.",
+      "tryIt": "Photograph a plant or person against a bright window as a silhouette."
+    },
+    {
+      "id": "l187",
+      "topic": "Music",
+      "title": "Learn intervals with famous tunes",
+      "body": "Musicians remember intervals by linking them to familiar openings. The first two notes of Somewhere Over the Rainbow leap an octave. The first two notes of the Star Wars main theme jump a perfect fifth, and Here Comes the Bride opens with a perfect fourth.",
+      "tryIt": "Sing those three openings and feel the size of each jump."
+    },
+    {
+      "id": "l188",
+      "topic": "Writing",
+      "title": "Just use 'said'",
+      "body": "Fancy dialogue tags like 'he exclaimed' or 'she retorted' draw attention to themselves. 'Said' is almost invisible, so readers focus on the words being spoken. Often you can drop the tag entirely by showing who is speaking through an action.",
+      "tryIt": "Write a four-line exchange between two people using only 'said' or no tags."
+    },
+    {
+      "id": "l189",
+      "topic": "Cooking",
+      "title": "Save the pasta water",
+      "body": "Water left after boiling pasta is cloudy with starch. Adding a splash to your sauce helps it emulsify and cling to the pasta instead of pooling at the bottom. Salt the water well, as it is the only chance to season the pasta itself.",
+      "tryIt": "Keep a cup of pasta water next time and stir some into the sauce."
+    },
+    {
+      "id": "l190",
+      "topic": "Crafts & DIY",
+      "title": "Pamphlet stitch binding",
+      "body": "The simplest bookbinding stitch joins a folded bundle of pages through three holes along the fold. From inside, sew out through the middle hole, in through the top, out through the bottom, then back in through the middle and tie off around the long stitch. You need only a needle, thread and something to pierce holes.",
+      "tryIt": "Fold four sheets of paper in half and stitch a tiny notebook."
+    },
+    {
+      "id": "l191",
+      "topic": "Nature",
+      "title": "Spirals in a sunflower",
+      "body": "The seeds in a sunflower head form two sets of spirals running in opposite directions. The numbers of spirals are often consecutive Fibonacci numbers, such as 34 and 55. This packing lets seeds fill the head efficiently with few gaps.",
+      "tryIt": "Look at a pine cone, sunflower or pineapple and try to count its spirals."
+    },
+    {
+      "id": "l192",
+      "topic": "Science",
+      "title": "Why onions make you cry",
+      "body": "Cutting an onion breaks its cells, releasing enzymes that produce a volatile irritant gas. When it reaches your eyes, it stimulates nerves and triggers tears. A sharp knife crushes fewer cells, and chilling the onion first slows the gas.",
+      "tryIt": "Chill an onion before chopping it and notice whether it stings less."
+    },
+    {
+      "id": "l193",
+      "topic": "History",
+      "title": "The dancing plague of 1518",
+      "body": "In July 1518 in Strasbourg, a woman began dancing in the street and could not stop. Over the following weeks, many others joined. Contemporary records describe the episode, and historians often explain it as a mass psychogenic illness during a time of hardship.",
+      "tryIt": "Put on one song and dance for its full length, voluntarily."
+    },
+    {
+      "id": "l194",
+      "topic": "Language & Words",
+      "title": "Words with no English match",
+      "body": "Some languages name feelings or scenes that English needs a phrase for. Japanese 'komorebi' describes sunlight filtering through the leaves of trees. Portuguese 'saudade' is a deep, longing nostalgia for something or someone absent.",
+      "tryIt": "Notice a moment today that deserves its own word and invent one."
+    },
+    {
+      "id": "l195",
+      "topic": "Money",
+      "title": "Don't put all your eggs in one basket",
+      "body": "Diversification means spreading money across many investments so that one failure does not sink you. An index fund does this by holding shares in hundreds or thousands of companies at once. It reduces the risk of any single company, though not of the whole market falling.",
+      "tryIt": "Write down where your savings are held and whether it is all in one place."
+    },
+    {
+      "id": "l196",
+      "topic": "People & Communication",
+      "title": "Small talk with FORD",
+      "body": "If you are stuck for conversation, FORD is a handy prompt: family, occupation, recreation and dreams. These are topics most people are happy to talk about. Moving from facts towards dreams often turns small talk into a real conversation.",
+      "tryIt": "Ask someone one question from each of the four FORD topics this week."
+    },
+    {
+      "id": "l197",
+      "topic": "Mind & Habits",
+      "title": "The peak-end rule",
+      "body": "Daniel Kahneman's research found that we judge past experiences largely by how they felt at their most intense moment and at the end, not by their average. A holiday with a lovely last day is remembered more warmly. Ending things well is worth the effort.",
+      "tryIt": "End today with one small, deliberate pleasant moment."
+    },
+    {
+      "id": "l198",
+      "topic": "Body & Health",
+      "title": "The UV index",
+      "body": "The UV index measures the strength of the sun's ultraviolet radiation. The World Health Organization advises sun protection when it reaches 3 or above. UV can be strong even on cool or cloudy days, and it is usually highest around midday.",
+      "tryIt": "Check today's UV index in your weather app or forecast."
+    },
+    {
+      "id": "l199",
+      "topic": "Design & Art",
+      "title": "Chiaroscuro",
+      "body": "Chiaroscuro, Italian for 'light-dark', is the use of strong contrasts between light and shadow to model forms. Caravaggio pushed it to dramatic extremes, setting brightly lit figures against near-black backgrounds. It adds drama and a sense of three dimensions.",
+      "tryIt": "Light an object with a single lamp in a dark room and study the shadows."
+    },
+    {
+      "id": "l200",
+      "topic": "Engineering",
+      "title": "Trading speed for force with gears",
+      "body": "When a small gear drives a larger one, the larger gear turns more slowly but with more turning force. A large gear driving a small one does the opposite. A bicycle's low gears make hills easier, and high gears let you go faster on the flat.",
+      "tryIt": "On a bike or by imagining one, notice how gear changes affect effort and speed."
+    },
+    {
+      "id": "l201",
+      "topic": "Drawing",
+      "title": "Line weight adds depth",
+      "body": "Varying the thickness of your lines makes a drawing feel three-dimensional. Thicker, darker lines tend to read as closer or in shadow, while thin lines feel distant or lit. Many illustrators thicken the outer edge of a shape and the edges on its shadow side.",
+      "tryIt": "Redraw a simple object, thickening the lines on its shadow side."
+    },
+    {
+      "id": "l202",
+      "topic": "Photography",
+      "title": "A frame within a frame",
+      "body": "Doorways, arches, windows and overhanging branches can frame your subject inside the picture. This draws the eye inwards and adds a sense of depth. The frame does not need to be complete; even two sides help.",
+      "tryIt": "Find a doorway or window and photograph something through it."
+    },
+    {
+      "id": "l203",
+      "topic": "Music",
+      "title": "The circle of fifths",
+      "body": "Start on C and keep going up by a fifth: C, G, D, A, E and so on. After twelve steps you are back at C, having visited every key. Keys next to each other on this circle share all but one note, which is why music often moves between them smoothly.",
+      "tryIt": "Hum C then G, then G then D, and notice how each pair sounds connected."
+    },
+    {
+      "id": "l204",
+      "topic": "Writing",
+      "title": "Freewriting",
+      "body": "Freewriting means writing nonstop for a set time without editing, crossing out or worrying about quality. If you get stuck, write 'I don't know what to say' until something comes. It quietens your inner critic and often surfaces surprising ideas.",
+      "tryIt": "Set a timer for five minutes and write without stopping about any memory."
+    },
+    {
+      "id": "l205",
+      "topic": "Cooking",
+      "title": "The windowpane test",
+      "body": "Kneading bread dough develops gluten, a stretchy network of proteins that traps gas. To test it, stretch a small piece between your fingers: if it becomes thin enough to let light through without tearing, the gluten is well developed.",
+      "tryIt": "If you bake soon, try the windowpane test on your dough."
+    },
+    {
+      "id": "l206",
+      "topic": "Nature",
+      "title": "Lichen is a partnership",
+      "body": "A lichen is not a single organism but a partnership between a fungus and an alga or cyanobacterium. The fungus gives structure and shelter, while its partner makes food by photosynthesis. Many lichens are sensitive to air pollution, so their variety can hint at air quality.",
+      "tryIt": "Look closely at a wall, tree or stone for crusty or leafy lichens."
+    },
+    {
+      "id": "l207",
+      "topic": "Science",
+      "title": "Babies have more bones than adults",
+      "body": "Newborns have around 300 bones and cartilage pieces, but adults have 206. Many bones fuse together as we grow, including those in the skull and at the base of the spine. The soft gaps in a baby's skull let it pass through the birth canal.",
+      "tryIt": "Feel the bones in your wrist and remember several of them started out separate."
+    },
+    {
+      "id": "l208",
+      "topic": "History",
+      "title": "The planned cities of the Indus",
+      "body": "Around 2500 BC, cities of the Indus Valley Civilisation such as Mohenjo-daro and Harappa had streets laid out in grids, standardised baked bricks and covered drains. Many houses had their own washing areas. Their script has still not been deciphered.",
+      "tryIt": "Look at the drains on your street and think about how old the idea is."
+    },
+    {
+      "id": "l209",
+      "topic": "Language & Words",
+      "title": "The k in knight used to be spoken",
+      "body": "Silent letters often reveal old pronunciations. In Old and Middle English, the k in 'knight' and 'knee' was pronounced, and the gh in 'night' was a throaty sound like in Scottish 'loch'. Spelling froze before the pronunciation changed.",
+      "tryIt": "Say 'knight' with a pronounced k and a throaty gh, as it once sounded."
+    },
+    {
+      "id": "l210",
+      "topic": "People & Communication",
+      "title": "Let the silence sit",
+      "body": "After asking a question, many people rush to fill a pause with another question or their own answer. Waiting a few seconds gives the other person time to think and often draws out a fuller, more honest reply. Teachers call this wait time.",
+      "tryIt": "After your next question, count to three silently before saying anything."
+    },
+    {
+      "id": "l211",
+      "topic": "Mind & Habits",
+      "title": "Urgent is not the same as important",
+      "body": "The Eisenhower matrix sorts tasks by whether they are urgent and whether they are important. Important but not urgent tasks, such as health, learning and relationships, are often neglected because nothing forces them. Scheduling them protects what matters.",
+      "tryIt": "Write one important but not urgent task and give it a time slot this week."
+    },
+    {
+      "id": "l212",
+      "topic": "Engineering",
+      "title": "Three kinds of lever",
+      "body": "A lever has a pivot, an effort and a load. In a seesaw the pivot is in the middle; in a wheelbarrow the load sits between pivot and effort; in tweezers the effort is in the middle. Your forearm works like the third type, trading force for speed and range.",
+      "tryIt": "Find one of each type of lever in your kitchen."
+    },
+    {
+      "id": "l213",
+      "topic": "Drawing",
+      "title": "Thumbnails before the real drawing",
+      "body": "Thumbnails are tiny, rough sketches, often just a few centimetres wide, used to test layouts before committing. Because they take seconds, you can try many arrangements and pick the strongest. Most composition problems are easier to spot small than large.",
+      "tryIt": "Draw six stamp-sized thumbnails of the view from your window."
+    },
+    {
+      "id": "l214",
+      "topic": "Photography",
+      "title": "Reflections double the scene",
+      "body": "Puddles, shop windows and still water can mirror a scene and create symmetry. Getting your lens very close to the surface of a puddle makes a tiny puddle look like a lake. Reflections are often most striking right after rain.",
+      "tryIt": "Hold your phone just above a puddle or a glossy surface and look for a reflection."
+    },
+    {
+      "id": "l215",
+      "topic": "Music",
+      "title": "The twelve-bar blues",
+      "body": "The classic blues uses three chords over twelve bars: four bars of I, two of IV, two of I, then one each of V, IV, I and I. That frame supports countless songs, from early blues to rock and roll. Knowing it lets you predict where a song is going.",
+      "tryIt": "Listen to a classic blues or rock and roll track and count the twelve bars."
+    },
+    {
+      "id": "l216",
+      "topic": "Writing",
+      "title": "The inverted pyramid",
+      "body": "News stories traditionally put the most important facts first and the least important last. The first sentence answers who, what, when, where and why. Readers who stop early still get the essentials, which is a useful habit for emails too.",
+      "tryIt": "Rewrite the first line of your next email so it states the main point."
+    },
+    {
+      "id": "l217",
+      "topic": "Cooking",
+      "title": "Toast your nuts and seeds",
+      "body": "Heating nuts and seeds in a dry pan for a few minutes deepens their flavour through browning and releases aromatic oils. Shake the pan often and remove them as soon as they smell nutty, since they can burn within seconds.",
+      "tryIt": "Toast a handful of seeds or nuts in a dry pan and sprinkle them on a meal."
+    },
+    {
+      "id": "l218",
+      "topic": "Nature",
+      "title": "The dawn chorus",
+      "body": "Birdsong is often loudest around dawn, especially in spring. Many songbirds sing to defend territory and attract mates, and the still, cool morning air helps sound carry. Different species tend to start at slightly different times.",
+      "tryIt": "Open a window early tomorrow and listen for which birds start first."
+    },
+    {
+      "id": "l219",
+      "topic": "Science",
+      "title": "Half-life",
+      "body": "A radioactive isotope's half-life is the time it takes for half of its atoms to decay. After two half-lives, a quarter remain, then an eighth, and so on. Carbon-14 has a half-life of about 5,730 years, which makes it useful for dating once-living material.",
+      "tryIt": "Fold a sheet of paper in half repeatedly and see how quickly it gets tiny."
+    },
+    {
+      "id": "l220",
+      "topic": "History",
+      "title": "Fibonacci brought our numbers to Europe",
+      "body": "In 1202, Leonardo of Pisa, later known as Fibonacci, published Liber Abaci. It introduced Europeans to the Hindu-Arabic numerals and showed how much easier they made trade calculations than Roman numerals. The famous Fibonacci sequence appears in it as a puzzle about rabbits.",
+      "tryIt": "Try multiplying 23 by 14 in Roman numerals, then in normal digits."
+    },
+    {
+      "id": "l221",
+      "topic": "Language & Words",
+      "title": "Goodbye is a blessing",
+      "body": "'Goodbye' is a contraction of 'God be with ye', used in the sixteenth century. Over time it was shortened and the 'God' shifted to 'good', probably influenced by greetings like 'good day' and 'good night'. Many farewells hide old blessings.",
+      "tryIt": "Notice how many ways you say goodbye today and what each one really means."
+    },
+    {
+      "id": "l222",
+      "topic": "People & Communication",
+      "title": "Use I statements",
+      "body": "'You never listen' sounds like an accusation and usually triggers defence. 'I feel unheard when I'm interrupted' describes your experience and invites the other person in. The facts may be the same, but the conversation goes very differently.",
+      "tryIt": "Rephrase one complaint you have as an I statement."
+    },
+    {
+      "id": "l223",
+      "topic": "Mind & Habits",
+      "title": "Design your surroundings",
+      "body": "Habits are shaped by friction. Putting a book on your pillow or a water bottle on your desk makes the good choice easy, while moving distracting apps off your home screen makes the bad one harder. Changing the environment often beats relying on willpower.",
+      "tryIt": "Move one thing in your home to make a good habit easier."
+    },
+    {
+      "id": "l224",
+      "topic": "Engineering",
+      "title": "The giant ball inside Taipei 101",
+      "body": "Tall buildings sway in strong wind. Taipei 101 has a steel ball weighing around 660 tonnes hanging near its top as a tuned mass damper. When the building moves one way, the pendulum lags behind, absorbing energy and reducing the sway felt by people inside.",
+      "tryIt": "Swing a bag on a string and feel it tug against your hand's motion."
+    },
+    {
+      "id": "l225",
+      "topic": "Drawing",
+      "title": "The grid method",
+      "body": "To copy an image accurately, draw a grid over a reference and a matching grid on your paper, then copy one square at a time. It breaks a hard drawing into small, simple shapes. Artists have used variations of this method for centuries to scale up images.",
+      "tryIt": "Copy a small photo using a four-by-four grid."
+    },
+    {
+      "id": "l226",
+      "topic": "Photography",
+      "title": "White balance and colour temperature",
+      "body": "Different light sources have different colours, measured in kelvin. Candlelight is very warm, around 1,900 K, midday sun is roughly 5,500 K, and open shade looks bluish. Cameras adjust white balance to make white look white, which is why indoor photos sometimes look orange.",
+      "tryIt": "Photograph the same white paper under a lamp and by a window and compare."
+    },
+    {
+      "id": "l227",
+      "topic": "Music",
+      "title": "Swing feel",
+      "body": "In swing, pairs of equal notes are played long-short instead of evenly, giving a lilting bounce. It is notated the same way as straight rhythm, so it is a style rather than a different set of notes. Say 'humpty dumpty' with a bounce and you are close.",
+      "tryIt": "Walk across a room in a long-short, long-short swing rhythm."
+    },
+    {
+      "id": "l228",
+      "topic": "Writing",
+      "title": "Write with smell",
+      "body": "Writers lean heavily on sight and often forget the other senses. Smell is closely tied to memory and emotion, so a single scent can transport a reader. Wet pavement, burnt toast or new books can set a scene faster than a paragraph of description.",
+      "tryIt": "Describe the room you are in using only what you can smell and hear."
+    },
+    {
+      "id": "l229",
+      "topic": "Cooking",
+      "title": "Taste as you go",
+      "body": "Seasoning a dish only at the end often leaves it uneven. Cooks taste at each stage, adding small amounts of salt or acid and adjusting before it is too late. Seasoning in layers builds flavour throughout instead of just on the surface.",
+      "tryIt": "Taste your next dish three times while cooking and adjust each time."
+    },
+    {
+      "id": "l230",
+      "topic": "Nature",
+      "title": "Why owls fly silently",
+      "body": "Many owls fly almost silently thanks to their feathers. Comb-like serrations on the leading edge of the wing, a fringe on the trailing edge and a soft, velvety surface all reduce turbulence and noise. Engineers have studied them to design quieter fans and blades.",
+      "tryIt": "Wave a sheet of card through the air and notice how much noise it makes."
+    },
+    {
+      "id": "l231",
+      "topic": "Science",
+      "title": "Why a straw works",
+      "body": "When you suck on a straw, you lower the air pressure inside it. The atmosphere then pushes down on the surface of the drink and forces liquid up the straw. In theory, even perfect suction could lift water only about ten metres.",
+      "tryIt": "Put your finger over the top of a straw in water and lift it out; watch the water stay."
+    },
+    {
+      "id": "l232",
+      "topic": "Language & Words",
+      "title": "Mondegreens",
+      "body": "A mondegreen is a misheard lyric or phrase. The writer Sylvia Wright coined the word in 1954, after realising that a line of a Scottish ballad she had heard as 'Lady Mondegreen' was actually 'laid him on the green'. Everyone has a few.",
+      "tryIt": "Think of a song lyric you misheard for years and say both versions aloud."
+    },
+    {
+      "id": "l233",
+      "topic": "People & Communication",
+      "title": "The liking gap",
+      "body": "Research by Erica Boothby and colleagues in 2018 found that after conversations with strangers, people consistently underestimated how much their partner liked them. We are often harsher judges of our own social performance than others are.",
+      "tryIt": "After your next chat, assume the other person enjoyed it more than you think."
+    },
+    {
+      "id": "l234",
+      "topic": "Mind & Habits",
+      "title": "The cost of switching",
+      "body": "Switching between tasks carries a cost: each switch needs time to reorient, and errors increase. Research on task switching shows that even small switches add up. Batching similar tasks, such as replying to messages at set times, protects deep focus.",
+      "tryIt": "Batch your messages into two set times today instead of checking constantly."
+    },
+    {
+      "id": "l235",
+      "topic": "Engineering",
+      "title": "Why eight bits make 256",
+      "body": "Each bit is either 0 or 1, so every extra bit doubles the number of possible combinations. Eight bits, called a byte, give 2 to the power 8, or 256 values. That is why many colour channels and old game limits stop at 255, since counting starts at zero.",
+      "tryIt": "Count to ten in binary on your fingers, with each finger worth double the last."
+    },
+    {
+      "id": "l236",
+      "topic": "Drawing",
+      "title": "Overlap for instant depth",
+      "body": "When one shape partly covers another, we read the covered one as further away. Overlapping is one of the simplest depth cues and works even without shading or perspective. A row of shapes that only touch at the edges looks flat by comparison.",
+      "tryIt": "Draw five pebbles or fruits so that each overlaps another."
+    },
+    {
+      "id": "l237",
+      "topic": "Music",
+      "title": "The drone",
+      "body": "A drone is a note or chord held continuously under a melody. In Indian classical music, the tanpura provides a constant drone that sets the tonal centre for the raga. Bagpipes use drones too. Against a steady drone, every melody note has a clear mood.",
+      "tryIt": "Hum a steady low note and imagine a melody floating above it."
+    },
+    {
+      "id": "l238",
+      "topic": "Writing",
+      "title": "The iceberg theory",
+      "body": "Ernest Hemingway argued that a writer can leave things out of a story if they know them well, and the reader will still feel them. Like an iceberg, only a small part shows above the surface. Unspoken subtext often carries more power than explanation.",
+      "tryIt": "Write a two-line exchange where the characters avoid saying what they really mean."
+    },
+    {
+      "id": "l239",
+      "topic": "Cooking",
+      "title": "Why milk cools chilli heat",
+      "body": "Capsaicin, the compound behind chilli heat, activates the same nerve receptor that detects painful heat, which is why it feels hot. Capsaicin dissolves poorly in water, so water just spreads it around. Milk, yoghurt and other dairy foods tend to soothe the burn better.",
+      "tryIt": "Keep some yoghurt on the table next time you eat something spicy."
+    },
+    {
+      "id": "l240",
+      "topic": "Science",
+      "title": "Hot air rises",
+      "body": "When air is heated, its molecules move faster and spread out, making it less dense than the cooler air around it. The cooler, denser air sinks and pushes the warm air up. This circulation, called convection, drives everything from radiator heating to thunderstorms.",
+      "tryIt": "Hold your hand above and then beside a hot mug and feel the difference."
+    },
+    {
+      "id": "l241",
+      "topic": "Language & Words",
+      "title": "Woof is not universal",
+      "body": "Onomatopoeia imitates sounds, but each language hears them differently. A dog says 'woof' in English, 'wan wan' in Japanese and 'guau' in Spanish. A rooster's call is 'cock-a-doodle-doo' in English but 'kikeriki' in German.",
+      "tryIt": "Ask yourself how you would spell the sound your kettle or fridge makes."
+    },
+    {
+      "id": "l242",
+      "topic": "People & Communication",
+      "title": "Talk to strangers on the train",
+      "body": "In studies by Nicholas Epley and Juliana Schroeder, commuters asked to chat with a stranger reported a more pleasant journey than those who sat in silence, even though most predicted the opposite. Others were also more willing to talk than people expected.",
+      "tryIt": "Exchange a few friendly words with someone you would normally ignore."
+    },
+    {
+      "id": "l243",
+      "topic": "Engineering",
+      "title": "The Luhn check on your card",
+      "body": "Most payment card numbers end with a check digit calculated by the Luhn formula, devised by Hans Peter Luhn at IBM. Doubling every second digit from the right and summing everything gives a multiple of ten. It catches any single mistyped digit and most swapped neighbours.",
+      "tryIt": "Think about how a website can tell you mistyped a card number instantly."
+    },
+    {
+      "id": "l244",
+      "topic": "Drawing",
+      "title": "Draw through the object",
+      "body": "Construction drawing means sketching an object's simple underlying forms, including the hidden back edges, as if it were transparent. Boxes, cylinders and spheres become a scaffold for detail. It keeps proportions and perspective consistent before you commit to outlines.",
+      "tryIt": "Draw a kettle as a cylinder and a box first, including the hidden lines."
+    },
+    {
+      "id": "l245",
+      "topic": "Cooking",
+      "title": "Baking soda or baking powder",
+      "body": "Baking soda is sodium bicarbonate, and it needs an acid such as buttermilk, yoghurt or lemon to release carbon dioxide. Baking powder already contains both the soda and a dry acid, so it only needs moisture and heat. They are not directly interchangeable.",
+      "tryIt": "Check a favourite recipe to see which one it uses and why."
+    },
+    {
+      "id": "l246",
+      "topic": "Science",
+      "title": "Sound can't cross space",
+      "body": "Sound is a vibration passed from molecule to molecule, so it needs a medium like air, water or rock. In the near-vacuum of space there is almost nothing to carry it. Real explosions in space would be silent, whatever films suggest.",
+      "tryIt": "Press your ear to a table while tapping it gently and hear sound travel through wood."
+    },
+    {
+      "id": "l247",
+      "topic": "Engineering",
+      "title": "Why touchscreens ignore gloves",
+      "body": "Most phone screens are capacitive: they hold a tiny electric field, and your conductive fingertip changes it at the point you touch. Ordinary gloves insulate your finger, so the screen cannot sense it. Touchscreen gloves have conductive threads in the fingertips.",
+      "tryIt": "Try tapping your screen with a fingernail, a knuckle and a pen cap."
+    },
+    {
+      "id": "l248",
+      "topic": "Engineering",
+      "title": "Crumple zones",
+      "body": "A car's front and rear are designed to crumple in a crash. By crushing gradually, they extend the time it takes the car to stop, which reduces the force on the people inside. The strong passenger cell is designed not to deform.",
+      "tryIt": "Drop an egg onto a folded towel and think about the extra stopping time."
+    },
+    {
+      "id": "l249",
+      "topic": "Engineering",
+      "title": "Why manhole covers are round",
+      "body": "A round cover cannot fall through its own hole, whichever way it is turned, because its width is the same in every direction. A square cover could drop through diagonally. Round covers can also be rolled and need no lining up before being dropped into place.",
+      "tryIt": "Look at covers in your street and check which shapes have lips or frames."
+    },
+    {
+      "id": "l250",
+      "topic": "Engineering",
+      "title": "How LEDs choose their colour",
+      "body": "An LED glows when electrons drop across a gap in energy within a semiconductor and release light. The size of that band gap sets the colour. Most white LEDs are actually blue LEDs coated with a yellowish phosphor, which mix to look white.",
+      "tryIt": "Look closely at a white LED bulb that is off and spot its yellow coating."
+    }
+  ]
+}

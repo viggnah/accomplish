@@ -1,0 +1,12 @@
+<p>Most to-do apps show everything at once, so the important things get buried under errands. Accomplish splits your tasks in two: a few big, important ones (IMP) on Home, and everyday small stuff one tap away, out of sight until you want it.</p>
+<ul>
+<li><b>One next step at a time.</b> Each IMP card shows the next step, and a meter shows roughly how much is left.</li>
+<li><b>Frost.</b> IMP tasks you leave untouched slowly frost over. One tap thaws them.</li>
+<li><b>Deadlines or a rough when.</b> A date, "This month" or "Later". Anything due tomorrow or sooner turns red, and Coming up shows the next six weeks.</li>
+<li><b>Reminders with snooze</b>, plus optional nudges before deadlines, with quiet hours and a daily limit.</li>
+<li><b>A Waiting room</b> for IMP tasks that aren't on Home yet. Drag cards on Home to reorder them.</li>
+<li><b>Capsules.</b> Moving an IMP forward sometimes earns one: a note from your past self, a real-life side quest, or a one-minute lesson.</li>
+<li><b>Undo</b> for anything that can't simply be put back, and a full history for every task.</li>
+<li><b>Make it yours:</b> rename the lists, and choose the number of spots, the timings, the notifications and the theme.</li>
+</ul>
+<p><b>Private by design.</b> No internet permission, no accounts, no analytics. Your tasks are a readable JSON file on your SD card or phone storage, with daily backups.</p>

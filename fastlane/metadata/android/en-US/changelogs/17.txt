@@ -1,0 +1,6 @@
+First public release.
+- Notifications use the app icon and open the screen where the task lives
+- Snooze reminders for an hour or until tomorrow
+- Past-due tasks lead Coming up, in red
+- Settings are kept next to your data, so they survive a reinstall
+- Clearer wording throughout, and a new About
