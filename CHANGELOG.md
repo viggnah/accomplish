@@ -2,10 +2,19 @@
 
 All notable changes to Accomplish (called Matter until 0.5). Newest first. Versions match `versionName` in `app/build.gradle.kts`.
 
-## Unreleased
+## 0.11.0 · 8 Nov 2026
+
+### Added
+- Muted card colours, as an option next to the bright ones (Settings › Looks › Card colours). In dark mode they're deep, calm tones with light text.
+- Finished steps stay in view. A big task's card shows the step you just finished, ticked and faded, above the next one, and the task sheet lists all of them in order.
 
 ### Changed
-- First-run screens no longer assume an SD card: no "Recommended" badge or "No SD card found" line, and the error screen reads "Your tasks can't be reached".
+- When you edit a task, the top-right button reads "Save" once you've changed something, like "Add" for a new task. The × shows only when there's nothing to save.
+- About is plain: the version, the licence and a link to the source code.
+- First-run screens no longer assume an SD card. There's no "Recommended" badge or "No SD card found" line, and the error screen reads "Your tasks can't be reached".
+
+### Fixed
+- Deadline and frost nudges arrive even with Power saving on. Before, Android held them back until you opened the app.
 
 ## 0.10.0 · 20 Oct 2026
 

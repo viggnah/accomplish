@@ -158,9 +158,10 @@ object Notifier {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         am.cancel(pi)
         if (at == null) return
-        // Your own reminders fire on the minute; nudges are inexact, kinder to the battery, within ~10 minutes.
+        // Your own reminders fire on the minute. Nudges are inexact, kinder to the battery. Both are "allow while idle":
+        // Power saving holds back every other kind of alarm until the app is opened.
         if (exact && am.canScheduleExactAlarms()) am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pi)
-        else am.setWindow(AlarmManager.RTC_WAKEUP, at, if (exact) 60_000L else 10 * 60 * 1000L, pi)
+        else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pi)
     }
 
     /** Off the main thread: it reads the data file. */

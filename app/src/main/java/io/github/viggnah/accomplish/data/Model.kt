@@ -45,6 +45,8 @@ data class Task(
     val log: List<Event> = emptyList(),
 ) {
     val stepsDone: Int get() = log.count { it.type == EventType.STEP_DONE }
+    /** Steps ticked off, oldest first. */
+    val doneSteps: List<String> get() = log.filter { it.type == EventType.STEP_DONE }.mapNotNull { it.text }
     val next: String? get() = steps.firstOrNull()
     val isOpen: Boolean get() = status == Status.ACTIVE || status == Status.WAITING
 }

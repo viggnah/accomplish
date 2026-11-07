@@ -399,7 +399,7 @@ class AppState(private val ctx: Context) {
         act(if (!moved) "Saved" else if (draft.place == null) "Moved to the ${settings.waiting}" else "Moved", undoable = moved) { d -> applyDraft(d, id, draft) }
     }
 
-    private fun changed(t: Task, d: Draft): Boolean {
+    fun changed(t: Task, d: Draft): Boolean {
         val place = if (t.status == Status.ACTIVE) active.indexOf(t) else null
         return (d.title.isNotBlank() && d.title.trim() != t.title) || d.horizon != t.horizon || d.deadline != t.deadline || d.remindAt != t.remindAt ||
             (t.kind == Kind.BIG && (clean(d.steps) != t.steps || d.color != t.color || d.size != t.size ||

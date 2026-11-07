@@ -20,8 +20,8 @@ android {
         applicationId = "io.github.viggnah.accomplish"
         minSdk = 30
         targetSdk = 35
-        versionCode = 17
-        versionName = "0.10.0"
+        versionCode = 18
+        versionName = "0.11.0"
         // Practically every Android 11+ phone is 64-bit ARM; skip the other CPU builds of Compose's tiny native helper.
         ndk { abiFilters += "arm64-v8a" }
     }

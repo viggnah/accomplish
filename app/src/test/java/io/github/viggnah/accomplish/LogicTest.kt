@@ -31,6 +31,12 @@ class LogicTest {
 
     private fun order(d: AppData) = Logic.active(d).map { it.id }
 
+    @Test fun doneStepsKeepTheirOrder() {
+        val t = Task("t", Kind.BIG, "Trip", Status.ACTIVE, Horizon.MONTH, steps = listOf("Book hotel"), touched = 0,
+            log = listOf(Event(1, EventType.STEP_DONE, text = "Pick dates"), Event(2, EventType.NEXT_SET, text = "x"), Event(3, EventType.STEP_DONE, text = "Book flights")))
+        assertEquals(listOf("Pick dates", "Book flights"), t.doneSteps)
+    }
+
     @Test fun placingIntoFreeSpotShiftsOthers() {
         val d = AppData(listOf(big("a", slot = 0), big("b", slot = 1), big("w", Status.WAITING)))
         val out = Logic.place(d, "w", 0, s, today)

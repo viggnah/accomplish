@@ -28,9 +28,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.border
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -168,8 +165,12 @@ fun SettingsScreen(state: AppState) {
                 Spacer(Modifier.height(8.dp))
             }
             Group("Looks") {
-                Spacer(Modifier.height(8.dp))
+                Txt("Theme", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 6.dp, bottom = 8.dp))
                 Segmented(listOf(ThemeMode.SYSTEM to "System", ThemeMode.LIGHT to "Light", ThemeMode.DARK to "Dark"), s.theme) { state.updateSettings(s.copy(theme = it)) }
+                Txt("Card colours", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 14.dp, bottom = 8.dp))
+                Segmented(listOf(io.github.viggnah.accomplish.data.CardStyle.BRIGHT to "Bright", io.github.viggnah.accomplish.data.CardStyle.MUTED to "Muted"), s.cardStyle) {
+                    state.updateSettings(s.copy(cardStyle = it))
+                }
             }
             Group("Storage") {
                 Txt(File(s.dataDir ?: "-", Storage.FILE).path, Type.body(14.sp, FontWeight.Bold), p.ink, Modifier.padding(vertical = 6.dp))
@@ -177,54 +178,23 @@ fun SettingsScreen(state: AppState) {
                 ClayButton("Move to another location", Modifier.padding(vertical = 8.dp)) { state.chooseLocationAgain() }
                 Spacer(Modifier.height(8.dp))
             }
-            About(state)
+            About()
         }
     }
 }
 
-/** The app's own card: icon, name, version, and what you've got done with it so far. */
 @Composable
-private fun About(state: AppState) {
+private fun About() {
     val p = pal()
     val ctx = LocalContext.current
     val version = remember { runCatching { ctx.packageManager.getPackageInfo(ctx.packageName, 0).versionName }.getOrNull() ?: "" }
-    val d = state.data
-    val since = d.tasks.mapNotNull { it.log.firstOrNull()?.day }.minOrNull()
-    val big = d.tasks.count { it.kind == Kind.BIG && it.status == io.github.viggnah.accomplish.data.Status.DONE }
-    val small = d.tasks.count { it.kind == Kind.SMALL && it.status == io.github.viggnah.accomplish.data.Status.DONE }
-    val opened = d.capsules.count { it.opened }
-    Spacer(Modifier.height(28.dp))
-    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        // Like the launcher: the middle 72 of the icon's 108 units, on its own tile.
-        Box(Modifier.size(96.dp).clip(PanelShape).background(p.surface).then(if (p.dark) Modifier else Modifier.border(1.dp, p.line, PanelShape)),
-            contentAlignment = Alignment.Center) {
-            androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(io.github.viggnah.accomplish.R.drawable.ic_launcher_foreground), null,
-                Modifier.requiredSize(144.dp))
+    Group("About") {
+        Txt("Accomplish $version", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 6.dp))
+        Txt("Free software under the GPL-3.0. Fonts: Fredoka and Nunito, under the SIL Open Font License.", Type.body(14.sp), p.inkSoft, Modifier.padding(top = 4.dp))
+        ClayButton("Source code", Modifier.padding(vertical = 8.dp), icon = Icons.share) {
+            runCatching { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/viggnah/accomplish"))) }
         }
-        Spacer(Modifier.height(14.dp))
-        Txt("Accomplish", Type.display(24.sp), p.ink)
-        Txt("Version $version", Type.body(14.sp), p.inkSoft)
-        if (since != null && big + small > 0) {
-            Spacer(Modifier.height(18.dp))
-            Txt("Since ${Logic.fmtLong(since)}", Type.label, p.inkSoft)
-            Spacer(Modifier.height(8.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                Stat("$big", "${state.settings.big} done")
-                Stat("$small", "${state.settings.small} done")
-                Stat("$opened", if (opened == 1) "Capsule opened" else "Capsules opened")
-            }
-        }
-        Spacer(Modifier.height(18.dp))
-        Txt("Fonts: Fredoka and Nunito, under the SIL Open Font License", Type.body(12.sp), p.inkSoft, align = androidx.compose.ui.text.style.TextAlign.Center)
-    }
-}
-
-@Composable
-private fun androidx.compose.foundation.layout.RowScope.Stat(n: String, label: String) {
-    val p = pal()
-    Column(Modifier.weight(1f).inset(p, BtnShape).padding(vertical = 12.dp, horizontal = 6.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        Txt(n, Type.display(24.sp), p.ink)
-        Txt(label, Type.body(12.sp, FontWeight.Bold), p.inkSoft, align = androidx.compose.ui.text.style.TextAlign.Center, maxLines = 2)
+        Spacer(Modifier.height(4.dp))
     }
 }
 

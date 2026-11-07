@@ -1,0 +1,5 @@
+- Muted card colours as an option (Settings > Looks)
+- Finished steps stay in view on the card and in the task sheet
+- "Save" button when you've edited a task
+- Simpler About, with a link to the source code
+- Nudges arrive even with Power saving on

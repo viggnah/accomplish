@@ -118,6 +118,13 @@ fun BigCard(state: AppState, t: Task, i: Int, drag: CardDrag) {
             }
         }
         Txt(t.title, Type.card(24.sp), p.cardInk, Modifier.padding(top = 10.dp, bottom = 14.dp))
+        t.doneSteps.lastOrNull()?.let { last ->
+            Row(Modifier.padding(start = 12.dp, end = 12.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Ico(Icons.check, p.cardInk.copy(alpha = 0.5f), 16.dp, stroke = 2.8f)
+                Spacer(Modifier.width(10.dp))
+                Txt(last, Type.body(14.sp, FontWeight.Bold), p.cardInk.copy(alpha = 0.5f), maxLines = 1)
+            }
+        }
         when {
             state.askNext == t.id -> NextAsk(state, t)
             t.next != null -> StepButton(state, t)
@@ -136,11 +143,11 @@ fun BigCard(state: AppState, t: Task, i: Int, drag: CardDrag) {
                     .squish { state.thaw(t.id) }.padding(horizontal = 14.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Ico(Icons.snow, p.cardInk, 14.dp, stroke = 2.4f)
+                Ico(Icons.snow, LightPalette.cardInk, 14.dp, stroke = 2.4f)
                 Spacer(Modifier.width(6.dp))
-                Txt("${Logic.plural(Logic.untouched(t, today), "day")} untouched", Type.body(12.sp, FontWeight.Bold), p.cardInk)
+                Txt("${Logic.plural(Logic.untouched(t, today), "day")} untouched", Type.body(12.sp, FontWeight.Bold), LightPalette.cardInk)
                 Spacer(Modifier.width(12.dp))
-                Txt("Thaw", Type.body(12.sp, FontWeight.ExtraBold).copy(textDecoration = TextDecoration.Underline), p.cardInk)
+                Txt("Thaw", Type.body(12.sp, FontWeight.ExtraBold).copy(textDecoration = TextDecoration.Underline), LightPalette.cardInk)
             }
         }
     }

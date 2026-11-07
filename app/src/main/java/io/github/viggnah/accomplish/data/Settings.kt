@@ -6,6 +6,8 @@ import java.io.File
 
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
 
+enum class CardStyle { BRIGHT, MUTED }
+
 /** How often a side quest involves other people. */
 enum class SocialRate(val label: String, val chance: Double) {
     NEVER("Never", 0.0), SOMETIMES("Sometimes", 0.33), OFTEN("Often", 0.5)
@@ -23,6 +25,7 @@ data class Settings(
     val undoSecs: Int = 10,
     val captureDefault: Kind = Kind.SMALL,
     val theme: ThemeMode = ThemeMode.SYSTEM,
+    val cardStyle: CardStyle = CardStyle.BRIGHT,
     val nameBig: String = "",
     val nameSmall: String = "",
     val nameWaiting: String = "",
@@ -85,6 +88,7 @@ class SettingsStore(context: Context) {
             undoSecs = p.getInt("undoSecs", d.undoSecs),
             captureDefault = enumOr(p.getString("captureDefault", null), d.captureDefault),
             theme = enumOr(p.getString("theme", null), d.theme),
+            cardStyle = enumOr(p.getString("cardStyle", null), d.cardStyle),
             nameBig = p.getString("nameBig", d.nameBig)!!,
             nameSmall = p.getString("nameSmall", d.nameSmall)!!,
             nameWaiting = p.getString("nameWaiting", d.nameWaiting)!!,
@@ -115,7 +119,7 @@ class SettingsStore(context: Context) {
         p.edit()
             .putInt("slots", s.slots).putBoolean("frost", s.frost).putInt("frostStart", s.frostStart).putInt("frostFull", s.frostFull)
             .putBoolean("heat", s.heat).putInt("heatWindow", s.heatWindow).putInt("fadeStart", s.fadeStart).putInt("askAfter", s.askAfter)
-            .putInt("undoSecs", s.undoSecs).putString("captureDefault", s.captureDefault.name).putString("theme", s.theme.name)
+            .putInt("undoSecs", s.undoSecs).putString("captureDefault", s.captureDefault.name).putString("theme", s.theme.name).putString("cardStyle", s.cardStyle.name)
             .putString("nameBig", s.nameBig).putString("nameSmall", s.nameSmall)
             .putString("nameWaiting", s.nameWaiting).putString("nameHistory", s.nameHistory)
             .putBoolean("capsules", s.capsules).putString("socialRate", s.socialRate.name)

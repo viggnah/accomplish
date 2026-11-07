@@ -74,6 +74,19 @@ val DarkPalette = Palette(
     cards = sorbetCards, waitingMix = 0.8f,
 )
 
+/**
+ * The same five card colours, quieter. Light mode: dusty pastels with dark text.
+ * Dark mode: deep tones with light text, and chips dark enough to keep that text readable.
+ */
+fun Palette.muted(): Palette =
+    if (!dark) copy(
+        cards = listOf(0xFFE9B9CB, 0xFFEBDDA5, 0xFFAEDDD0, 0xFFAECDEA, 0xFFC7BCEF).map { Color(it) to Color(it) },
+        cardDim = 0f,
+    ) else copy(
+        cards = listOf(0xFF6B3F52, 0xFF6A5B2E, 0xFF2F5C53, 0xFF304E6E, 0xFF4A3F7A).map { Color(it) to Color(it) },
+        cardDim = 0f, cardInk = Color(0xFFF7F4FF), chip = Color(0x2EFFFFFF), hi = Color(0x24FFFFFF),
+    )
+
 val LocalPalette = staticCompositionLocalOf { LightPalette }
 
 val Fredoka = FontFamily(Font(R.font.fredoka_semibold, FontWeight.SemiBold))

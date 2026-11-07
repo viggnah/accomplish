@@ -104,8 +104,14 @@ private fun RemindRow(state: AppState, remindAt: Long?, onChange: (Long?) -> Uni
 
 /** Planned steps in order. The first one is what shows on the card; ticking it brings up the next. */
 @Composable
-private fun StepsEditor(state: AppState, steps: List<String>, onChange: (List<String>) -> Unit) {
+private fun StepsEditor(state: AppState, steps: List<String>, done: List<String> = emptyList(), onChange: (List<String>) -> Unit) {
     val p = pal()
+    done.forEach { step ->
+        Row(Modifier.padding(bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.width(20.dp)) { Ico(Icons.check, p.inkSoft, 14.dp, stroke = 2.8f) }
+            Txt(step, Type.body(16.sp), p.inkSoft, Modifier.padding(start = 16.dp))
+        }
+    }
     steps.forEachIndexed { i, step ->
         Row(Modifier.padding(bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
             Txt("${i + 1}", Type.display(14.sp), p.inkSoft, Modifier.width(20.dp))
@@ -197,12 +203,13 @@ fun EditSheet(state: AppState, id: String) {
     SideEffect { if (state.sheet == Sheet.Edit(id)) state.sheetCloser = { state.saveDraft(id, latest) } }
     val big = t.kind == Kind.BIG
 
-    SheetTitle(if (big) s.big else s.small, onClose = { state.closeSheet() }, swatch = if (big) p.cardBrush(draft.color) else null)
+    SheetTitle(if (big) s.big else s.small, onClose = { state.closeSheet() }, swatch = if (big) p.cardBrush(draft.color) else null,
+        confirm = if (state.changed(t, draft)) "Save" else null)
     Spacer(Modifier.height(14.dp))
     Field(draft.title, { draft = draft.copy(title = it) }, "What needs doing?", singleLine = false)
     if (big) {
-        SectionLabel("Next steps")
-        StepsEditor(state, draft.steps) { draft = draft.copy(steps = it) }
+        SectionLabel(if (t.doneSteps.isEmpty()) "Next steps" else "Steps")
+        StepsEditor(state, draft.steps, done = t.doneSteps) { draft = draft.copy(steps = it) }
     }
     SectionLabel("When")
     WhenRow(state, draft.horizon, draft.deadline, state.today, { draft = draft.copy(horizon = it) }, { draft = draft.copy(deadline = it) })
