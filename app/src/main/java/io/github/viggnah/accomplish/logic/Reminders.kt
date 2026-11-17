@@ -19,6 +19,8 @@ data class Nudge(
     val detail: String? = null,
     /** Where a tap takes you: "home", "small", "waiting", or "new" for the add-a-task sheet. */
     val screen: String = "home",
+    /** For your own reminders: the task it belongs to. */
+    val taskId: String? = null,
 )
 
 /** Works out which notifications are coming up. Pure, so it can be tested; the Android side only posts and schedules. */
@@ -78,7 +80,7 @@ object Reminders {
         // Reminders you set yourself go out at the time you chose, quiet hours or not.
         val explicit = d.tasks.filter { it.isOpen && it.remindAt != null }.map { t ->
             Nudge("rem:${t.id}:${t.remindAt}", t.remindAt!!, -1, t.title, t.next?.let { "Next: $it" } ?: "Reminder", REMINDERS, "reminder",
-                if (t.kind == Kind.BIG) t.color else null, screen = screenFor(t))
+                if (t.kind == Kind.BIG) t.color else null, screen = screenFor(t), taskId = t.id)
         }.filter { it.key !in sent && it.at >= earliest }
         return (planned + explicit).sortedWith(compareBy({ it.at }, { it.priority }))
     }
@@ -97,6 +99,22 @@ object Reminders {
         if (!quiet) return at
         val endDate = if (h >= s.quietStart && s.quietStart > s.quietEnd) t.toLocalDate().plusDays(1) else t.toLocalDate()
         return endDate.atTime(s.quietEnd, 0).atZone(zone).toInstant().toEpochMilli()
+    }
+
+    /**
+     * Reminders that went off ([fired]: task id to the time it was set for) leave their task.
+     * One that has since been moved to another time stays.
+     */
+    fun clearFired(d: AppData, fired: Map<String, Long>): AppData {
+        if (d.tasks.none { it.remindAt != null && fired[it.id] == it.remindAt }) return d
+        return d.copy(tasks = d.tasks.map { if (it.remindAt != null && fired[it.id] == it.remindAt) it.copy(remindAt = null) else it })
+    }
+
+    /** Reminders too old to go off any more (see [CATCH_UP_MS]) leave their task. */
+    fun clearStale(d: AppData, nowMs: Long): AppData {
+        val cutoff = nowMs - CATCH_UP_MS
+        if (d.tasks.none { (it.remindAt ?: Long.MAX_VALUE) < cutoff }) return d
+        return d.copy(tasks = d.tasks.map { if ((it.remindAt ?: Long.MAX_VALUE) < cutoff) it.copy(remindAt = null) else it })
     }
 
     /** Alarms fire at or just after their time; this only absorbs clock jitter, so nothing shows early. */

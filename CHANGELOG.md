@@ -2,6 +2,22 @@
 
 All notable changes to Accomplish (called Matter until 0.5). Newest first. Versions match `versionName` in `app/build.gradle.kts`.
 
+## 0.12.0 · 18 Nov 2026
+
+**This update needs a reinstall.** Accomplish is now signed with a new key, because the old one was lost. Android won't install this version over an older one, and Obtainium will report a signature mismatch. Uninstall Accomplish, install 0.12.0, allow file access and choose the same location as before. Your tasks, their backups and your settings are kept in the Accomplish folder, so they come back as they were. Android asks for the permissions again.
+
+### Added
+- Tick off any step of a big task, in any order: tap its circle in the task sheet.
+- Reorder steps: long-press a step's circle and drag it up or down.
+
+### Changed
+- Card colours come in three muted styles: Soft (the earlier Muted), Dusty and Earthy (Settings › Looks › Card colours). Bright is gone, and anyone who used it now gets Soft.
+- On a big task's card, only the circle ticks off the step. Tapping the step or "+1" opens the task, so steps don't get ticked by accident.
+- Upcoming steps in the task sheet have circles instead of numbers, which started again at 1 below the finished steps.
+
+### Fixed
+- A reminder no longer shows in the task sheet after it has gone off.
+
 ## 0.11.0 · 8 Nov 2026
 
 ### Added

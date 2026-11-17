@@ -62,8 +62,10 @@ On first launch it asks for "All files access" and where to keep your data. Upda
 To check that an APK is genuine, compare its signing certificate with this SHA-256 fingerprint, using [AppVerifier](https://github.com/soupslurpr/AppVerifier) or `apksigner verify --print-certs`:
 
 ```
-D6:15:5C:52:08:41:D3:93:A5:D6:1D:E8:0E:86:A9:94:8B:F8:7B:4F:BC:7B:52:C8:9C:D6:AD:53:F1:FF:82:F5
+08:2C:4C:58:82:15:2E:13:34:04:C1:DA:C7:43:FC:02:FA:3F:1A:7E:9D:70:A6:5E:2D:F9:2E:0A:67:33:9C:47
 ```
+
+Releases up to 0.11.0 were signed with an earlier key, which was lost (`D6:15:5C:52:08:41:D3:93:A5:D6:1D:E8:0E:86:A9:94:8B:F8:7B:4F:BC:7B:52:C8:9C:D6:AD:53:F1:FF:82:F5`). Moving from one of those to 0.12.0 or later needs an uninstall first. Your tasks and settings stay in the Accomplish folder, and come back when you choose it again.
 
 ## Build from source
 

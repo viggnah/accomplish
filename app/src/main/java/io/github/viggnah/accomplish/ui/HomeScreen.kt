@@ -159,17 +159,19 @@ private fun StepButton(state: AppState, t: Task) {
     var ticking by remember(t.id, t.next) { mutableStateOf(false) }
     val tick by animateFloatAsState(if (ticking) 1f else 0f, spring(dampingRatio = 0.45f, stiffness = 500f), label = "tick")
     LaunchedEffect(ticking) { if (ticking) { delay(380); state.stepDone(t.id) } }
+    // Only the circle ticks the step. The rest of the row is part of the card, so tapping it opens the task.
     Row(
-        Modifier.fillMaxWidth().inset(p, BtnShape, p.chip).squish(enabled = !ticking) { ticking = true }
-            .padding(horizontal = 12.dp, vertical = 10.dp),
+        Modifier.fillMaxWidth().inset(p, BtnShape, p.chip).padding(start = 3.dp, end = 12.dp, top = 1.dp, bottom = 1.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(Modifier.size(26.dp).graphicsLayer { scaleX = 1f + tick * 0.18f; scaleY = 1f + tick * 0.18f }.background(p.hi, CircleShape), contentAlignment = Alignment.Center) {
-            if (tick > 0.05f) Ico(Icons.check, p.cardInk, 16.dp, stroke = 3f, modifier = Modifier.graphicsLayer { scaleX = tick; scaleY = tick })
+        Box(Modifier.size(44.dp).squish(enabled = !ticking) { ticking = true }, contentAlignment = Alignment.Center) {
+            Box(Modifier.size(26.dp).graphicsLayer { scaleX = 1f + tick * 0.18f; scaleY = 1f + tick * 0.18f }.background(p.hi, CircleShape), contentAlignment = Alignment.Center) {
+                if (tick > 0.05f) Ico(Icons.check, p.cardInk, 16.dp, stroke = 3f, modifier = Modifier.graphicsLayer { scaleX = tick; scaleY = tick })
+            }
         }
-        Spacer(Modifier.width(12.dp))
+        Spacer(Modifier.width(3.dp))
         Txt(t.next.orEmpty(), Type.body(16.sp, FontWeight.Bold).copy(textDecoration = if (ticking) TextDecoration.LineThrough else null),
-            p.cardInk.copy(alpha = if (ticking) 0.55f else 1f), Modifier.weight(1f))
+            p.cardInk.copy(alpha = if (ticking) 0.55f else 1f), Modifier.weight(1f).padding(vertical = 9.dp))
         val more = t.steps.size - 1
         if (more > 0) Txt("+$more", Type.body(14.sp, FontWeight.ExtraBold), p.cardInk.copy(alpha = 0.6f), Modifier.padding(start = 8.dp))
     }

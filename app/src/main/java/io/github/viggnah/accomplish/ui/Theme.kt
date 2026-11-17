@@ -12,8 +12,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import io.github.viggnah.accomplish.R
+import io.github.viggnah.accomplish.data.CardStyle
 
-/** The "Sorbet" palette. Card colours are gradient pairs; card text is always dark. */
+/** The "Sorbet" palette. Card colours come from the chosen [CardStyle], see [withCards]. */
 @Immutable
 data class Palette(
     val dark: Boolean,
@@ -37,14 +38,8 @@ data class Palette(
     fun cardBrush(i: Int): Brush = androidx.compose.ui.graphics.SolidColor(cardColor(i))
 }
 
-private val sorbetCards = listOf(
-    Color(0xFFFF7EB6) to Color(0xFFFFB1D8), // rose
-    Color(0xFFFFD84D) to Color(0xFFFFF09A), // lemon
-    Color(0xFF3DDBB8) to Color(0xFF9AF2DA), // aqua
-    Color(0xFF4FB7FF) to Color(0xFF9ED8FF), // sky
-    Color(0xFF8F6BFF) to Color(0xFFC0A8FF), // violet
-)
-val COLOR_NAMES = listOf("Rose", "Lemon", "Aqua", "Sky", "Violet")
+/** Placeholder until a card style is applied with [withCards]. */
+private val baseCards = List(5) { Color.Gray to Color.Gray }
 
 val LightPalette = Palette(
     dark = false,
@@ -57,7 +52,7 @@ val LightPalette = Palette(
     frostA = Color(0xEBF4FAFF), frostB = Color(0xB3C4DCF8), frostSpark = Color(0xF7FFFFFF),
     placeholder = Color(0xFF9792B0), edge = Color.Transparent,
     urgent = Color(0xFFE5484D), urgentInk = Color(0xFFD13438), cardDim = 0f,
-    cards = sorbetCards, waitingMix = 0.6f,
+    cards = baseCards, waitingMix = 0.6f,
 )
 
 val DarkPalette = Palette(
@@ -71,21 +66,29 @@ val DarkPalette = Palette(
     frostA = Color(0xB3D5E2F5), frostB = Color(0x99ACC8EC), frostSpark = Color(0xC7DCE5F7),
     placeholder = Color(0xFF9F99C4), edge = Color(0x24FFFFFF),
     urgent = Color(0xFFE5484D), urgentInk = Color(0xFFFF8589), cardDim = 0.16f,
-    cards = sorbetCards, waitingMix = 0.8f,
+    cards = baseCards, waitingMix = 0.8f,
 )
 
 /**
- * The same five card colours, quieter. Light mode: dusty pastels with dark text.
+ * Five card colours (rose, lemon, aqua, sky, violet) in each style. Light mode: pale tones with dark text.
  * Dark mode: deep tones with light text, and chips dark enough to keep that text readable.
  */
-fun Palette.muted(): Palette =
-    if (!dark) copy(
-        cards = listOf(0xFFE9B9CB, 0xFFEBDDA5, 0xFFAEDDD0, 0xFFAECDEA, 0xFFC7BCEF).map { Color(it) to Color(it) },
-        cardDim = 0f,
-    ) else copy(
-        cards = listOf(0xFF6B3F52, 0xFF6A5B2E, 0xFF2F5C53, 0xFF304E6E, 0xFF4A3F7A).map { Color(it) to Color(it) },
-        cardDim = 0f, cardInk = Color(0xFFF7F4FF), chip = Color(0x2EFFFFFF), hi = Color(0x24FFFFFF),
-    )
+private fun cardTones(style: CardStyle, dark: Boolean): List<Long> = when (style) {
+    CardStyle.MUTED -> if (!dark) listOf(0xFFE9B9CB, 0xFFEBDDA5, 0xFFAEDDD0, 0xFFAECDEA, 0xFFC7BCEF)
+        else listOf(0xFF6B3F52, 0xFF6A5B2E, 0xFF2F5C53, 0xFF304E6E, 0xFF4A3F7A)
+    // Greyer: the same hues with most of the colour taken out.
+    CardStyle.DUSTY -> if (!dark) listOf(0xFFDCC3CB, 0xFFDDD5B6, 0xFFBDD3CC, 0xFFBCCAD8, 0xFFCAC4DE)
+        else listOf(0xFF574650, 0xFF57513D, 0xFF3D514C, 0xFF3D4958, 0xFF48435E)
+    // Warmer, from nature: terracotta, ochre, sage, slate and plum.
+    CardStyle.EARTHY -> if (!dark) listOf(0xFFE6B8A6, 0xFFE8D09C, 0xFFC2D3AE, 0xFFADC3D2, 0xFFD1B8D2)
+        else listOf(0xFF6E4134, 0xFF6B5527, 0xFF46573A, 0xFF33505F, 0xFF5A3F5C)
+}
+
+fun Palette.withCards(style: CardStyle): Palette {
+    val cards = cardTones(style, dark).map { Color(it) to Color(it) }
+    return if (!dark) copy(cards = cards, cardDim = 0f)
+    else copy(cards = cards, cardDim = 0f, cardInk = Color(0xFFF7F4FF), chip = Color(0x2EFFFFFF), hi = Color(0x24FFFFFF))
+}
 
 val LocalPalette = staticCompositionLocalOf { LightPalette }
 

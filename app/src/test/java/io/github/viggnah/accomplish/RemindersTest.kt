@@ -88,4 +88,29 @@ class RemindersTest {
     @Test fun offMeansNothing() {
         assertEquals(0, Reminders.plan(AppData(listOf(task("a", Kind.BIG, today + 2))), Settings(notify = false), now, emptySet()).size)
     }
+
+    @Test fun aReminderThatWentOffLeavesItsTask() {
+        val at = now.toInstant().toEpochMilli()
+        val moved = at + 60 * 60 * 1000L
+        val d = AppData(listOf(
+            task("a", Kind.SMALL, null).copy(remindAt = at),
+            task("b", Kind.BIG, null).copy(remindAt = moved), // snoozed since, so a different time
+            task("c", Kind.SMALL, null),
+        ))
+        val cleared = Reminders.clearFired(d, mapOf("a" to at, "b" to at))
+        assertEquals(listOf(null, moved, null), cleared.tasks.map { it.remindAt })
+        assertTrue(Reminders.clearFired(cleared, mapOf("a" to at)) === cleared)
+        assertEquals("rem:a:$at", Reminders.plan(d, quiet, now, emptySet()).first().key)
+        assertEquals("a", Reminders.plan(d, quiet, now, emptySet()).first().taskId)
+    }
+
+    @Test fun onlyRemindersTooOldToGoOffAreDropped() {
+        val nowMs = now.toInstant().toEpochMilli()
+        val old = nowMs - Reminders.CATCH_UP_MS - 1
+        val recent = nowMs - 60_000
+        val d = AppData(listOf(task("a", Kind.SMALL, null).copy(remindAt = old), task("b", Kind.SMALL, null).copy(remindAt = recent)))
+        assertEquals(listOf(null, recent), Reminders.clearStale(d, nowMs).tasks.map { it.remindAt })
+        val fresh = AppData(listOf(task("b", Kind.SMALL, null).copy(remindAt = recent)))
+        assertTrue(Reminders.clearStale(fresh, nowMs) === fresh)
+    }
 }

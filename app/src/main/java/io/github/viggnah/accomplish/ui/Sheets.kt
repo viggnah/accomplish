@@ -1,6 +1,17 @@
 package io.github.viggnah.accomplish.ui
 
 import android.app.DatePickerDialog
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.ui.composed
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.zIndex
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -74,10 +85,12 @@ private fun WhenRow(state: AppState, horizon: Horizon, deadline: Long?, today: L
     }
 }
 
-/** A one-off reminder: pick a day, then a time. Shows when it's set, with × to remove (undoable). */
+/** A one-off reminder: pick a day, then a time. Shows when it's coming up, with × to remove (undoable). */
 @Composable
-private fun RemindRow(state: AppState, remindAt: Long?, onChange: (Long?) -> Unit) {
+private fun RemindRow(state: AppState, reminder: Long?, onChange: (Long?) -> Unit) {
     val p = pal()
+    // Once its time has passed it has gone off, so it's shown as no reminder.
+    val remindAt = reminder?.takeIf { it > System.currentTimeMillis() }
     val ctx = LocalContext.current
     val pick = {
         val zone = java.time.ZoneId.systemDefault()
@@ -102,19 +115,35 @@ private fun RemindRow(state: AppState, remindAt: Long?, onChange: (Long?) -> Uni
     }
 }
 
-/** Planned steps in order. The first one is what shows on the card; ticking it brings up the next. */
+/**
+ * Planned steps in order; the first one is what shows on the card. Finished steps sit above, ticked.
+ * With [onTick], tapping a step's circle ticks it off, in any order. Long-press the circle (or dot) and drag to reorder.
+ */
 @Composable
-private fun StepsEditor(state: AppState, steps: List<String>, done: List<String> = emptyList(), onChange: (List<String>) -> Unit) {
+private fun StepsEditor(
+    state: AppState, steps: List<String>, done: List<String> = emptyList(),
+    onTick: ((Int) -> Unit)? = null, onChange: (List<String>) -> Unit,
+) {
     val p = pal()
+    val drag = remember(steps.size) { StepDrag() }
+    drag.onMove = { from, to -> onChange(steps.toMutableList().apply { add(to, removeAt(from)) }) }
     done.forEach { step ->
-        Row(Modifier.padding(bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.width(20.dp)) { Ico(Icons.check, p.inkSoft, 14.dp, stroke = 2.8f) }
-            Txt(step, Type.body(16.sp), p.inkSoft, Modifier.padding(start = 16.dp))
+        Row(Modifier.padding(bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.size(44.dp), contentAlignment = Alignment.Center) { Ico(Icons.check, p.inkSoft, 16.dp, stroke = 2.8f) }
+            Txt(step, Type.body(16.sp), p.inkSoft, Modifier.weight(1f).padding(start = 16.dp, end = 50.dp))
         }
     }
     steps.forEachIndexed { i, step ->
-        Row(Modifier.padding(bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Txt("${i + 1}", Type.display(14.sp), p.inkSoft, Modifier.width(20.dp))
+        Row(drag.row(i, steps.size).padding(bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                Modifier.size(44.dp)
+                    .squish(enabled = onTick != null && step.isNotBlank()) { onTick?.invoke(i) }
+                    .then(drag.handle(i)),
+                contentAlignment = Alignment.Center,
+            ) {
+                if (onTick != null) Box(Modifier.size(22.dp).border(2.dp, p.inkSoft, CircleShape))
+                else Box(Modifier.size(7.dp).background(p.inkSoft, CircleShape))
+            }
             Field(step, { v -> onChange(steps.toMutableList().also { it[i] = v }) }, if (i == 0) "The smallest thing that moves it" else "And then…",
                 Modifier.weight(1f), singleLine = false)
             Spacer(Modifier.width(2.dp))
@@ -128,6 +157,55 @@ private fun StepsEditor(state: AppState, steps: List<String>, done: List<String>
         }
     }
     ClayButton(if (steps.isEmpty()) "Add a step" else "Add another", kind = BtnKind.PLAIN, icon = Icons.plus) { onChange(steps + "") }
+}
+
+/** Long-press a step's circle, then drag it up or down. Like moving cards on Home; moving it back is just as easy, so no undo. */
+private class StepDrag {
+    var onMove: (Int, Int) -> Unit = { _, _ -> }
+    private var dragging by mutableIntStateOf(-1)
+    private var dy by mutableFloatStateOf(0f)
+    private var count = 0
+    private val heights = mutableStateMapOf<Int, Int>()
+
+    private fun target(): Int {
+        val f = dragging; if (f < 0) return -1
+        var t = f
+        var acc = 0f
+        if (dy > 0) for (j in f + 1 until count) { val h = (heights[j] ?: 0).toFloat(); acc += h; if (dy > acc - h / 2) t = j }
+        else for (j in f - 1 downTo 0) { val h = (heights[j] ?: 0).toFloat(); acc += h; if (-dy > acc - h / 2) t = j }
+        return t
+    }
+
+    private fun shift(i: Int): Float {
+        val f = dragging; if (f < 0) return 0f
+        val t = target(); val h = (heights[f] ?: 0).toFloat()
+        return when { t > f && i in f + 1..t -> -h; t < f && i in t until f -> h; else -> 0f }
+    }
+
+    fun row(i: Int, n: Int): Modifier = Modifier.composed {
+        count = n
+        val on = dragging == i
+        val slide by animateFloatAsState(if (on) 0f else shift(i), spring(dampingRatio = 0.8f, stiffness = 500f), label = "slide")
+        Modifier
+            .zIndex(if (on) 1f else 0f)
+            .onGloballyPositioned { heights[i] = it.size.height }
+            .graphicsLayer { translationY = if (on) dy else slide; alpha = if (on) 0.9f else 1f }
+    }
+
+    fun handle(i: Int): Modifier = Modifier.pointerInput(this, i) {
+        detectDragGesturesAfterLongPress(
+            onDragStart = { dragging = i; dy = 0f },
+            onDrag = { change, amount -> change.consume(); dy += amount.y },
+            onDragEnd = { finish(true) },
+            onDragCancel = { finish(false) },
+        )
+    }
+
+    private fun finish(drop: Boolean) {
+        val f = dragging; val t = target()
+        dragging = -1; dy = 0f
+        if (drop && f >= 0 && t >= 0 && t != f) onMove(f, t)
+    }
 }
 
 @Composable
@@ -208,8 +286,13 @@ fun EditSheet(state: AppState, id: String) {
     Spacer(Modifier.height(14.dp))
     Field(draft.title, { draft = draft.copy(title = it) }, "What needs doing?", singleLine = false)
     if (big) {
-        SectionLabel(if (t.doneSteps.isEmpty()) "Next steps" else "Steps")
-        StepsEditor(state, draft.steps, done = t.doneSteps) { draft = draft.copy(steps = it) }
+        val done = t.doneSteps + draft.ticked
+        SectionLabel(if (done.isEmpty()) "Next steps" else "Steps")
+        StepsEditor(state, draft.steps, done = done, onTick = { i ->
+            val before = draft
+            draft = draft.copy(steps = draft.steps.filterIndexed { j, _ -> j != i }, ticked = draft.ticked + draft.steps[i].trim())
+            state.offerUndo("Step done") { draft = before }
+        }) { draft = draft.copy(steps = it) }
     }
     SectionLabel("When")
     WhenRow(state, draft.horizon, draft.deadline, state.today, { draft = draft.copy(horizon = it) }, { draft = draft.copy(deadline = it) })

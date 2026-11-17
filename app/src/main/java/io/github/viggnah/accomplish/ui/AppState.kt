@@ -22,6 +22,7 @@ import io.github.viggnah.accomplish.logic.Capsules
 import io.github.viggnah.accomplish.logic.ContentBank
 import io.github.viggnah.accomplish.logic.Logic
 import io.github.viggnah.accomplish.logic.Logic.logged
+import io.github.viggnah.accomplish.logic.Reminders
 import java.io.File
 import java.time.LocalDate
 import kotlin.random.Random
@@ -48,6 +49,8 @@ data class Draft(
     val title: String, val steps: List<String>, val horizon: Horizon, val deadline: Long?,
     val color: Int, val size: Size, val place: Int?, val why: String,
     val remindAt: Long? = null,
+    /** Steps ticked off in the sheet, in order. They count as done once the sheet closes. */
+    val ticked: List<String> = emptyList(),
 )
 
 data class Toast(val id: Long, val msg: String, val undoable: Boolean, val until: Long)
@@ -118,7 +121,8 @@ class AppState(private val ctx: Context) {
         val dir = File(settings.dataDir ?: return)
         when (val r = storage.load(dir)) {
             is LoadResult.Ok -> {
-                data = r.data
+                data = Reminders.clearStale(r.data, System.currentTimeMillis())
+                if (data !== r.data) persist()
                 settingsStore.exportTo(dir)
                 phase = Phase.Ready
                 deliverNotes()
@@ -359,6 +363,12 @@ class AppState(private val ctx: Context) {
         }
     }
 
+    /** Reminders that just went off leave their tasks. */
+    fun remindersFired(fired: Map<String, Long>) {
+        if (Reminders.clearFired(data, fired) === data) return
+        act(null, undoable = false) { d -> Reminders.clearFired(d, fired) }
+    }
+
     /** Snoozed from a notification. */
     fun snooze(id: String, at: Long) = act(null, undoable = false) { d ->
         Logic.update(d, id) { it.copy(remindAt = at).logged(EventType.REMINDER_SET, today, num = at) }
@@ -399,9 +409,12 @@ class AppState(private val ctx: Context) {
         act(if (!moved) "Saved" else if (draft.place == null) "Moved to the ${settings.waiting}" else "Moved", undoable = moved) { d -> applyDraft(d, id, draft) }
     }
 
+    /** A time that has passed can't go off (it may have just gone off while the sheet was open), so it counts as no reminder. */
+    private fun Draft.reminder(t: Task) = remindAt?.takeIf { it > System.currentTimeMillis() || it == t.remindAt }
+
     fun changed(t: Task, d: Draft): Boolean {
         val place = if (t.status == Status.ACTIVE) active.indexOf(t) else null
-        return (d.title.isNotBlank() && d.title.trim() != t.title) || d.horizon != t.horizon || d.deadline != t.deadline || d.remindAt != t.remindAt ||
+        return d.ticked.isNotEmpty() || (d.title.isNotBlank() && d.title.trim() != t.title) || d.horizon != t.horizon || d.deadline != t.deadline || d.reminder(t) != t.remindAt ||
             (t.kind == Kind.BIG && (clean(d.steps) != t.steps || d.color != t.color || d.size != t.size ||
                 d.place != place || (d.why.trim().ifEmpty { null }) != t.why))
     }
@@ -416,14 +429,16 @@ class AppState(private val ctx: Context) {
                 t = t.copy(deadline = dr.deadline)
                 t = if (dr.deadline == null) t.logged(EventType.DEADLINE_REMOVED, today) else t.logged(EventType.DEADLINE_SET, today, num = dr.deadline)
             }
-            if (dr.remindAt != t.remindAt) {
-                t = t.copy(remindAt = dr.remindAt)
-                t = if (dr.remindAt == null) t.logged(EventType.REMINDER_REMOVED, today) else t.logged(EventType.REMINDER_SET, today, num = dr.remindAt)
+            val rem = dr.reminder(t0)
+            if (rem != t.remindAt) {
+                t = t.copy(remindAt = rem)
+                t = if (rem == null) t.logged(EventType.REMINDER_REMOVED, today) else t.logged(EventType.REMINDER_SET, today, num = rem)
             }
             if (t.kind == Kind.BIG) {
+                dr.ticked.forEach { t = t.logged(EventType.STEP_DONE, today, text = it) }
                 val steps = clean(dr.steps)
                 if (steps != t.steps) {
-                    (t.steps - steps.toSet()).forEach { t = t.logged(EventType.NEXT_CLEARED, today, text = it) }
+                    (t.steps - steps.toSet() - dr.ticked.toSet()).forEach { t = t.logged(EventType.NEXT_CLEARED, today, text = it) }
                     (steps - t.steps.toSet()).forEach { t = t.logged(EventType.NEXT_SET, today, text = it) }
                     t = t.copy(steps = steps)
                 }
@@ -434,6 +449,8 @@ class AppState(private val ctx: Context) {
             }
             t
         }
+        // Ticking steps in the sheet can earn a capsule, like ticking one on the card.
+        if (dr.ticked.isNotEmpty()) d = Capsules.onStep(d, d0.tasks.first { it.id == id }, settings, today, rnd)
         val t = d.tasks.first { it.id == id }
         if (t.kind == Kind.BIG && t.isOpen) {
             val cur = if (t.status == Status.ACTIVE) Logic.active(d).indexOf(t) else null

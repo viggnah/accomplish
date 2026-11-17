@@ -168,7 +168,7 @@ fun SettingsScreen(state: AppState) {
                 Txt("Theme", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 6.dp, bottom = 8.dp))
                 Segmented(listOf(ThemeMode.SYSTEM to "System", ThemeMode.LIGHT to "Light", ThemeMode.DARK to "Dark"), s.theme) { state.updateSettings(s.copy(theme = it)) }
                 Txt("Card colours", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 14.dp, bottom = 8.dp))
-                Segmented(listOf(io.github.viggnah.accomplish.data.CardStyle.BRIGHT to "Bright", io.github.viggnah.accomplish.data.CardStyle.MUTED to "Muted"), s.cardStyle) {
+                Segmented(io.github.viggnah.accomplish.data.CardStyle.entries.map { it to it.label }, s.cardStyle) {
                     state.updateSettings(s.copy(cardStyle = it))
                 }
             }

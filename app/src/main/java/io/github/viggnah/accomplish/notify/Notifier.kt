@@ -117,16 +117,27 @@ object Notifier {
         val s = SettingsStore(ctx).load()
         val at = if (mode == "hour") System.currentTimeMillis() + 60 * 60 * 1000L
             else LocalDate.now().plusDays(1).atTime(s.remindHour, 0).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        val today = LocalDate.now().toEpochDay()
+        change(ctx, inApp = { it.snooze(taskId, at) }) { data ->
+            Logic.update(data, taskId) { it.copy(remindAt = at, log = it.log + Event(today, EventType.REMINDER_SET, num = at)) }
+        }
+    }
+
+    /**
+     * Change your data from outside the app's screens. With your data loaded in the app, change it there,
+     * so nothing overwrites the change later. Otherwise change the file.
+     */
+    private fun change(ctx: Context, inApp: (io.github.viggnah.accomplish.ui.AppState) -> Unit, inFile: (AppData) -> AppData) {
         val app = ctx.applicationContext as App
         Handler(Looper.getMainLooper()).post {
-            // With your data loaded in the app, change it there so nothing overwrites the snooze later.
-            if (app.stateCreated && app.state.phase == Phase.Ready) { app.state.snooze(taskId, at); return@post }
+            if (app.stateCreated && app.state.phase == Phase.Ready) { inApp(app.state); return@post }
             Thread {
+                val s = SettingsStore(ctx).load()
                 val dir = s.dataDir ?: return@Thread
                 val storage = Storage(ctx)
                 val data = (storage.load(File(dir)) as? LoadResult.Ok)?.data ?: return@Thread
-                val today = LocalDate.now().toEpochDay()
-                val updated = Logic.update(data, taskId) { it.copy(remindAt = at, log = it.log + Event(today, EventType.REMINDER_SET, num = at)) }
+                val updated = inFile(data)
+                if (updated === data) return@Thread
                 runCatching { storage.writeNow(File(dir), updated, s.backups) }
                 runCatching { run(ctx, updated) }
             }.start()
@@ -146,6 +157,9 @@ object Notifier {
                 val nm = ctx.getSystemService(NotificationManager::class.java)
                 due.forEach { n -> nm.notify(n.key.hashCode(), build(ctx, n)) }
                 markSent(ctx, due.map { it.key }, counted = due.count { it.channel != Reminders.REMINDERS })
+                // A reminder that went off has done its job, so it leaves the task. History keeps when it was set.
+                val fired = due.mapNotNull { n -> n.taskId?.let { it to n.at } }.toMap()
+                if (fired.isNotEmpty()) change(ctx, inApp = { it.remindersFired(fired) }) { Reminders.clearFired(it, fired) }
             }
         }
         val next = all.filter { it.at > now + Reminders.GRACE }.minByOrNull { it.at }

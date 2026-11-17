@@ -102,7 +102,7 @@ import kotlin.random.Random
 fun Root(state: AppState) {
     val sysDark = isSystemInDarkTheme()
     val dark = when (state.settings.theme) { ThemeMode.SYSTEM -> sysDark; ThemeMode.LIGHT -> false; ThemeMode.DARK -> true }
-    val p = (if (dark) DarkPalette else LightPalette).let { if (state.settings.cardStyle == io.github.viggnah.accomplish.data.CardStyle.MUTED) it.muted() else it }
+    val p = (if (dark) DarkPalette else LightPalette).withCards(state.settings.cardStyle)
     val ctx = LocalContext.current
     LaunchedEffect(dark) {
         val style = if (dark) SystemBarStyle.dark(AColor.TRANSPARENT) else SystemBarStyle.light(AColor.TRANSPARENT, AColor.TRANSPARENT)

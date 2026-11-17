@@ -6,7 +6,8 @@ import java.io.File
 
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
 
-enum class CardStyle { BRIGHT, MUTED }
+/** Card colour styles. MUTED is shown as "Soft"; the name stays so saved settings keep working. */
+enum class CardStyle(val label: String) { MUTED("Soft"), DUSTY("Dusty"), EARTHY("Earthy") }
 
 /** How often a side quest involves other people. */
 enum class SocialRate(val label: String, val chance: Double) {
@@ -25,7 +26,7 @@ data class Settings(
     val undoSecs: Int = 10,
     val captureDefault: Kind = Kind.SMALL,
     val theme: ThemeMode = ThemeMode.SYSTEM,
-    val cardStyle: CardStyle = CardStyle.BRIGHT,
+    val cardStyle: CardStyle = CardStyle.MUTED,
     val nameBig: String = "",
     val nameSmall: String = "",
     val nameWaiting: String = "",

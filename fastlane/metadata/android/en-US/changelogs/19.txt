@@ -1,0 +1,6 @@
+This update needs a reinstall: it's signed with a new key. Uninstall, install, and choose the same folder. Your tasks and settings are kept.
+- Tick off any step, in any order, from the task sheet
+- Long-press a step's circle to reorder
+- Only the circle ticks a step on the card
+- Three muted card colour styles; Bright is gone
+- Reminders that have gone off no longer show
