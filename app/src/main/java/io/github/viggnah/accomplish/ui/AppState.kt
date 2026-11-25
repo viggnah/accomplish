@@ -23,11 +23,12 @@ import io.github.viggnah.accomplish.logic.ContentBank
 import io.github.viggnah.accomplish.logic.Logic
 import io.github.viggnah.accomplish.logic.Logic.logged
 import io.github.viggnah.accomplish.logic.Reminders
+import io.github.viggnah.accomplish.logic.Sleep
 import java.io.File
 import java.time.LocalDate
 import kotlin.random.Random
 
-enum class Screen { HOME, SMALL, WAITING, COMING, HISTORY, COLLECTION, NOTES, SETTINGS }
+enum class Screen { HOME, SMALL, WAITING, COMING, HISTORY, COLLECTION, NOTES, SETTINGS, HABITS }
 
 sealed interface Sheet {
     /** [spot] set means "create straight into this spot on Home" (from tapping an empty spot). */
@@ -51,6 +52,8 @@ data class Draft(
     val remindAt: Long? = null,
     /** Steps ticked off in the sheet, in order. They count as done once the sheet closes. */
     val ticked: List<String> = emptyList(),
+    /** Steps finished earlier and unticked in the sheet. They're back among the steps to do. */
+    val unticked: List<String> = emptyList(),
 )
 
 data class Toast(val id: Long, val msg: String, val undoable: Boolean, val until: Long)
@@ -69,6 +72,9 @@ class AppState(private val ctx: Context) {
     val screen get() = stack.last()
     var sheet by mutableStateOf<Sheet?>(null)
     var menuOpen by mutableStateOf(false)
+
+    /** The Settings page open under the Settings index, or null for the index itself. */
+    var settingsPage by mutableStateOf<SettingsPage?>(null)
     var toast by mutableStateOf<Toast?>(null); private set
     var opening by mutableStateOf<String?>(null)
     var askNext by mutableStateOf<String?>(null)
@@ -162,7 +168,7 @@ class AppState(private val ctx: Context) {
         val dir = settings.dataDir ?: return
         storage.save(File(dir), data, settings.backups)
         // A reminder set or changed should be armed now, not when the app is next left.
-        val reminders = data.tasks.map { if (it.isOpen) it.remindAt else null }
+        val reminders = data.tasks.map { if (it.isOpen) it.remindAt else null } + data.bedtimes
         if (reminders != lastReminders) { lastReminders = reminders; io.github.viggnah.accomplish.notify.Notifier.runAsync(ctx, data) }
     }
 
@@ -179,13 +185,14 @@ class AppState(private val ctx: Context) {
         when (where) {
             "small" -> { closeSheet(); go(Screen.HOME); go(Screen.SMALL) }
             "waiting" -> { closeSheet(); go(Screen.HOME); go(Screen.WAITING) }
+            "habits" -> { closeSheet(); go(Screen.HOME); go(Screen.HABITS) }
             "new" -> { if (sheet !is Sheet.Capture) { closeSheet(); go(Screen.HOME); sheet = Sheet.Capture(Kind.SMALL) } }
             else -> { closeSheet(); go(Screen.HOME) }
         }
     }
 
     fun go(s: Screen) {
-        askNext = null; placeFor = null
+        askNext = null; placeFor = null; settingsPage = null
         stack = if (s == Screen.HOME) listOf(Screen.HOME) else stack.filter { it != s } + s
     }
 
@@ -211,6 +218,7 @@ class AppState(private val ctx: Context) {
         if (opening != null) { opening = null; return true }
         if (menuOpen) { menuOpen = false; return true }
         if (sheet != null) { closeSheet(); return true }
+        if (stack.lastOrNull() == Screen.SETTINGS && settingsPage != null) { settingsPage = null; return true }
         if (stack.size > 1) { stack = stack.dropLast(1); placeFor = null; return true }
         return false
     }
@@ -363,6 +371,23 @@ class AppState(private val ctx: Context) {
         }
     }
 
+    // ---------- sleep ----------
+
+    private val zone get() = java.time.ZoneId.systemDefault()
+
+    /** Going to bed now (or at [at]), from the Habits page or the wind-down reminder. Easy to change right there, so no undo. */
+    fun recordBedtime(at: Long = System.currentTimeMillis()) {
+        act("Bedtime ${Sleep.clock(at, zone)}", undoable = false) { d -> Sleep.record(d, at, zone) }
+        io.github.viggnah.accomplish.notify.Notifier.cancelBedtime(ctx, Sleep.nightOf(at, zone))
+    }
+
+    /** Changing a night's bedtime replaces what was there, so it can be undone. */
+    fun setBedtime(night: Long, minutesAfterNoon: Int) {
+        val at = Sleep.at(night, minutesAfterNoon, zone)
+        act("Bedtime changed", undoable = Sleep.bedtime(data, night, zone) != null) { d -> Sleep.record(d, at, zone) }
+        io.github.viggnah.accomplish.notify.Notifier.cancelBedtime(ctx, night)
+    }
+
     /** Reminders that just went off leave their tasks. */
     fun remindersFired(fired: Map<String, Long>) {
         if (Reminders.clearFired(data, fired) === data) return
@@ -414,7 +439,7 @@ class AppState(private val ctx: Context) {
 
     fun changed(t: Task, d: Draft): Boolean {
         val place = if (t.status == Status.ACTIVE) active.indexOf(t) else null
-        return d.ticked.isNotEmpty() || (d.title.isNotBlank() && d.title.trim() != t.title) || d.horizon != t.horizon || d.deadline != t.deadline || d.reminder(t) != t.remindAt ||
+        return d.ticked.isNotEmpty() || d.unticked.isNotEmpty() || (d.title.isNotBlank() && d.title.trim() != t.title) || d.horizon != t.horizon || d.deadline != t.deadline || d.reminder(t) != t.remindAt ||
             (t.kind == Kind.BIG && (clean(d.steps) != t.steps || d.color != t.color || d.size != t.size ||
                 d.place != place || (d.why.trim().ifEmpty { null }) != t.why))
     }
@@ -435,11 +460,12 @@ class AppState(private val ctx: Context) {
                 t = if (rem == null) t.logged(EventType.REMINDER_REMOVED, today) else t.logged(EventType.REMINDER_SET, today, num = rem)
             }
             if (t.kind == Kind.BIG) {
+                dr.unticked.forEach { t = t.logged(EventType.STEP_UNDONE, today, text = it) }
                 dr.ticked.forEach { t = t.logged(EventType.STEP_DONE, today, text = it) }
                 val steps = clean(dr.steps)
                 if (steps != t.steps) {
                     (t.steps - steps.toSet() - dr.ticked.toSet()).forEach { t = t.logged(EventType.NEXT_CLEARED, today, text = it) }
-                    (steps - t.steps.toSet()).forEach { t = t.logged(EventType.NEXT_SET, today, text = it) }
+                    (steps - t.steps.toSet() - dr.unticked.toSet()).forEach { t = t.logged(EventType.NEXT_SET, today, text = it) }
                     t = t.copy(steps = steps)
                 }
                 if (dr.size != t.size) t = t.copy(size = dr.size).logged(EventType.RESIZED, today, text = dr.size.label)

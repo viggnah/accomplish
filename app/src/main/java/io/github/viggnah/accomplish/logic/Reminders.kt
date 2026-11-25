@@ -30,6 +30,10 @@ object Reminders {
     const val NUDGES = "nudges"
     /** A missed notification (phone off, say) still goes out if it's no older than this. */
     const val CATCH_UP_MS = 12L * 60 * 60 * 1000
+    /** A missed wind-down reminder only makes sense the same night. */
+    const val BED_CATCH_UP_MS = 3L * 60 * 60 * 1000
+
+    fun bedKey(night: Long) = "bed:$night"
 
     fun plan(d: AppData, s: Settings, now: ZonedDateTime, sent: Set<String>): List<Nudge> {
         if (!s.notify) return emptyList()
@@ -82,7 +86,15 @@ object Reminders {
             Nudge("rem:${t.id}:${t.remindAt}", t.remindAt!!, -1, t.title, t.next?.let { "Next: $it" } ?: "Reminder", REMINDERS, "reminder",
                 if (t.kind == Kind.BIG) t.color else null, screen = screenFor(t), taskId = t.id)
         }.filter { it.key !in sent && it.at >= earliest }
-        return (planned + explicit).sortedWith(compareBy({ it.at }, { it.priority }))
+        // Wind down before bed, with a button to record going to bed. Like your own reminders: on time, quiet hours or not.
+        val bed = if (!s.bedReminder) emptyList() else {
+            val tonight = Sleep.nightOf(now.toInstant().toEpochMilli(), zone)
+            listOf(tonight, tonight + 1).filter { Sleep.bedtime(d, it, zone) == null }.map { night ->
+                Nudge(bedKey(night), Sleep.at(night, Sleep.targetAfterNoon(s.bedTarget) - 30, zone), -1, "Time to wind down",
+                    "Bedtime ${Sleep.clock(s.bedTarget)}", REMINDERS, "bedtime", screen = "habits")
+            }.filter { it.key !in sent && it.at >= now.toInstant().toEpochMilli() - BED_CATCH_UP_MS }
+        }
+        return (planned + explicit + bed).sortedWith(compareBy({ it.at }, { it.priority }))
     }
 
     private fun screenFor(t: io.github.viggnah.accomplish.data.Task) = when {

@@ -18,7 +18,7 @@ enum class Size(val steps: Int, val label: String) {
 enum class EventType {
     CREATED, CREATED_WAITING, RENAMED, NEXT_SET, NEXT_CLEARED, WHEN_CHANGED, DEADLINE_SET, DEADLINE_REMOVED,
     PLACED, MOVED, SENT_TO_WAITING, SWAPPED_OUT, STEP_DONE, THAWED, KEPT, DONE, LET_GO, RESTORED, PROMOTED,
-    RESIZED, WHY_SET, REMINDER_SET, REMINDER_REMOVED
+    RESIZED, WHY_SET, REMINDER_SET, REMINDER_REMOVED, STEP_UNDONE
 }
 
 /** One thing that happened to a task. [text] and [num] carry the detail (old title, slot, deadline day, …). */
@@ -44,9 +44,17 @@ data class Task(
     val remindAt: Long? = null,
     val log: List<Event> = emptyList(),
 ) {
-    val stepsDone: Int get() = log.count { it.type == EventType.STEP_DONE }
-    /** Steps ticked off, oldest first. */
-    val doneSteps: List<String> get() = log.filter { it.type == EventType.STEP_DONE }.mapNotNull { it.text }
+    /** Steps ticked off, oldest first. Unticking one takes back its latest tick. */
+    val doneSteps: List<String> get() {
+        val out = mutableListOf<String>()
+        for (e in log) when (e.type) {
+            EventType.STEP_DONE -> e.text?.let { out += it }
+            EventType.STEP_UNDONE -> { val i = out.lastIndexOf(e.text); if (i >= 0) out.removeAt(i) }
+            else -> {}
+        }
+        return out
+    }
+    val stepsDone: Int get() = doneSteps.size
     val next: String? get() = steps.firstOrNull()
     val isOpen: Boolean get() = status == Status.ACTIVE || status == Status.WAITING
 }
@@ -96,4 +104,6 @@ data class AppData(
     /** Content ids already shown, so quests and lessons don't repeat until the bank runs out. */
     val seen: Set<String> = emptySet(),
     val appNotes: List<AppNote> = emptyList(),
+    /** When you went to bed, epoch milliseconds, one per night (see logic.Sleep). */
+    val bedtimes: List<Long> = emptyList(),
 )

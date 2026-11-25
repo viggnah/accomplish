@@ -41,17 +41,6 @@ import io.github.viggnah.accomplish.logic.Logic
 import java.io.File
 
 @Composable
-private fun Group(title: String, note: String? = null, content: @Composable ColumnScope.() -> Unit) {
-    val p = pal()
-    Spacer(Modifier.height(16.dp))
-    Column(Modifier.fillMaxWidth().inset(p, PanelShape).padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 8.dp)) {
-        Txt(title, Type.display(16.sp), p.inkSoft)
-        if (note != null) Txt(note, Type.body(14.sp), p.inkSoft, Modifier.padding(top = 4.dp, bottom = 6.dp))
-        content()
-    }
-}
-
-@Composable
 private fun SetRow(label: String, hint: String? = null, control: @Composable () -> Unit) {
     val p = pal()
     Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -81,44 +70,126 @@ private fun fix(s: Settings) = s.copy(
 )
 
 @Composable
-private fun ToggleRow(state: AppState, label: String, hint: String?, value: Boolean, set: Settings.(Boolean) -> Settings) {
+internal fun ToggleRow(state: AppState, label: String, hint: String?, value: Boolean, set: Settings.(Boolean) -> Settings) {
     SetRow(label, hint) { Toggle(value) { state.updateSettings(state.settings.set(it)) } }
 }
+
+enum class SettingsPage { NAMES, BIG, SMALL, NOTIFICATIONS, CAPSULES, ADDING, LOOKS, STORAGE, ABOUT }
+
+/** One row of the Settings index: a name and what it's set to now. */
+@Composable
+private fun IndexRow(title: String, summary: String, onClick: () -> Unit) {
+    val p = pal()
+    Row(
+        Modifier.fillMaxWidth().squish(scaleDown = 0.98f, onClick = onClick).padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Txt(title, Type.body(16.sp, FontWeight.Bold), p.ink)
+            Txt(summary, Type.body(12.sp), p.inkSoft, maxLines = 1)
+        }
+        Spacer(Modifier.width(8.dp))
+        Ico("M9 6l6 6-6 6", p.inkSoft, 16.dp, stroke = 2.6f)
+    }
+}
+
+/** A row whose stepper runs through [labels] (for example Off, 1 … 30). */
+@Composable
+private fun ChoiceRow(label: String, hint: String?, labels: List<String>, index: Int, onPick: (Int) -> Unit) {
+    SetRow(label, hint) {
+        Stepper(labels[index.coerceIn(0, labels.lastIndex)],
+            onMinus = { onPick((index - 1).coerceAtLeast(0)) },
+            onPlus = { onPick((index + 1).coerceAtMost(labels.lastIndex)) })
+    }
+}
+
+private fun hour(h: Int) = "%02d:00".format(h)
 
 @Composable
 fun SettingsScreen(state: AppState) {
     val s = state.settings
-    val p = pal()
-    var people by remember { mutableStateOf(s.people.joinToString("\n")) }
+    val page = state.settingsPage
+    val version = appVersion()
+    val titles = mapOf(
+        SettingsPage.NAMES to "Names", SettingsPage.BIG to s.big, SettingsPage.SMALL to s.small,
+        SettingsPage.NOTIFICATIONS to "Notifications", SettingsPage.CAPSULES to "Capsules", SettingsPage.ADDING to "Undo and adding",
+        SettingsPage.LOOKS to "Looks", SettingsPage.STORAGE to "Storage", SettingsPage.ABOUT to "About",
+    )
     PageColumn {
-        Header(state, "Settings")
-        ScreenBody {
-            Group("Names") {
+        if (page == null) {
+            Header(state, "Settings")
+            ScreenBody {
+                val p = pal()
+                val summaries = mapOf(
+                    SettingsPage.NAMES to listOf(s.big, s.small, s.waiting, s.history).joinToString(", "),
+                    SettingsPage.BIG to "${Logic.plural(s.slots, "spot")}, " + (if (s.frost) "frost after ${Logic.plural(s.frostStart, "day")}" else "no frost"),
+                    SettingsPage.SMALL to (if (s.heat) "Warm up ${Logic.plural(s.heatWindow, "day")} before" else "No warming") + ", fade after ${Logic.plural(s.fadeStart, "day")}",
+                    SettingsPage.NOTIFICATIONS to (if (s.notify) "On, quiet ${hour(s.quietStart)} to ${hour(s.quietEnd)}" else "Off"),
+                    SettingsPage.CAPSULES to (if (s.capsules) "On" else "Off"),
+                    SettingsPage.ADDING to (if (s.undoSecs > 0) "Undo for ${s.undoSecs} seconds" else "No undo") + ", + adds ${if (s.captureDefault == Kind.BIG) s.big else s.small}",
+                    SettingsPage.LOOKS to "${s.theme.name.lowercase().replaceFirstChar { it.uppercase() }} theme, ${s.cardStyle.label} cards",
+                    SettingsPage.STORAGE to File(s.dataDir ?: "-").path,
+                    SettingsPage.ABOUT to "Accomplish $version",
+                )
+                Spacer(Modifier.height(8.dp))
+                Column(Modifier.fillMaxWidth().inset(p, PanelShape).padding(vertical = 4.dp)) {
+                    SettingsPage.entries.forEachIndexed { i, sp ->
+                        if (i > 0) Box(Modifier.padding(horizontal = 16.dp).fillMaxWidth().height(1.dp).background(p.line))
+                        IndexRow(titles.getValue(sp), summaries.getValue(sp)) { state.settingsPage = sp }
+                    }
+                }
+            }
+        } else {
+            Header(state, titles.getValue(page), backLabel = "Settings")
+            ScreenBody { SettingsPageBody(state, page, version) }
+        }
+    }
+}
+
+@Composable
+private fun appVersion(): String {
+    val ctx = LocalContext.current
+    return remember { runCatching { ctx.packageManager.getPackageInfo(ctx.packageName, 0).versionName }.getOrNull() ?: "" }
+}
+
+@Composable
+private fun SettingsPageBody(state: AppState, page: SettingsPage, version: String) {
+    val s = state.settings
+    val p = pal()
+    val ctx = LocalContext.current
+    val upTo30 = listOf("Off") + (1..30).map { "$it" }
+    Column(Modifier.fillMaxWidth().inset(p, PanelShape).padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)) {
+        when (page) {
+            SettingsPage.NAMES -> {
                 listOf(
-                    Triple("Big, important tasks", s.nameBig, "IMP") to { v: String -> s.copy(nameBig = v) },
-                    Triple("Everyday small tasks", s.nameSmall, "Small stuff") to { v: String -> s.copy(nameSmall = v) },
-                    Triple("Where big tasks wait", s.nameWaiting, "Waiting room") to { v: String -> s.copy(nameWaiting = v) },
-                    Triple("Where finished tasks go", s.nameHistory, "History") to { v: String -> s.copy(nameHistory = v) },
+                    Triple("Big, important tasks", s.nameBig, "IMP") to { v: String -> state.settings.copy(nameBig = v) },
+                    Triple("Everyday small tasks", s.nameSmall, "Small stuff") to { v: String -> state.settings.copy(nameSmall = v) },
+                    Triple("Where big tasks wait", s.nameWaiting, "Waiting room") to { v: String -> state.settings.copy(nameWaiting = v) },
+                    Triple("Where finished tasks go", s.nameHistory, "History") to { v: String -> state.settings.copy(nameHistory = v) },
                 ).forEach { (t, set) ->
                     Txt(t.first, Type.body(14.sp, FontWeight.Bold), p.inkSoft, Modifier.padding(top = 10.dp, bottom = 6.dp))
                     Field(t.second, { state.updateSettings(set(it)) }, t.third, color = p.surface)
                 }
                 Spacer(Modifier.height(8.dp))
             }
-            Group(s.big) {
+            SettingsPage.BIG -> {
                 NumRow(state, "slots", "Spots on Home", null, s.slots) { copy(slots = it) }
-                ToggleRow(state, "Frost untouched ones", null, s.frost) { copy(frost = it) }
-                NumRow(state, "frostStart", "Frost starts after", "days untouched", s.frostStart) { copy(frostStart = it) }
-                NumRow(state, "frostFull", "Fully frosted after", "days untouched", s.frostFull) { copy(frostFull = it) }
+                // One row for frost: Off, or the day it starts. Full frost keeps its distance from the start.
+                ChoiceRow("Frost untouched ones after", "days", upTo30, if (s.frost) s.frostStart else 0) { i ->
+                    val gap = maxOf(1, s.frostFull - s.frostStart)
+                    state.updateSettings(if (i == 0) s.copy(frost = false) else s.copy(frost = true, frostStart = i, frostFull = i + gap))
+                }
             }
-            Group(s.small) {
-                ToggleRow(state, "Warm up near a deadline", null, s.heat) { copy(heat = it) }
-                NumRow(state, "heatWindow", "Start warming up", "days before the deadline", s.heatWindow) { copy(heatWindow = it) }
-                NumRow(state, "fadeStart", "Fade untouched ones after", "days, if there's no deadline", s.fadeStart) { copy(fadeStart = it) }
-                NumRow(state, "askAfter", "Ask “Still want this?” after", "days untouched", s.askAfter) { copy(askAfter = it) }
+            SettingsPage.SMALL -> {
+                ChoiceRow("Warm up before a deadline", "days", upTo30, if (s.heat) s.heatWindow else 0) { i ->
+                    state.updateSettings(if (i == 0) s.copy(heat = false) else s.copy(heat = true, heatWindow = i))
+                }
+                // Fading and "Still want this?" move together, keeping their distance.
+                NumRow(state, "fadeStart", "Fade untouched ones after", "days, then ask “Still want this?” ${Logic.plural(s.askAfter - s.fadeStart, "day")} later", s.fadeStart) {
+                    copy(fadeStart = it, askAfter = it + maxOf(1, s.askAfter - s.fadeStart))
+                }
             }
-            Group("Notifications") {
-                val ctx = LocalContext.current
+            SettingsPage.NOTIFICATIONS -> {
                 ToggleRow(state, "Notifications", null, s.notify) {
                     if (it && ctx.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
                         (ctx as? android.app.Activity)?.requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
@@ -126,75 +197,78 @@ fun SettingsScreen(state: AppState) {
                     copy(notify = it)
                 }
                 if (s.notify) {
-                    ToggleRow(state, "Deadline in 2 days", null, s.remindTwoDays) { copy(remindTwoDays = it) }
-                    ToggleRow(state, "Deadline tomorrow", null, s.remindOneDay) { copy(remindOneDay = it) }
-                    ToggleRow(state, "Include ${s.small}", "for deadline reminders", s.remindSmall) { copy(remindSmall = it) }
+                    Txt("Before a deadline", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 10.dp, bottom = 8.dp))
+                    val dl = when { s.remindTwoDays -> 2; s.remindOneDay -> 1; else -> 0 }
+                    Segmented(listOf(0 to "Off", 1 to "1 day", 2 to "1 and 2 days"), dl) {
+                        state.updateSettings(s.copy(remindOneDay = it >= 1, remindTwoDays = it == 2))
+                    }
+                    if (dl > 0) ToggleRow(state, "Include ${s.small}", null, s.remindSmall) { copy(remindSmall = it) }
                     ToggleRow(state, "When an ${s.big} starts to frost", null, s.frostNudge) { copy(frostNudge = it) }
-                    ToggleRow(state, "Weekly review", null, s.weeklyReview) { copy(weeklyReview = it) }
-                    if (s.weeklyReview) {
-                        val days = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
-                        SetRow("Review on", "evening, at a random time") {
-                            Stepper(days[s.reviewDay - 1],
-                                onMinus = { state.updateSettings(s.copy(reviewDay = if (s.reviewDay == 1) 7 else s.reviewDay - 1)) },
-                                onPlus = { state.updateSettings(s.copy(reviewDay = if (s.reviewDay == 7) 1 else s.reviewDay + 1)) })
-                        }
+                    val days = listOf("Off", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+                    ChoiceRow("Weekly review", "evening, at a random time", days, if (s.weeklyReview) s.reviewDay else 0) { i ->
+                        state.updateSettings(if (i == 0) s.copy(weeklyReview = false) else s.copy(weeklyReview = true, reviewDay = i))
                     }
                     ToggleRow(state, "Now and then: anything new?", null, s.randomPrompt) { copy(randomPrompt = it) }
                     NumRow(state, "remindHour", "Time for deadlines and nudges", "hour of the day", s.remindHour) { copy(remindHour = it) }
-                    NumRow(state, "quietStart", "Quiet from", "hour", s.quietStart) { copy(quietStart = it) }
-                    NumRow(state, "quietEnd", "Quiet until", "hour", s.quietEnd) { copy(quietEnd = it) }
-                    NumRow(state, "maxPerDay", "Nudges per day, at most", "your own reminders always come", s.maxPerDay) { copy(maxPerDay = it) }
+                    SetRow("Quiet hours", "your own reminders still come") {
+                        ClayButton("${hour(s.quietStart)} to ${hour(s.quietEnd)}") {
+                            val (lo, hi) = Settings.bounds.getValue("quietStart").let { it.first to it.second }
+                            val (lo2, hi2) = Settings.bounds.getValue("quietEnd").let { it.first to it.second }
+                            android.app.TimePickerDialog(ctx, { _, h1, _ ->
+                                android.app.TimePickerDialog(ctx, { _, h2, _ ->
+                                    state.updateSettings(state.settings.copy(quietStart = h1.coerceIn(lo, hi), quietEnd = h2.coerceIn(lo2, hi2)))
+                                }, s.quietEnd, 0, true).show()
+                            }, s.quietStart, 0, true).show()
+                        }
+                    }
+                    NumRow(state, "maxPerDay", "Nudges per day, at most", null, s.maxPerDay) { copy(maxPerDay = it) }
                 }
             }
-            Group("Capsules") {
+            SettingsPage.CAPSULES -> {
                 ToggleRow(state, "Capsules", null, s.capsules) { copy(capsules = it) }
-                NumRow(state, "stepDropPercent", "Chance of one for a step", "%, first step on each task per day", s.stepDropPercent) { copy(stepDropPercent = it) }
-                NumRow(state, "smallDropPercent", "Chance of one for ${s.small}", "%, at most once a day", s.smallDropPercent) { copy(smallDropPercent = it) }
-                Txt("Side quests with other people", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 10.dp, bottom = 8.dp))
-                Segmented(SocialRate.entries.map { it to it.label }, s.socialRate) { state.updateSettings(s.copy(socialRate = it)) }
-                Txt("People in your life", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 14.dp))
-                Txt("One per line", Type.body(12.sp), p.inkSoft, Modifier.padding(bottom = 8.dp))
-                Field(people, { people = it; state.updateSettings(state.settings.copy(people = it.split('\n').map(String::trim).filter(String::isNotEmpty))) },
-                    "Amma\nA close friend's name", singleLine = false, minLines = 3, color = p.surface)
-                Spacer(Modifier.height(8.dp))
+                if (s.capsules) {
+                    NumRow(state, "stepDropPercent", "Chance of one for a step", "%, first step on each task per day", s.stepDropPercent) { copy(stepDropPercent = it) }
+                    NumRow(state, "smallDropPercent", "Chance of one for ${s.small}", "%, at most once a day", s.smallDropPercent) { copy(smallDropPercent = it) }
+                    Txt("Side quests with other people", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 10.dp, bottom = 8.dp))
+                    Segmented(SocialRate.entries.map { it to it.label }, s.socialRate) { state.updateSettings(state.settings.copy(socialRate = it)) }
+                    var people by remember { mutableStateOf(s.people.joinToString("\n")) }
+                    Txt("People in your life", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 14.dp))
+                    Txt("One per line", Type.body(12.sp), p.inkSoft, Modifier.padding(bottom = 8.dp))
+                    Field(people, { people = it; state.updateSettings(state.settings.copy(people = it.split('\n').map(String::trim).filter(String::isNotEmpty))) },
+                        "Amma\nA close friend's name", singleLine = false, minLines = 3, color = p.surface)
+                    Spacer(Modifier.height(8.dp))
+                }
             }
-            Group("Undo and adding") {
+            SettingsPage.ADDING -> {
                 NumRow(state, "undoSecs", "Undo window", "seconds to take back any change", s.undoSecs, offLabel = "Off") { copy(undoSecs = it) }
                 Txt("The + button adds", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 10.dp, bottom = 8.dp))
-                Segmented(listOf(Kind.SMALL to s.small, Kind.BIG to s.big), s.captureDefault) { state.updateSettings(s.copy(captureDefault = it)) }
+                Segmented(listOf(Kind.SMALL to s.small, Kind.BIG to s.big), s.captureDefault) { state.updateSettings(state.settings.copy(captureDefault = it)) }
                 Spacer(Modifier.height(8.dp))
             }
-            Group("Looks") {
+            SettingsPage.LOOKS -> {
                 Txt("Theme", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 6.dp, bottom = 8.dp))
-                Segmented(listOf(ThemeMode.SYSTEM to "System", ThemeMode.LIGHT to "Light", ThemeMode.DARK to "Dark"), s.theme) { state.updateSettings(s.copy(theme = it)) }
+                Segmented(listOf(ThemeMode.SYSTEM to "System", ThemeMode.LIGHT to "Light", ThemeMode.DARK to "Dark"), s.theme) { state.updateSettings(state.settings.copy(theme = it)) }
                 Txt("Card colours", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 14.dp, bottom = 8.dp))
                 Segmented(io.github.viggnah.accomplish.data.CardStyle.entries.map { it to it.label }, s.cardStyle) {
-                    state.updateSettings(s.copy(cardStyle = it))
+                    state.updateSettings(state.settings.copy(cardStyle = it))
                 }
+                Spacer(Modifier.height(8.dp))
             }
-            Group("Storage") {
+            SettingsPage.STORAGE -> {
                 Txt(File(s.dataDir ?: "-", Storage.FILE).path, Type.body(14.sp, FontWeight.Bold), p.ink, Modifier.padding(vertical = 6.dp))
                 NumRow(state, "backups", "Daily backups kept", "in the backups folder next to it", s.backups) { copy(backups = it) }
                 ClayButton("Move to another location", Modifier.padding(vertical = 8.dp)) { state.chooseLocationAgain() }
                 Spacer(Modifier.height(8.dp))
             }
-            About()
+            SettingsPage.ABOUT -> {
+                Txt("Accomplish $version", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 6.dp))
+                Txt("Free software under the GPL-3.0. Fonts: Fredoka and Nunito, under the SIL Open Font License.", Type.body(14.sp), p.inkSoft, Modifier.padding(top = 4.dp))
+                ClayButton("Source code", Modifier.padding(vertical = 8.dp), icon = Icons.share) {
+                    runCatching { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/viggnah/accomplish"))) }
+                }
+                Spacer(Modifier.height(4.dp))
+            }
         }
-    }
-}
-
-@Composable
-private fun About() {
-    val p = pal()
-    val ctx = LocalContext.current
-    val version = remember { runCatching { ctx.packageManager.getPackageInfo(ctx.packageName, 0).versionName }.getOrNull() ?: "" }
-    Group("About") {
-        Txt("Accomplish $version", Type.body(16.sp, FontWeight.Bold), p.ink, Modifier.padding(top = 6.dp))
-        Txt("Free software under the GPL-3.0. Fonts: Fredoka and Nunito, under the SIL Open Font License.", Type.body(14.sp), p.inkSoft, Modifier.padding(top = 4.dp))
-        ClayButton("Source code", Modifier.padding(vertical = 8.dp), icon = Icons.share) {
-            runCatching { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/viggnah/accomplish"))) }
-        }
-        Spacer(Modifier.height(4.dp))
     }
 }
 

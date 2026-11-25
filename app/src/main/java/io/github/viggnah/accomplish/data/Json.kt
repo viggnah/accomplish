@@ -13,6 +13,7 @@ object Json {
         put("capsules", JSONArray(d.capsules.map(::capsule)))
         put("notes", JSONArray(d.notes.map(::note)))
         put("seen", JSONArray(d.seen.sorted()))
+        put("bedtimes", JSONArray(d.bedtimes))
         put("appNotes", JSONArray(d.appNotes.map { n -> JSONObject().apply { put("id", n.id); put("at", n.at); put("text", n.text); put("done", n.done) } }))
     }.toString(1)
 
@@ -24,6 +25,7 @@ object Json {
             notes = o.optJSONArray("notes").objects().map(::note),
             seen = o.optJSONArray("seen").strings().toSet(),
             appNotes = o.optJSONArray("appNotes").objects().map { AppNote(it.getString("id"), it.getLong("at"), it.getString("text"), it.optBoolean("done")) },
+            bedtimes = o.optJSONArray("bedtimes")?.let { a -> (0 until a.length()).map { a.getLong(it) } } ?: emptyList(),
         )
     }
 

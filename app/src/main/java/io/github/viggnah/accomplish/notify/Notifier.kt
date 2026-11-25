@@ -20,6 +20,7 @@ import io.github.viggnah.accomplish.data.SettingsStore
 import io.github.viggnah.accomplish.data.Storage
 import io.github.viggnah.accomplish.logic.Nudge
 import io.github.viggnah.accomplish.logic.Reminders
+import io.github.viggnah.accomplish.logic.Sleep
 import android.os.Handler
 import android.os.Looper
 import io.github.viggnah.accomplish.App
@@ -39,6 +40,7 @@ import java.time.ZonedDateTime
 object Notifier {
     private const val ACTION = "io.github.viggnah.accomplish.REMIND"
     const val SNOOZE = "io.github.viggnah.accomplish.SNOOZE"
+    const val BEDTIME = "io.github.viggnah.accomplish.BEDTIME"
     const val EXTRA_SCREEN = "screen"
 
     private fun prefs(ctx: Context) = ctx.getSharedPreferences("reminders", Context.MODE_PRIVATE)
@@ -98,7 +100,13 @@ object Notifier {
             .setVisibility(Notification.VISIBILITY_PRIVATE)
             .setContentIntent(openIntent(ctx, n))
             .setAutoCancel(true)
-        val taskId = n.key.split(':').getOrNull(1)
+        val taskId = n.taskId
+        if (n.type == "bedtime") {
+            val pi = PendingIntent.getBroadcast(ctx, n.key.hashCode() * 2,
+                Intent(ctx, ReminderReceiver::class.java).setAction(BEDTIME).putExtra("notif", n.key.hashCode()),
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+            b.addAction(Notification.Action.Builder(null, "Going to bed", pi).build())
+        }
         if (n.channel == Reminders.REMINDERS && taskId != null) {
             listOf("hour" to "In 1 hour", "tomorrow" to "Tomorrow").forEachIndexed { i, (mode, label) ->
                 val pi = PendingIntent.getBroadcast(ctx, n.key.hashCode() * 2 + i,
@@ -122,6 +130,17 @@ object Notifier {
             Logic.update(data, taskId) { it.copy(remindAt = at, log = it.log + Event(today, EventType.REMINDER_SET, num = at)) }
         }
     }
+
+    /** "Going to bed" from the wind-down reminder: record the time and take the notification away. */
+    fun bedtime(ctx: Context, notifId: Int) {
+        ctx.getSystemService(NotificationManager::class.java).cancel(notifId)
+        val at = System.currentTimeMillis()
+        change(ctx, inApp = { it.recordBedtime(at) }) { Sleep.record(it, at, ZoneId.systemDefault()) }
+    }
+
+    /** Take away tonight's wind-down reminder once going to bed is recorded some other way. */
+    fun cancelBedtime(ctx: Context, night: Long) =
+        ctx.getSystemService(NotificationManager::class.java).cancel(Reminders.bedKey(night).hashCode())
 
     /**
      * Change your data from outside the app's screens. With your data loaded in the app, change it there,
@@ -187,6 +206,7 @@ object Notifier {
 
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        if (intent.action == Notifier.BEDTIME) { Notifier.bedtime(context, intent.getIntExtra("notif", 0)); return }
         if (intent.action == Notifier.SNOOZE) {
             Notifier.snooze(context, intent.getStringExtra("task") ?: return, intent.getStringExtra("mode") ?: "hour", intent.getIntExtra("notif", 0))
             return

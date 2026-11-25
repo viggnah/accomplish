@@ -18,7 +18,7 @@ class RemindersTest {
     private val zone = ZoneId.of("Asia/Colombo")
     private val now = ZonedDateTime.of(2026, 10, 13, 8, 30, 0, 0, zone)
     private val today = now.toLocalDate().toEpochDay()
-    private val quiet = Settings(weeklyReview = false, randomPrompt = false, frostNudge = false)
+    private val quiet = Settings(weeklyReview = false, randomPrompt = false, frostNudge = false, bedReminder = false)
 
     private fun task(id: String, kind: Kind, deadline: Long?, status: Status = Status.ACTIVE, touched: Long = today) =
         Task(id, kind, "Task $id", status, Horizon.WEEK, deadline = deadline, touched = touched)
@@ -68,7 +68,7 @@ class RemindersTest {
     }
 
     @Test fun frostNudgeOncePerSpell() {
-        val s = Settings(weeklyReview = false, randomPrompt = false, remindTwoDays = false, remindOneDay = false)
+        val s = Settings(weeklyReview = false, randomPrompt = false, remindTwoDays = false, remindOneDay = false, bedReminder = false)
         val t = task("f", Kind.BIG, null, touched = today - 10)
         val plan = Reminders.plan(AppData(listOf(t)), s, now, emptySet())
         assertEquals(listOf("frost:f:${today - 10}"), plan.map { it.key })

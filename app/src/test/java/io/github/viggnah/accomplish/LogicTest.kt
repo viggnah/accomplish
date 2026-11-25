@@ -37,6 +37,19 @@ class LogicTest {
         assertEquals(listOf("Pick dates", "Book flights"), t.doneSteps)
     }
 
+    @Test fun untickingTakesBackTheLatestTick() {
+        val log = listOf(
+            Event(today, EventType.STEP_DONE, "Call"), Event(today, EventType.STEP_DONE, "Book"),
+            Event(today, EventType.STEP_DONE, "Call"), Event(today, EventType.STEP_UNDONE, "Call"),
+            Event(today, EventType.STEP_UNDONE, "Missing"),
+        )
+        val t = big("a").copy(log = log)
+        assertEquals(listOf("Call", "Book"), t.doneSteps)
+        assertEquals(2, t.stepsDone)
+        val back = Json.decode(Json.encode(AppData(listOf(t)))).tasks.single()
+        assertEquals(listOf("Call", "Book"), back.doneSteps)
+    }
+
     @Test fun placingIntoFreeSpotShiftsOthers() {
         val d = AppData(listOf(big("a", slot = 0), big("b", slot = 1), big("w", Status.WAITING)))
         val out = Logic.place(d, "w", 0, s, today)

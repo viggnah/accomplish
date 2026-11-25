@@ -95,7 +95,7 @@ object Capsules {
             c.source == CapsuleSource.BIG_DONE && task?.why != null -> {
                 val wrote = task.log.lastOrNull { it.type == EventType.WHY_SET }?.day
                 Reward(today, RewardType.WHY_MESSAGE, refId = task.id, label = "From past you",
-                    title = "Why “${task.title}” mattered",
+                    title = "What you wrote about “${task.title}”",
                     body = task.why,
                     extra = "You wrote this${wrote?.let { " on ${Logic.fmtLong(it)}" } ?: ""}, before you started. You finished it after ${Logic.plural(task.stepsDone, "step")}.")
             }

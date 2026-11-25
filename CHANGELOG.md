@@ -2,6 +2,17 @@
 
 All notable changes to Accomplish (called Matter until 0.5). Newest first. Versions match `versionName` in `app/build.gradle.kts`.
 
+## 0.13.0 · 26 Nov 2026
+
+### Added
+- Habits, in the ≡ menu, starting with bedtime. A wind-down reminder comes 30 minutes before your target (00:00 to start), with a "Going to bed" button that records the time without opening the app. Habits shows the last seven nights, each one on time or late, and how many were on time. Tap a night to set or change its time, or the target to change it.
+- A finished step can be unticked at any time: tap its tick in the task sheet, and it goes back to the top of the steps to do.
+
+### Changed
+- Settings opens as a short list, and each part has its own page. Related settings are merged into one: frost is one row (Off, or after how many days), warming up before a deadline is one row, deadline notifications are one choice (Off, 1 day, or 1 and 2 days before), the weekly review day includes Off, and quiet hours are set in one place.
+- A task sheet can be pulled down to close from anywhere, once it's scrolled to the top, not just by the bar.
+- "Why it matters" on a big task is now "Notes", for anything you want to keep with it. The hint still asks why it matters.
+
 ## 0.12.0 · 18 Nov 2026
 
 **This update needs a reinstall.** Accomplish is now signed with a new key, because the old one was lost. Android won't install this version over an older one, and Obtainium will report a signature mismatch. Uninstall Accomplish, install 0.12.0, allow file access and choose the same location as before. Your tasks, their backups and your settings are kept in the Accomplish folder, so they come back as they were. Android asks for the permissions again.

@@ -117,19 +117,22 @@ private fun RemindRow(state: AppState, reminder: Long?, onChange: (Long?) -> Uni
 
 /**
  * Planned steps in order; the first one is what shows on the card. Finished steps sit above, ticked.
- * With [onTick], tapping a step's circle ticks it off, in any order. Long-press the circle (or dot) and drag to reorder.
+ * With [onTick], tapping a step's circle ticks it off, in any order, and [onUntick] tapping a finished step's tick
+ * puts it back at the top. Long-press the circle (or dot) and drag to reorder.
  */
 @Composable
 private fun StepsEditor(
     state: AppState, steps: List<String>, done: List<String> = emptyList(),
-    onTick: ((Int) -> Unit)? = null, onChange: (List<String>) -> Unit,
+    onTick: ((Int) -> Unit)? = null, onUntick: ((Int) -> Unit)? = null, onChange: (List<String>) -> Unit,
 ) {
     val p = pal()
     val drag = remember(steps.size) { StepDrag() }
     drag.onMove = { from, to -> onChange(steps.toMutableList().apply { add(to, removeAt(from)) }) }
-    done.forEach { step ->
+    done.forEachIndexed { i, step ->
         Row(Modifier.padding(bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.size(44.dp), contentAlignment = Alignment.Center) { Ico(Icons.check, p.inkSoft, 16.dp, stroke = 2.8f) }
+            Box(Modifier.size(44.dp).squish(enabled = onUntick != null) { onUntick?.invoke(i) }, contentAlignment = Alignment.Center) {
+                Ico(Icons.check, p.inkSoft, 16.dp, stroke = 2.8f)
+            }
             Txt(step, Type.body(16.sp), p.inkSoft, Modifier.weight(1f).padding(start = 16.dp, end = 50.dp))
         }
     }
@@ -286,12 +289,24 @@ fun EditSheet(state: AppState, id: String) {
     Spacer(Modifier.height(14.dp))
     Field(draft.title, { draft = draft.copy(title = it) }, "What needs doing?", singleLine = false)
     if (big) {
-        val done = t.doneSteps + draft.ticked
+        // Finished before this sheet opened (less any unticked here), then ticked here.
+        val earlier = t.doneSteps.toMutableList().also { l -> draft.unticked.forEach { u -> l.lastIndexOf(u).takeIf { it >= 0 }?.let(l::removeAt) } }
+        val done = earlier + draft.ticked
         SectionLabel(if (done.isEmpty()) "Next steps" else "Steps")
         StepsEditor(state, draft.steps, done = done, onTick = { i ->
             val before = draft
-            draft = draft.copy(steps = draft.steps.filterIndexed { j, _ -> j != i }, ticked = draft.ticked + draft.steps[i].trim())
+            val step = draft.steps[i].trim()
+            val rest = draft.steps.filterIndexed { j, _ -> j != i }
+            // Ticking one that was unticked here just takes the untick back.
+            val u = draft.unticked.lastIndexOf(step)
+            draft = if (u >= 0) draft.copy(steps = rest, unticked = draft.unticked.filterIndexed { j, _ -> j != u })
+                else draft.copy(steps = rest, ticked = draft.ticked + step)
             state.offerUndo("Step done") { draft = before }
+        }, onUntick = { i ->
+            // A toggle: ticking it again puts it back, so no undo.
+            val step = done[i]
+            draft = if (i >= earlier.size) draft.copy(steps = listOf(step) + draft.steps, ticked = draft.ticked.filterIndexed { j, _ -> j != i - earlier.size })
+                else draft.copy(steps = listOf(step) + draft.steps, unticked = draft.unticked + step)
         }) { draft = draft.copy(steps = it) }
     }
     SectionLabel("When")
@@ -311,7 +326,7 @@ fun EditSheet(state: AppState, id: String) {
                 )
             }
         }
-        SectionLabel("Why it matters")
+        SectionLabel("Notes")
         Field(draft.why, { draft = draft.copy(why = it) }, "Why does this matter to you?", singleLine = false, minLines = 2)
     }
     if (!big) {
@@ -349,7 +364,7 @@ private fun FinishedSheet(state: AppState, t: Task) {
         Txt("${if (t.status == Status.DONE) "Done" else "Let go"} ${Logic.ago(t.doneAt ?: state.today, state.today)}",
             Type.body(14.sp, FontWeight.ExtraBold), p.ink)
     }
-    t.why?.let { SectionLabel("Why it mattered"); Txt(it, Type.body(16.sp), p.ink) }
+    t.why?.let { SectionLabel("Notes"); Txt(it, Type.body(16.sp), p.ink) }
     Timeline(state, t, true) {}
     SheetFoot {
         ClayButton("Restore", Modifier.fillMaxWidth(), kind = BtnKind.PRIMARY, big = true) { state.dropSheet(); state.restore(t.id) }

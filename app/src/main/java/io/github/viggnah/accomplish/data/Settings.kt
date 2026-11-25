@@ -51,6 +51,11 @@ data class Settings(
     val quietStart: Int = 22,
     val quietEnd: Int = 8,
     val maxPerDay: Int = 2,
+    // sleep
+    /** Bedtime target, minutes after midnight (0 = 00:00). */
+    val bedTarget: Int = 0,
+    /** A wind-down reminder 30 minutes before the target, with a "Going to bed" button. */
+    val bedReminder: Boolean = true,
     /** Folder that holds data.json, e.g. /storage/1A2B-3C4D/Accomplish. Null until set up. */
     val dataDir: String? = null,
 ) {
@@ -112,6 +117,8 @@ class SettingsStore(context: Context) {
             quietStart = p.getInt("quietStart", d.quietStart),
             quietEnd = p.getInt("quietEnd", d.quietEnd),
             maxPerDay = p.getInt("maxPerDay", d.maxPerDay),
+            bedTarget = p.getInt("bedTarget", d.bedTarget).let { Math.floorMod(it, 24 * 60) },
+            bedReminder = p.getBoolean("bedReminder", d.bedReminder),
             dataDir = p.getString("dataDir", null),
         )
     }
@@ -130,6 +137,7 @@ class SettingsStore(context: Context) {
             .putBoolean("remindSmall", s.remindSmall).putBoolean("frostNudge", s.frostNudge).putBoolean("weeklyReview", s.weeklyReview)
             .putInt("reviewDay", s.reviewDay).putBoolean("randomPrompt", s.randomPrompt).putInt("remindHour", s.remindHour)
             .putInt("quietStart", s.quietStart).putInt("quietEnd", s.quietEnd).putInt("maxPerDay", s.maxPerDay)
+            .putInt("bedTarget", s.bedTarget).putBoolean("bedReminder", s.bedReminder)
             .apply()
     }
 

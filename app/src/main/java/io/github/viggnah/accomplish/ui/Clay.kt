@@ -123,6 +123,7 @@ object Icons {
     const val quest = "M5 21V4M5 4h11l-2 4 2 4H5"
     const val note = "M5 5h14v14H5zM5 5l7 6 7-6"
     const val folder = "M3.5 7a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"
+    const val moon = "M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"
     const val bell = "M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"
     const val hourglass = "M7 3h10M7 21h10M8 3c0 5 8 6 8 9s-8 4-8 9M16 3c0 5-8 6-8 9s8 4 8 9"
 }

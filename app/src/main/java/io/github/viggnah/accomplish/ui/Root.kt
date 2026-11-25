@@ -1,5 +1,9 @@
 package io.github.viggnah.accomplish.ui
 
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.Velocity
 import android.app.Activity
 import android.graphics.Color as AColor
 import androidx.activity.ComponentActivity
@@ -141,6 +145,7 @@ private fun BoxScope.MainScaffold(state: AppState) {
                 Screen.HISTORY -> HistoryScreen(state)
                 Screen.COLLECTION -> CollectionScreen(state)
                 Screen.NOTES -> AppNotesScreen(state)
+                Screen.HABITS -> HabitsScreen(state)
                 Screen.SETTINGS -> SettingsScreen(state)
             }
         }
@@ -180,12 +185,13 @@ fun Header(
     onSub: (() -> Unit)? = null,
     home: Boolean = false,
     aboveTitle: (@Composable () -> Unit)? = null,
+    backLabel: String? = null,
 ) {
     val p = pal()
     Column(Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 10.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             if (home) NavPill(state.settings.small, Icons.pebbles) { state.go(Screen.SMALL) }
-            else NavPill(state.settings.big, Icons.back) { state.back() }
+            else NavPill(backLabel ?: state.settings.big, Icons.back) { state.back() }
             Spacer(Modifier.weight(1f))
             if (home) RoundButton(Icons.menu, "Menu") { state.menuOpen = true }
         }
@@ -362,6 +368,29 @@ private fun BoxScope.SheetHost(state: AppState) {
     ) {
         val current = last ?: return@AnimatedVisibility
         var drag by remember(current) { mutableFloatStateOf(0f) }
+        val settle = { velocity: Float -> if (drag > 220f || velocity > 1800f) close() else drag = 0f }
+        // Pull the sheet down from anywhere: once its content is scrolled to the top, a further downward drag
+        // moves the sheet instead, and dragging back up takes the sheet back before the content scrolls.
+        val pull = remember(current) {
+            object : NestedScrollConnection {
+                override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                    if (drag <= 0f || available.y >= 0f) return Offset.Zero
+                    val used = maxOf(available.y, -drag)
+                    drag += used
+                    return Offset(0f, used)
+                }
+                override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
+                    if (source != NestedScrollSource.UserInput || available.y <= 0f) return Offset.Zero
+                    drag += available.y
+                    return Offset(0f, available.y)
+                }
+                override suspend fun onPreFling(available: Velocity): Velocity {
+                    if (drag <= 0f) return Velocity.Zero
+                    settle(available.y)
+                    return available
+                }
+            }
+        }
         Column(
             Modifier
                 .offset { IntOffset(0, drag.roundToInt().coerceAtLeast(0)) }
@@ -371,14 +400,15 @@ private fun BoxScope.SheetHost(state: AppState) {
                 .background(p.surface)
                 .clickable(remember { MutableInteractionSource() }, null) {}
                 .navigationBarsPadding()
-                .imePadding(),
+                .imePadding()
+                .nestedScroll(pull),
         ) {
             Box(
                 Modifier.fillMaxWidth().draggable(
                     rememberDraggableState { drag = (drag + it).coerceAtLeast(0f) },
                     Orientation.Vertical,
-                    onDragStopped = { v -> if (drag > 220f || v > 1800f) close() else drag = 0f },
-                ).padding(top = 10.dp, bottom = 6.dp),
+                    onDragStopped = { v -> settle(v) },
+                ).padding(top = 14.dp, bottom = 12.dp),
                 contentAlignment = Alignment.Center,
             ) { Box(Modifier.size(width = 44.dp, height = 5.dp).background(p.line, PillShape)) }
             Column(Modifier.verticalScroll(rememberScrollState()).padding(start = 20.dp, end = 20.dp, bottom = 24.dp)) {
@@ -420,6 +450,7 @@ private fun BoxScope.MenuPopover(state: AppState) {
         val unopened = state.unopened.size
         val rows = listOf(
             Triple(Icons.hourglass, state.settings.waiting, null) to Screen.WAITING,
+            Triple(Icons.moon, "Habits", null) to Screen.HABITS,
             Triple(Icons.capsule, "Capsules", if (unopened > 0) "$unopened" else null) to Screen.COLLECTION,
             Triple(Icons.history, state.settings.history, null) to Screen.HISTORY,
             Triple(Icons.note, "App notes", null) to Screen.NOTES,

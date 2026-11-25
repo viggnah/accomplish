@@ -1,0 +1,5 @@
+- Habits, starting with bedtime: a wind-down reminder with a "Going to bed" button, and the last seven nights at a glance
+- Settings is a short list with a page for each part, and fewer, merged rows
+- Pull a task sheet down from anywhere to close it
+- Untick a finished step at any time
+- "Why it matters" is now a Notes field

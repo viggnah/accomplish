@@ -171,8 +171,9 @@ object Logic {
         EventType.RESTORED -> "Restored"
         EventType.PROMOTED -> "Promoted to ${s.big}"
         EventType.RESIZED -> "Size changed to ${e.text}"
-        EventType.WHY_SET -> "Added why it matters"
+        EventType.WHY_SET -> "Notes edited"
         EventType.REMINDER_SET -> "Reminder set for ${e.num?.let { fmtWhen(it) }}"
         EventType.REMINDER_REMOVED -> "Reminder removed"
+        EventType.STEP_UNDONE -> "Step unticked: ${e.text}"
     }
 }
