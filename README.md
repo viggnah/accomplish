@@ -40,6 +40,7 @@ Both names are yours to change, along with *Waiting room* and *History*.
 - **Frost.** A big task you leave untouched slowly frosts over. One tap thaws it.
 - **Deadlines or a rough when.** Give a task a date, or just "This month" or "Later". Anything due tomorrow or sooner turns red, and Coming up shows the next six weeks on a calendar.
 - **Reminders that respect you.** Set your own reminders, with "In 1 hour" and "Tomorrow" snooze buttons. Optional nudges come two days and one day before a deadline, with quiet hours and a daily limit.
+- **Bedtime.** A wind-down reminder before your target bedtime has a "Going to bed" button that records the time without opening the app. Habits shows the last seven nights, and how many were on time.
 - **A Waiting room.** Big tasks that aren't on Home yet wait there until you place them. Tap an empty spot to add one straight to Home, and long-press a card to drag it to another spot.
 - **Capsules.** Moving a big task forward sometimes earns a capsule, and finishing one always does. It might hold a note from your past self about why the task mattered, a side quest to do in real life (sometimes with someone you care about), or one of 250 one-minute lessons on cooking, music, history, science and more.
 - **Undo** for anything that can't simply be put back, and a full history for every task.

@@ -4,6 +4,7 @@
 <li><b>Frost.</b> Big tasks you leave untouched slowly frost over. One tap thaws them.</li>
 <li><b>Deadlines or a rough when.</b> A date, "This month" or "Later". Anything due tomorrow or sooner turns red, and Coming up shows the next six weeks.</li>
 <li><b>Reminders with snooze</b>, plus optional nudges before deadlines, with quiet hours and a daily limit.</li>
+<li><b>Bedtime.</b> A wind-down reminder with a "Going to bed" button, and the last seven nights at a glance.</li>
 <li><b>A Waiting room</b> for big tasks that aren't on Home yet. Drag cards on Home to reorder them.</li>
 <li><b>Capsules.</b> Moving a big task forward sometimes earns one: a note from your past self, a real-life side quest, or a one-minute lesson.</li>
 <li><b>Undo</b> for anything that can't simply be put back, and a full history for every task.</li>
